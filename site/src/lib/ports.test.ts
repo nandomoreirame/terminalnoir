@@ -93,3 +93,12 @@ describe('localized ports', () => {
     }
   });
 });
+
+describe('port screenshots', () => {
+  it('gives every port its screenshot', () => {
+    for (const port of getPorts()) {
+      expect(port.screenshot?.src, port.slug).toBeTruthy();
+      expect(port.screenshot?.width, port.slug).toBeGreaterThan(0);
+    }
+  });
+});

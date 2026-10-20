@@ -31,8 +31,12 @@ const marked = new Marked({
   },
 });
 
+// Image lines with a relative path (README screenshots) resolve on GitHub but
+// not on the site, which shows each port's screenshot on its own.
+const RELATIVE_IMAGE_LINE = /^!\[[^\]]*\]\((?![a-z]+:)[^)]+\)\s*$/gm;
+
 export async function renderMarkdown(source: string, options: { dropTitle?: boolean } = {}): Promise<string> {
-  const tokens = marked.lexer(source);
+  const tokens = marked.lexer(source.replace(RELATIVE_IMAGE_LINE, ''));
   const body =
     options.dropTitle && tokens[0]?.type === 'heading' && (tokens[0] as Tokens.Heading).depth === 1
       ? Object.assign(tokens.slice(1), { links: tokens.links })

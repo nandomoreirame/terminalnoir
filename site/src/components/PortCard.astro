@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { getI18n } from '../i18n/context';
 import type { UiKey } from '../i18n/ui';
@@ -18,6 +19,17 @@ const { t, path } = getI18n(Astro.currentLocale);
     class="group flex h-full flex-col justify-between rounded border border-hairline bg-raised p-5 transition-colors duration-150 hover:border-accent"
   >
     <span class="block">
+      {
+        port.screenshot && (
+          <Image
+            src={port.screenshot}
+            alt=""
+            width={480}
+            loading="lazy"
+            class="mb-4 aspect-[16/10] w-full rounded border border-hairline object-cover object-left-top"
+          />
+        )
+      }
       <span class="mb-4 flex items-center justify-between">
         <Icon
           name={port.icon}

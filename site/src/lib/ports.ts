@@ -14,6 +14,16 @@ export interface Port {
   description: string;
   install: string | undefined;
   icon: string;
+  screenshot: ImageMetadata | undefined;
+}
+
+// assets/screenshots/<slug>.png, as imported image assets (src, width, height).
+const screenshots = import.meta.glob<{ default: ImageMetadata }>('../../../assets/screenshots/*.png', {
+  eager: true,
+});
+
+function screenshotFor(slug: string): ImageMetadata | undefined {
+  return Object.entries(screenshots).find(([path]) => path.endsWith(`/screenshots/${slug}.png`))?.[1].default;
 }
 
 // Lucide icons per port, in the spirit of the generic glyphs of the Stitch design.
@@ -76,6 +86,7 @@ export function getPorts(locale: Locale = DEFAULT_LOCALE): Port[] {
         description: portDescription(readme),
         install: installSnippet(readme),
         icon: ICONS[p.slug] ?? 'lucide:palette',
+        screenshot: screenshotFor(p.slug),
       };
     });
     cache.set(locale, ports);

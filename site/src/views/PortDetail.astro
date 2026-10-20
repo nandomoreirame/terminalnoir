@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import Section from '../components/Section.astro';
 import { getI18n } from '../i18n/context';
@@ -54,6 +55,18 @@ const html = await renderMarkdown(port.readme, { dropTitle: true });
         </a>
       </div>
     </div>
+
+    {
+      port.screenshot && (
+        <Image
+          src={port.screenshot}
+          alt={t('ports.pageTitle', { name: port.name })}
+          width={1200}
+          loading="eager"
+          class="mt-10 w-full rounded border border-hairline"
+        />
+      )
+    }
 
     <article class="prose mt-10 max-w-2xl" set:html={html} />
   </Section>

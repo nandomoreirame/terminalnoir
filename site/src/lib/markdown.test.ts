@@ -30,3 +30,19 @@ describe('renderMarkdown', () => {
     expect(html).toContain('rel="noopener noreferrer"');
   });
 });
+
+describe('renderMarkdown images', () => {
+  it('drops images with relative paths, which only resolve on GitHub', async () => {
+    const html = await renderMarkdown('Intro.\n\n![Shot](../../assets/screenshots/bat.png)\n\nAfter.');
+
+    expect(html).not.toContain('<img');
+    expect(html).not.toContain('<p></p>');
+    expect(html).toContain('After.');
+  });
+
+  it('keeps absolute image URLs', async () => {
+    const html = await renderMarkdown('![Logo](https://example.com/logo.png)');
+
+    expect(html).toContain('<img src="https://example.com/logo.png"');
+  });
+});

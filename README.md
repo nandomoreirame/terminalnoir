@@ -42,6 +42,10 @@ Terminal Noir is the theme of [nandomoreira.dev](https://nandomoreira.dev), extr
 
 The full palette, including the 16 ANSI colors of each variant, lives in [`palette/palette.json`](palette/palette.json). Syntax roles live in [`palette/syntax.json`](palette/syntax.json) and point at palette names, never at raw hex.
 
+## Accessibility
+
+Both variants meet WCAG 2.1 AA on every surface (`base`, `raised`, `elevated`): text, accents, syntax roles and ANSI colors at 4.5:1, `text.faint` and `surface.outline` at 3:1. `surface.border` is a decorative hairline and never the only cue. The background slot of each ANSI set (`black` in dark, bright `white` in light) is exempt. [`tests/contrast.bats`](tests/contrast.bats) fails the build when a color drops below its floor.
+
 ## Ports
 
 | App | Variants | Port |

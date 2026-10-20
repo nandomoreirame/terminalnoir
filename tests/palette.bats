@@ -52,3 +52,11 @@ load test_helper
     done
     [ "$n" -ge 20 ]
 }
+
+@test "README states the contrast floors the suite enforces" {
+    local section
+    section="$(sed -n '/^## Accessibility$/,/^## /p' "$PROJECT_ROOT/README.md")"
+    grep -q '4.5:1' <<<"$section"
+    grep -q '3:1' <<<"$section"
+    grep -q 'tests/contrast.bats' <<<"$section"
+}

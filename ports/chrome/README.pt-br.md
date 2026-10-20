@@ -2,6 +2,8 @@
 
 Um tema para o navegador: moldura, abas, barra de ferramentas, barra de endereço e página de nova aba. Os temas do Chrome não têm variante clara.
 
+![Terminal Noir para Google Chrome](../../assets/screenshots/chrome.png)
+
 ## Instalação
 
 1. Abra `chrome://extensions` e ative o Modo do desenvolvedor.

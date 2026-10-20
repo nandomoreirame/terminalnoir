@@ -2,6 +2,8 @@
 
 Cores para o [fzf](https://github.com/junegunn/fzf): correspondências e ponteiro em âmbar, linha selecionada elevada e marcadores esmeralda, sobre o fundo do seu terminal.
 
+![Terminal Noir para fzf](../../assets/screenshots/fzf.png)
+
 ## Instalação
 
 Carregue o snippet a partir do seu `.zshrc` ou `.bashrc`:

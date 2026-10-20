@@ -2,6 +2,8 @@
 
 [Noctalia](https://noctalia.dev) shell palette with dark and light modes.
 
+![Terminal Noir for Noctalia](../../assets/screenshots/noctalia.png)
+
 ## Install
 
 Noctalia v5:

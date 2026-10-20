@@ -2,6 +2,8 @@
 
 A dark color theme extension: editor chrome, integrated terminal and syntax highlighting.
 
+![Terminal Noir for VS Code / Cursor](../../assets/screenshots/vscode.png)
+
 ## Install
 
 From the repo root:

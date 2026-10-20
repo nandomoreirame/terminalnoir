@@ -2,6 +2,8 @@
 
 Dark colors and the amber accent for GTK 4 and libadwaita apps (Nautilus, file chooser, settings dialogs), plus an icon theme with amber folders.
 
+![Terminal Noir for GTK / libadwaita](../../assets/screenshots/gtk.png)
+
 ## Colors and accent
 
 ```sh

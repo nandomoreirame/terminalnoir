@@ -2,6 +2,8 @@
 
 An Obsidian theme for dark mode: near-black panes, amber links and accent, and code blocks in the same colors as the editor ports.
 
+![Terminal Noir for Obsidian](../../assets/screenshots/obsidian.png)
+
 ## Install
 
 1. Copy the `Terminal Noir` folder to `<your vault>/.obsidian/themes/`.

@@ -2,6 +2,8 @@
 
 Cores escuras e o acento âmbar para apps GTK 4 e libadwaita (Nautilus, seletor de arquivos, diálogos de configuração), além de um tema de ícones com pastas em âmbar.
 
+![Terminal Noir para GTK / libadwaita](../../assets/screenshots/gtk.png)
+
 ## Cores e acento
 
 ```sh

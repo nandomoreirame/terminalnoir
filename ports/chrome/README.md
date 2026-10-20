@@ -2,6 +2,8 @@
 
 A browser theme (frame, tabs, toolbar, address bar, new tab page). Chrome themes have no light variant.
 
+![Terminal Noir for Google Chrome](../../assets/screenshots/chrome.png)
+
 ## Install
 
 1. Open `chrome://extensions` and turn on Developer mode.

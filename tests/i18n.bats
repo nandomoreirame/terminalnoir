@@ -41,3 +41,14 @@ code_blocks() {
         diff <(code_blocks "$PROJECT_ROOT/CONTRIBUTING.md") <(code_blocks "$PROJECT_ROOT/CONTRIBUTING.$locale.md")
     done
 }
+
+@test "every port has a screenshot shown in each of its READMEs" {
+    local dir slug readme
+    for dir in "$PROJECT_ROOT"/ports/*/; do
+        slug="$(basename "$dir")"
+        [ -f "$PROJECT_ROOT/assets/screenshots/$slug.png" ] || { echo "missing screenshot: $slug"; return 1; }
+        for readme in "$dir"README*.md; do
+            grep -Fq "](../../assets/screenshots/$slug.png)" "$readme" || { echo "no screenshot in $readme"; return 1; }
+        done
+    done
+}

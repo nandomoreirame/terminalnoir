@@ -2,6 +2,8 @@
 
 Color overrides for [Powerlevel10k](https://github.com/romkatv/powerlevel10k), built for the classic and rainbow styles.
 
+![Terminal Noir for Powerlevel10k](../../assets/screenshots/p10k.png)
+
 ## Install
 
 In `.zshrc`, source the overrides right after your p10k config:

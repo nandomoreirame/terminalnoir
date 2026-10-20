@@ -2,6 +2,8 @@
 
 Colors for [fzf](https://github.com/junegunn/fzf): amber matches and pointer, an elevated selected row, emerald markers, on your terminal background.
 
+![Terminal Noir for fzf](../../assets/screenshots/fzf.png)
+
 ## Install
 
 Source the snippet from your `.zshrc` or `.bashrc`:

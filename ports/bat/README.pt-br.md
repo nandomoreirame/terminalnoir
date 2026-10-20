@@ -2,6 +2,8 @@
 
 Um tema de sintaxe para o [bat](https://github.com/sharkdp/bat), no formato TextMate.
 
+![Terminal Noir para bat](../../assets/screenshots/bat.png)
+
 ## Instalação
 
 ```sh

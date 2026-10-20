@@ -2,6 +2,8 @@
 
 Um tema do Obsidian para o modo escuro: painéis quase pretos, links e acento em âmbar, e blocos de código com as mesmas cores dos ports de editor.
 
+![Terminal Noir para Obsidian](../../assets/screenshots/obsidian.png)
+
 ## Instalação
 
 1. Copie a pasta `Terminal Noir` para `<seu cofre>/.obsidian/themes/`.

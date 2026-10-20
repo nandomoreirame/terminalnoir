@@ -2,6 +2,8 @@
 
 A [btop](https://github.com/aristocratos/btop) color theme: amber titles, outline boxes, and load gradients that run from emerald through cream to pink.
 
+![Terminal Noir for btop](../../assets/screenshots/btop.png)
+
 ## Install
 
 ```sh

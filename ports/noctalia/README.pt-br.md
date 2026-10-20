@@ -2,6 +2,8 @@
 
 Paleta para o shell [Noctalia](https://noctalia.dev), com os modos escuro e claro.
 
+![Terminal Noir para Noctalia](../../assets/screenshots/noctalia.png)
+
 ## Instalação
 
 Noctalia v5:

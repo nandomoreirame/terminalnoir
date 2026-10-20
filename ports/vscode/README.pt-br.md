@@ -2,6 +2,8 @@
 
 Uma extensão de tema escuro: interface do editor, terminal integrado e destaque de sintaxe.
 
+![Terminal Noir para VS Code / Cursor](../../assets/screenshots/vscode.png)
+
 ## Instalação
 
 Na raiz do repositório:

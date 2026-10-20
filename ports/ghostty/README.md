@@ -2,6 +2,8 @@
 
 [Ghostty](https://ghostty.org) themes for dark and light.
 
+![Terminal Noir for Ghostty](../../assets/screenshots/ghostty.png)
+
 ## Install
 
 ```sh

@@ -2,6 +2,8 @@
 
 Sobrescritas de cor para o [Powerlevel10k](https://github.com/romkatv/powerlevel10k), pensadas para os estilos classic e rainbow.
 
+![Terminal Noir para Powerlevel10k](../../assets/screenshots/p10k.png)
+
 ## Instalação
 
 No `.zshrc`, carregue as sobrescritas logo depois da sua configuração do p10k:

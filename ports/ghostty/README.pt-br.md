@@ -2,6 +2,8 @@
 
 Temas para o [Ghostty](https://ghostty.org), nas variantes escura e clara.
 
+![Terminal Noir para Ghostty](../../assets/screenshots/ghostty.png)
+
 ## Instalação
 
 ```sh

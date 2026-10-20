@@ -4,6 +4,8 @@ A dark theme of cold near-black surfaces, stepped by luminance, with one warm am
 
 Terminal Noir started as the design tokens of [nandomoreira.dev](https://nandomoreira.dev) and grew into a theme for the whole desktop: shell, compositor, terminal, editor, browser and CLI tools.
 
+![Terminal Noir on a niri desktop with the Noctalia shell, Ghostty and bat](assets/screenshots/noctalia.png)
+
 ## Palette
 
 ### Dark

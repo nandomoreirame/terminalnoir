@@ -2,6 +2,8 @@
 
 A [bat](https://github.com/sharkdp/bat) syntax theme (TextMate format).
 
+![Terminal Noir for bat](../../assets/screenshots/bat.png)
+
 ## Install
 
 ```sh

@@ -2,6 +2,8 @@
 
 Um tema de cores para o [btop](https://github.com/aristocratos/btop): títulos em âmbar, caixas com contorno e gradientes de carga que vão do esmeralda ao rosa, passando pelo creme.
 
+![Terminal Noir para btop](../../assets/screenshots/btop.png)
+
 ## Instalação
 
 ```sh

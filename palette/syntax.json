@@ -1,0 +1,25 @@
+{
+  "_comment": "Syntax roles for editor and highlighter ports. Each color is a path into palette.json variants (e.g. accent.primary, ansi.bright.cyan), resolved per variant by scripts/build.",
+  "tokens": [
+    { "name": "Comment", "scope": ["comment", "punctuation.definition.comment"], "color": "text.muted", "fontStyle": "italic" },
+    { "name": "Keyword", "scope": ["keyword", "keyword.control", "storage", "storage.type", "storage.modifier", "keyword.operator.new", "keyword.operator.expression"], "color": "accent.primary" },
+    { "name": "Operator", "scope": ["keyword.operator", "punctuation"], "color": "text.primary" },
+    { "name": "String", "scope": ["string", "punctuation.definition.string", "markup.inline.raw"], "color": "accent.success" },
+    { "name": "Regex and escape", "scope": ["string.regexp", "constant.character.escape"], "color": "ansi.bright.cyan" },
+    { "name": "Number and constant", "scope": ["constant.numeric", "constant.language", "constant.other", "support.constant", "variable.other.constant"], "color": "accent.warning" },
+    { "name": "Function", "scope": ["entity.name.function", "support.function", "meta.function-call", "variable.function"], "color": "accent.info" },
+    { "name": "Type", "scope": ["entity.name.type", "entity.name.class", "entity.other.inherited-class", "support.type", "support.class", "entity.name.namespace"], "color": "ansi.bright.magenta" },
+    { "name": "Variable", "scope": ["variable", "variable.other", "variable.parameter"], "color": "text.primary" },
+    { "name": "Property", "scope": ["variable.other.property", "variable.other.object.property", "support.type.property-name", "meta.object-literal.key", "entity.name.tag.yaml"], "color": "ansi.bright.cyan" },
+    { "name": "Tag", "scope": ["entity.name.tag", "punctuation.definition.tag"], "color": "ansi.normal.red" },
+    { "name": "Attribute", "scope": ["entity.other.attribute-name"], "color": "accent.warning" },
+    { "name": "Heading", "scope": ["markup.heading", "entity.name.section"], "color": "accent.primary", "fontStyle": "bold" },
+    { "name": "Bold", "scope": ["markup.bold"], "fontStyle": "bold" },
+    { "name": "Italic", "scope": ["markup.italic"], "fontStyle": "italic" },
+    { "name": "Link", "scope": ["markup.underline.link", "string.other.link"], "color": "accent.info" },
+    { "name": "Inserted", "scope": ["markup.inserted"], "color": "accent.success" },
+    { "name": "Deleted", "scope": ["markup.deleted"], "color": "accent.error" },
+    { "name": "Changed", "scope": ["markup.changed"], "color": "accent.warning" },
+    { "name": "Invalid", "scope": ["invalid", "invalid.illegal"], "color": "accent.error" }
+  ]
+}

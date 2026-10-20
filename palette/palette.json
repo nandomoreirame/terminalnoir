@@ -1,0 +1,100 @@
+{
+  "name": "Terminal Noir",
+  "version": "0.1.0",
+  "homepage": "https://terminalnoir.web.app",
+  "origin": "nandomoreira.dev design tokens (src/styles/global.css): cold near-black surfaces stepped by luminance, an amber accent and an emerald status color. The light variant follows the site's light reader theme.",
+  "variants": {
+    "dark": {
+      "surface": {
+        "base": "#0B0B0C",
+        "raised": "#121214",
+        "elevated": "#18181B",
+        "border": "#222226",
+        "outline": "#3F3F46",
+        "selection": "#52525B",
+        "shadow": "#000000"
+      },
+      "text": {
+        "primary": "#F4F4F5",
+        "muted": "#A1A1AA",
+        "faint": "#6B6B74"
+      },
+      "accent": {
+        "primary": "#F5A623",
+        "onPrimary": "#0B0B0C",
+        "success": "#34D399",
+        "warning": "#FACF9E",
+        "error": "#FFB7B0",
+        "info": "#79C0FF"
+      },
+      "ansi": {
+        "normal": {
+          "black": "#18181B",
+          "red": "#FF7B72",
+          "green": "#34D399",
+          "yellow": "#F5A623",
+          "blue": "#58A6FF",
+          "magenta": "#BC8CFF",
+          "cyan": "#39C5CF",
+          "white": "#A1A1AA"
+        },
+        "bright": {
+          "black": "#6B6B74",
+          "red": "#FFB7B0",
+          "green": "#56D364",
+          "yellow": "#FACF9E",
+          "blue": "#79C0FF",
+          "magenta": "#D2A8FF",
+          "cyan": "#56D4DD",
+          "white": "#F4F4F5"
+        }
+      }
+    },
+    "light": {
+      "surface": {
+        "base": "#FBFAF7",
+        "raised": "#F1EFEA",
+        "elevated": "#E9E6DF",
+        "border": "#DCD8CF",
+        "outline": "#8A857C",
+        "selection": "#D6D2C8",
+        "shadow": "#E9E6DF"
+      },
+      "text": {
+        "primary": "#1C1A17",
+        "muted": "#5E5A53",
+        "faint": "#8A857C"
+      },
+      "accent": {
+        "primary": "#865700",
+        "onPrimary": "#FBFAF7",
+        "success": "#047857",
+        "warning": "#8A5300",
+        "error": "#B42318",
+        "info": "#0969DA"
+      },
+      "ansi": {
+        "normal": {
+          "black": "#1C1A17",
+          "red": "#CF222E",
+          "green": "#116329",
+          "yellow": "#865700",
+          "blue": "#0969DA",
+          "magenta": "#8250DF",
+          "cyan": "#1B7C83",
+          "white": "#8A857C"
+        },
+        "bright": {
+          "black": "#5E5A53",
+          "red": "#A40E26",
+          "green": "#1A7F37",
+          "yellow": "#633C01",
+          "blue": "#218BFF",
+          "magenta": "#A475F9",
+          "cyan": "#3192AA",
+          "white": "#DCD8CF"
+        }
+      }
+    }
+  }
+}

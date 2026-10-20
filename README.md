@@ -16,7 +16,7 @@ Terminal Noir is the theme of [nandomoreira.dev](https://nandomoreira.dev), extr
 | `surface.raised` | `#121214` | inputs, widgets, line highlight |
 | `surface.elevated` | `#18181B` | toolbars, active tab, cards |
 | `surface.border` | `#222226` | hairlines |
-| `surface.outline` | `#3F3F46` | borders that delimit targets |
+| `surface.outline` | `#64646B` | borders that delimit targets |
 | `surface.selection` | `#52525B` | text selection |
 | `text.primary` | `#F4F4F5` | body text |
 | `text.muted` | `#A1A1AA` | secondary text, comments |
@@ -37,7 +37,7 @@ Terminal Noir is the theme of [nandomoreira.dev](https://nandomoreira.dev), extr
 | `text.primary` | `#1C1A17` |
 | `text.muted` | `#5E5A53` |
 | `accent.primary` | `#865700` |
-| `accent.success` | `#047857` |
+| `accent.success` | `#0B7656` |
 | `accent.error` | `#B42318` |
 
 The full palette, including the 16 ANSI colors of each variant, lives in [`palette/palette.json`](palette/palette.json). Syntax roles live in [`palette/syntax.json`](palette/syntax.json) and point at palette names, never at raw hex.

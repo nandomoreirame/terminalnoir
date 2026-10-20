@@ -5,7 +5,7 @@ layout {
     focus-ring {
         width 3
         active-color "#f5a623cc"
-        inactive-color "#3f3f46"
+        inactive-color "#64646b"
         urgent-color "#ffb7b0"
     }
 
@@ -13,7 +13,7 @@ layout {
         off
         width 3
         active-color "#f5a623cc"
-        inactive-color "#3f3f46"
+        inactive-color "#64646b"
         urgent-color "#ffb7b0"
     }
 

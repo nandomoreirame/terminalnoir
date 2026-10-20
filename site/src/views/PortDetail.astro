@@ -1,6 +1,6 @@
 ---
-import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import Lightbox from '../components/Lightbox.astro';
 import Section from '../components/Section.astro';
 import { getI18n } from '../i18n/context';
 import type { UiKey } from '../i18n/ui';
@@ -58,12 +58,12 @@ const html = await renderMarkdown(port.readme, { dropTitle: true });
 
     {
       port.screenshot && (
-        <Image
-          src={port.screenshot}
+        <Lightbox
+          id={`shot-${port.slug}`}
+          image={port.screenshot}
           alt={t('ports.pageTitle', { name: port.name })}
-          width={1200}
-          loading="eager"
-          class="mt-10 w-full rounded border border-hairline"
+          openLabel={t('ports.zoomIn')}
+          closeLabel={t('ports.zoomOut')}
         />
       )
     }

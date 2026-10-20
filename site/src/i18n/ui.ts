@@ -57,6 +57,8 @@ const en = {
   'ports.breadcrumb': 'Breadcrumb',
   'ports.pageTitle': 'Terminal Noir for {name}',
   'ports.source': 'Source',
+  'ports.zoomIn': 'Full size',
+  'ports.zoomOut': 'Close',
 
   'variant.dark': 'dark',
   'variant.light': 'light',
@@ -233,6 +235,8 @@ const ptBr: Record<UiKey, string> = {
   'ports.breadcrumb': 'Trilha de navegação',
   'ports.pageTitle': 'Terminal Noir para {name}',
   'ports.source': 'Código',
+  'ports.zoomIn': 'Tamanho real',
+  'ports.zoomOut': 'Fechar',
 
   'variant.dark': 'escuro',
   'variant.light': 'claro',

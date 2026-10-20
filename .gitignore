@@ -1,0 +1,4 @@
+*.vsix
+.DS_Store
+.firebase/
+firebase-debug.log

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# build — Generate every port under ports/ from the canonical palette.
+#
+# Sources of truth:
+#   palette/palette.json  colors per variant (dark, light)
+#   palette/syntax.json   syntax roles, as paths into the palette
+#
+# Each port lives in scripts/ports/<name>.sh and defines build_<name>, which
+# writes its files under "$OUT/ports/<name>/". tests/build.bats fails when a
+# committed port drifts from a fresh build, so run this after any palette edit.
+#
+# Usage: scripts/build [OUT_ROOT]   (default: the repo root)
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+readonly ROOT
+export PALETTE="$ROOT/palette/palette.json"
+export SYNTAX="$ROOT/palette/syntax.json"
+export OUT="${1:-$ROOT}"
+
+readonly PORTS=(noctalia ghostty vscode bat chrome btop fzf gtk niri obsidian p10k)
+
+main() {
+    local port
+    for port in "${PORTS[@]}"; do
+        # shellcheck source=/dev/null
+        source "$ROOT/scripts/ports/$port.sh"
+        mkdir -p "$OUT/ports/$port"
+        "build_$port"
+    done
+}
+
+main "$@"

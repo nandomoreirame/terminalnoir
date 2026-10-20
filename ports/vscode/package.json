@@ -1,0 +1,30 @@
+{
+  "name": "terminal-noir",
+  "displayName": "Terminal Noir",
+  "description": "Terminal Noir: cold near-black surfaces with an amber accent. https://terminalnoir.web.app",
+  "version": "0.1.0",
+  "publisher": "nandomoreira",
+  "license": "MIT",
+  "homepage": "https://terminalnoir.web.app",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "dark",
+    "theme",
+    "amber",
+    "terminal noir"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Terminal Noir",
+        "uiTheme": "vs-dark",
+        "path": "./themes/terminal-noir-color-theme.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$comment": "Registry of ports. One entry per directory in ports/. The site and the README read it.",
+  "categories": {
+    "desktop": "Desktop",
+    "terminal": "Terminal",
+    "editor": "Editors",
+    "cli": "CLI tools",
+    "apps": "Apps"
+  },
+  "ports": [
+    { "slug": "noctalia", "name": "Noctalia", "category": "desktop", "variants": ["dark", "light"], "homepage": "https://noctalia.dev", "featured": true },
+    { "slug": "niri", "name": "niri", "category": "desktop", "variants": ["dark"], "homepage": "https://github.com/niri-wm/niri", "featured": false },
+    { "slug": "gtk", "name": "GTK / libadwaita", "category": "desktop", "variants": ["dark"], "homepage": "https://gnome.pages.gitlab.gnome.org/libadwaita/", "featured": false },
+    { "slug": "ghostty", "name": "Ghostty", "category": "terminal", "variants": ["dark", "light"], "homepage": "https://ghostty.org", "featured": true },
+    { "slug": "p10k", "name": "Powerlevel10k", "category": "terminal", "variants": ["dark"], "homepage": "https://github.com/romkatv/powerlevel10k", "featured": true },
+    { "slug": "vscode", "name": "VS Code / Cursor", "category": "editor", "variants": ["dark"], "homepage": "https://code.visualstudio.com", "featured": true },
+    { "slug": "obsidian", "name": "Obsidian", "category": "editor", "variants": ["dark"], "homepage": "https://obsidian.md", "featured": false },
+    { "slug": "bat", "name": "bat", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/sharkdp/bat", "featured": true },
+    { "slug": "btop", "name": "btop", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/aristocratos/btop", "featured": false },
+    { "slug": "fzf", "name": "fzf", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/junegunn/fzf", "featured": false },
+    { "slug": "chrome", "name": "Google Chrome", "category": "apps", "variants": ["dark"], "homepage": "https://www.google.com/chrome/", "featured": true }
+  ]
+}

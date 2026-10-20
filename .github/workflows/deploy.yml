@@ -1,0 +1,46 @@
+# Build the site on every push to main and deploy it to Firebase Hosting
+# (terminalnoir.web.app). Auth is keyless: Workload Identity Federation lets
+# only pushes to main of this repo act as the deploy service account.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hosting
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install
+        working-directory: site
+        run: npm ci
+
+      - name: Check, test and build
+        working-directory: site
+        run: npm run verify
+
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/279171183748/locations/global/workloadIdentityPools/github/providers/terminalnoir
+          service_account: gh-terminalnoir-deploy@nandomoreira-dev.iam.gserviceaccount.com
+
+      - name: Deploy to Firebase Hosting
+        run: npx --yes firebase-tools@15.19.0 deploy --only hosting:terminalnoir --project nandomoreira-dev --non-interactive

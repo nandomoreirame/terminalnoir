@@ -152,9 +152,9 @@ const en = {
 
   'about.metaDescription': 'Where Terminal Noir comes from and the principles behind it.',
   'about.eyebrow': 'About',
-  'about.title': 'A theme that started as a website.',
+  'about.title': 'A theme extracted from a website.',
   'about.p1Html':
-    'Terminal Noir began as the design tokens of <a class="text-accent underline underline-offset-4" href="https://nandomoreira.dev">nandomoreira.dev</a>: cold near-black surfaces stepped by luminance, an amber accent and an emerald status color. Living with it on the web made the desktop next to it look loud, so the palette moved into the shell, the compositor, the terminal and the editor, one app at a time.',
+    'Terminal Noir is the theme of <a class="text-accent underline underline-offset-4" href="https://nandomoreira.dev">nandomoreira.dev</a>, extracted from the site so the whole system shares one visual identity: cold near-black surfaces stepped by luminance, an amber accent and an emerald status color. Living with it on the web made the desktop next to it look like a different place, so the tokens left the site\'s CSS for a single palette.json and moved into the shell, the compositor, the terminal, the editor and the browser, one app at a time.',
   'about.p2':
     "The paper variant follows the same roles on warm light tones, taken from the site's light reader theme. Apps that switch with the system get both.",
   'about.principlesEyebrow': 'Principles',
@@ -331,9 +331,9 @@ const ptBr: Record<UiKey, string> = {
 
   'about.metaDescription': 'De onde vem o Terminal Noir e os princípios por trás dele.',
   'about.eyebrow': 'Sobre',
-  'about.title': 'Um tema que começou como um site.',
+  'about.title': 'Um tema extraído de um site.',
   'about.p1Html':
-    'O Terminal Noir nasceu dos design tokens do <a class="text-accent underline underline-offset-4" href="https://nandomoreira.dev">nandomoreira.dev</a>: superfícies frias quase pretas em degraus de luminância, um acento âmbar e uma cor de status esmeralda. Conviver com ele na web fez o desktop ao lado parecer barulhento, então a paleta foi para o shell, o compositor, o terminal e o editor, um app de cada vez.',
+    'O Terminal Noir é o tema do <a class="text-accent underline underline-offset-4" href="https://nandomoreira.dev">nandomoreira.dev</a>, extraído do site para que o sistema inteiro tenha uma só identidade visual: superfícies frias quase pretas em degraus de luminância, um acento âmbar e uma cor de status esmeralda. Conviver com ele na web fez o desktop ao lado parecer outro lugar, então os tokens saíram do CSS do site para um único palette.json e foram para o shell, o compositor, o terminal, o editor e o navegador, um app de cada vez.',
   'about.p2':
     'A variante paper segue os mesmos papéis em tons claros e quentes, tirados do tema claro do modo leitura do site. Apps que trocam de tema com o sistema recebem as duas.',
   'about.principlesEyebrow': 'Princípios',

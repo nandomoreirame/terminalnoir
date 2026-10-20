@@ -18,7 +18,7 @@ export PALETTE="$ROOT/palette/palette.json"
 export SYNTAX="$ROOT/palette/syntax.json"
 export OUT="${1:-$ROOT}"
 
-readonly PORTS=(noctalia ghostty vscode bat chrome btop fzf gtk niri obsidian p10k)
+readonly PORTS=(noctalia ghostty vscode bat chrome btop fzf gtk niri obsidian p10k shiki)
 
 main() {
     local port

@@ -19,6 +19,8 @@ GENERATED=(
     "ports/obsidian/Terminal Noir/theme.css"
     "ports/obsidian/Terminal Noir/manifest.json"
     "ports/p10k/terminal-noir.p10k.zsh"
+    "ports/shiki/terminal-noir.json"
+    "ports/shiki/terminal-noir-paper.json"
 )
 
 setup() {

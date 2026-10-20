@@ -39,6 +39,7 @@ const ICONS: Record<string, string> = {
   btop: 'lucide:activity',
   fzf: 'lucide:list-filter',
   chrome: 'lucide:globe',
+  shiki: 'lucide:highlighter',
 };
 
 // README.md is English; README.<locale>.md holds each translation.

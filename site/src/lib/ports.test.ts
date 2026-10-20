@@ -76,6 +76,12 @@ describe('port icons', () => {
       expect(port.icon, port.slug).toMatch(/^lucide:/);
     }
   });
+
+  it('gives every port its own glyph, never the fallback', () => {
+    for (const port of getPorts()) {
+      expect(port.icon, port.slug).not.toBe('lucide:palette');
+    }
+  });
 });
 
 describe('localized ports', () => {

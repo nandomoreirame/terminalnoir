@@ -57,6 +57,7 @@ The full palette, including the 16 ANSI colors of each variant, lives in [`palet
 | fzf | dark | [ports/fzf](ports/fzf) |
 | Powerlevel10k | dark | [ports/p10k](ports/p10k) |
 | Obsidian | dark | [ports/obsidian](ports/obsidian) |
+| Shiki | dark, light | [ports/shiki](ports/shiki) |
 
 Each port's README explains how to install it.
 

@@ -16,6 +16,13 @@ describe('renderMarkdown', () => {
     expect(html).toContain('background-color:#0B0B0C');
   });
 
+  it('highlights JavaScript install snippets, like the Shiki port', async () => {
+    const html = await renderMarkdown("```js\nimport noir from './terminal-noir.json';\n```");
+
+    expect(html).toContain('class="shiki');
+    expect(html).toMatch(/<span style="color:#F5A623[^"]*">import<\/span>/);
+  });
+
   it('drops the leading h1, since pages render their own title', async () => {
     const html = await renderMarkdown('# Terminal Noir for X\n\nBody.', { dropTitle: true });
 

@@ -18,6 +18,7 @@
     { "slug": "bat", "name": "bat", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/sharkdp/bat", "featured": true },
     { "slug": "btop", "name": "btop", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/aristocratos/btop", "featured": false },
     { "slug": "fzf", "name": "fzf", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/junegunn/fzf", "featured": false },
-    { "slug": "chrome", "name": "Google Chrome", "category": "apps", "variants": ["dark"], "homepage": "https://www.google.com/chrome/", "featured": true }
+    { "slug": "chrome", "name": "Google Chrome", "category": "apps", "variants": ["dark"], "homepage": "https://www.google.com/chrome/", "featured": true },
+    { "slug": "shiki", "name": "Shiki", "category": "editor", "variants": ["dark", "light"], "homepage": "https://shiki.style", "featured": false }
   ]
 }

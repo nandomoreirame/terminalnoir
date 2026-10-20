@@ -5,7 +5,7 @@ import vscodeTheme from '../../../ports/vscode/themes/terminal-noir-color-theme.
 // Markdown comes only from files in this repo (port READMEs, CONTRIBUTING.md),
 // so raw HTML in it is trusted. Code blocks use the theme's own VS Code port.
 const theme = { ...vscodeTheme, name: 'terminal-noir' } as unknown as ThemeRegistrationRaw;
-const LANGS = ['sh', 'bash', 'zsh', 'json', 'toml', 'css', 'ini', 'kdl'] as const;
+const LANGS = ['sh', 'bash', 'zsh', 'json', 'toml', 'css', 'ini', 'kdl', 'js', 'ts'] as const;
 
 const highlighter = await createHighlighter({ themes: [theme], langs: [...LANGS] });
 

@@ -120,3 +120,36 @@ PORTS="$PROJECT_ROOT/ports"
         assert_success
     fi
 }
+
+@test "shiki: one TextMate theme per variant, on the palette base, every token at AA" {
+    local v file
+    for v in dark light; do
+        file="$PROJECT_ROOT/ports/shiki/terminal-noir$([ "$v" = light ] && echo -paper || true).json"
+        [ "$(jq -r .type "$file")" = "$v" ] || { echo "type: $file"; return 1; }
+        [ "$(jq -r '.colors["editor.background"]' "$file")" = "$(pal "$v" surface.base)" ]
+        [ "$(jq -r '.colors["editor.foreground"]' "$file")" = "$(pal "$v" text.primary)" ]
+        [ "$(jq '.tokenColors | length' "$file")" -eq "$(jq '.tokens | length' "$SYNTAX")" ]
+        [ "$(jq -r '.tokenColors[] | select(.name == "Keyword") | .settings.foreground' "$file")" = "$(pal "$v" accent.primary)" ]
+        run jq -r -L "$PROJECT_ROOT/scripts/lib" 'include "contrast";
+            .colors["editor.background"] as $bg
+            | .tokenColors[] | select(.settings.foreground) | .settings.foreground as $fg
+            | select(contrast($fg; $bg) < 4.5) | "\(.name) \($fg)"' "$file"
+        [ -z "$output" ] || { echo "$file: $output"; return 1; }
+    done
+    [ "$(jq -r .name "$PROJECT_ROOT/ports/shiki/terminal-noir-paper.json")" = "terminal-noir-paper" ]
+}
+
+@test "shiki: every token keeps its role's name, scopes, color and style" {
+    local v file name expected actual
+    for v in dark light; do
+        file="$PROJECT_ROOT/ports/shiki/terminal-noir$([ "$v" = light ] && echo -paper || true).json"
+        name="terminal-noir$([ "$v" = light ] && echo -paper || true)"
+        [ "$(jq -r .name "$file")" = "$name" ] || { echo "name: $file"; return 1; }
+        expected="$(jq -c --arg v "$v" --slurpfile pal "$PALETTE" '
+            [.tokens[] | {name, scope,
+                foreground: (.color as $p | if $p then ($pal[0].variants[$v] | getpath($p | split("."))) else null end),
+                fontStyle: (.fontStyle // null)}]' "$SYNTAX")"
+        actual="$(jq -c '[.tokenColors[] | {name, scope, foreground: (.settings.foreground // null), fontStyle: (.settings.fontStyle // null)}]' "$file")"
+        [ "$expected" = "$actual" ] || { echo "$v: tokens drifted from syntax.json"; return 1; }
+    done
+}

@@ -31,5 +31,5 @@ REGISTRY="$PROJECT_ROOT/ports.json"
 @test "ports with a light variant ship light files" {
     [ -f "$PROJECT_ROOT/ports/ghostty/terminal-noir-light" ]
     jq -e '.light' "$PROJECT_ROOT/ports/noctalia/Terminal Noir.json" >/dev/null
-    [ "$(jq -r '[.ports[] | select(.variants | index("light")) | .slug] | sort | join(",")' "$REGISTRY")" = "ghostty,noctalia" ]
+    [ "$(jq -r '[.ports[] | select(.variants | index("light")) | .slug] | sort | join(",")' "$REGISTRY")" = "ghostty,noctalia,shiki" ]
 }

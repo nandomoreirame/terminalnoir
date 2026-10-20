@@ -63,6 +63,15 @@ PORTS="$PROJECT_ROOT/ports"
     [ "$(jq -c '.theme.colors.tab_background_text' "$f")" = "$(rgb "$(pal dark text.muted)")" ]
 }
 
+@test "chrome: numeric version, with the full palette version as version_name" {
+    local f="$PORTS/chrome/manifest.json" version
+    version="$(jq -r .version "$PALETTE")"
+    # Chrome refuses a manifest whose version is not 1 to 4 dot-separated integers.
+    [[ "$(jq -r .version "$f")" =~ ^[0-9]+(\.[0-9]+){0,3}$ ]]
+    [ "$(jq -r .version "$f")" = "${version%%-*}" ]
+    [ "$(jq -r .version_name "$f")" = "$version" ]
+}
+
 @test "btop: background, title and gradients from the palette" {
     local f="$PORTS/btop/terminal-noir.theme"
     grep -Fqx "theme[main_bg]=\"$(pal dark surface.base)\"" "$f"

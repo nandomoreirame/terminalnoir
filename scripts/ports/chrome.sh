@@ -12,7 +12,9 @@ build_chrome() {
         | {
             manifest_version: 3,
             name: "Terminal Noir",
-            version: .version,
+            # Chrome takes only dot-separated integers; the full label goes in version_name.
+            version: (.version | sub("-.*$"; "")),
+            version_name: .version,
             description: "Terminal Noir: cold near-black surfaces with an amber accent. https://terminalnoir.web.app",
             theme: { colors: {
                 frame: ($c.surface.base | rgb),

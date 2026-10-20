@@ -1,0 +1,20 @@
+---
+import { getI18n } from '../i18n/context';
+import { getPorts } from '../lib/ports';
+import { batsTestCount } from '../lib/project';
+
+const { t } = getI18n(Astro.currentLocale);
+const ports = getPorts();
+const tests = batsTestCount();
+---
+
+<figure class="overflow-hidden rounded border border-hairline bg-raised">
+  <figcaption
+    class="flex items-center justify-between border-b border-hairline bg-elevated px-4 py-2 font-mono text-[11px] text-muted"
+  >
+    <span class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-faint"></span>make build test</span>
+    <span class="text-faint">bash · jq · bats</span>
+  </figcaption>
+  <pre class="space-y-1.5 overflow-x-auto bg-base p-4 font-mono text-xs leading-relaxed text-fg"><code><span class="text-faint">$ make build</span>
+{ports.map(p => <span class="block"><span class="text-success">✓</span> ports/{p.slug}</span>)}<span class="block text-faint">$ make test</span><span class="block text-warning"><span class="text-success">✓</span> {t('docs.buildTests', { count: tests })}</span></code></pre>
+</figure>

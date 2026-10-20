@@ -1,0 +1,60 @@
+---
+import { Icon } from 'astro-icon/components';
+import Section from '../components/Section.astro';
+import { getI18n } from '../i18n/context';
+import type { UiKey } from '../i18n/ui';
+import Layout from '../layouts/Layout.astro';
+import { renderMarkdown } from '../lib/markdown';
+import type { Port } from '../lib/ports';
+import { REPO_URL } from '../lib/site';
+
+interface Props {
+  port: Port;
+}
+
+const { port } = Astro.props;
+const { t, path } = getI18n(Astro.currentLocale);
+const html = await renderMarkdown(port.readme, { dropTitle: true });
+---
+
+<Layout title={port.name} description={port.description}>
+  <Section last>
+    <nav aria-label={t('ports.breadcrumb')} class="mb-8 flex items-center gap-2 font-mono text-xs text-muted">
+      <a href={path('/ports')} class="hover:text-fg">{t('nav.ports')}</a>
+      <span aria-hidden="true" class="text-outline">/</span>
+      <span aria-current="page" class="text-fg">{port.name}</span>
+    </nav>
+
+    <div class="flex flex-col justify-between gap-6 border-b border-hairline pb-10 md:flex-row md:items-end">
+      <div class="space-y-3">
+        <p class="eyebrow">{t(`category.${port.category}`)}</p>
+        <h1 class="flex items-center gap-3 font-serif text-3xl text-fg sm:text-4xl">
+          <Icon name={port.icon} class="size-7 shrink-0 text-accent" aria-hidden="true" />
+          {t('ports.pageTitle', { name: port.name })}
+        </h1>
+        <p class="max-w-xl text-sm text-muted">{port.description}</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="rounded border border-hairline bg-elevated px-2 py-1 font-mono text-[11px] text-muted">
+          {port.variants.map(v => t(`variant.${v}` as UiKey)).join(' · ')}
+        </span>
+        <a
+          href={port.homepage}
+          class="flex items-center gap-1.5 rounded border border-outline px-3 py-1.5 font-mono text-xs text-fg transition-colors hover:border-accent"
+        >
+          {new URL(port.homepage).hostname}
+          <Icon name="lucide:arrow-up-right" class="size-3" aria-hidden="true" />
+        </a>
+        <a
+          href={`${REPO_URL}/tree/main/ports/${port.slug}`}
+          class="flex items-center gap-1.5 rounded border border-outline px-3 py-1.5 font-mono text-xs text-fg transition-colors hover:border-accent"
+        >
+          <Icon name="simple-icons:github" class="size-3" aria-hidden="true" />
+          {t('ports.source')}
+        </a>
+      </div>
+    </div>
+
+    <article class="prose mt-10 max-w-2xl" set:html={html} />
+  </Section>
+</Layout>

@@ -1,0 +1,95 @@
+---
+import { Icon } from 'astro-icon/components';
+import CopyStatus from '../components/CopyStatus.astro';
+import CtaBox from '../components/CtaBox.astro';
+import InstallTabs from '../components/InstallTabs.astro';
+import PortCard from '../components/PortCard.astro';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import TerminalMock from '../components/TerminalMock.astro';
+import { getI18n } from '../i18n/context';
+import Layout from '../layouts/Layout.astro';
+import { meta } from '../lib/palette';
+import { getPorts } from '../lib/ports';
+
+const { locale, t, path } = getI18n(Astro.currentLocale);
+const ports = getPorts(locale);
+const featured = ports.filter(p => p.featured);
+const count = ports.length;
+---
+
+<Layout>
+  <Section class="pt-14 sm:pt-20">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
+      <div class="space-y-8 lg:col-span-6">
+        <p class="inline-flex items-center gap-2 rounded border border-hairline bg-raised px-2.5 py-1 font-mono text-xs text-muted">
+          <span class="size-1.5 rounded-full bg-success"></span>
+          {t('hero.badge', { version: meta.version, count })}
+        </p>
+        <div class="space-y-4">
+          <h1 class="font-serif text-4xl leading-[1.08] tracking-tight text-fg sm:text-5xl">{t('hero.title')}</h1>
+          <p class="max-w-xl text-base leading-relaxed text-muted">{t('hero.subtitle')}</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href={path('/ports')}
+            class="flex items-center gap-2 rounded bg-accent px-5 py-2.5 font-mono text-sm font-medium text-on-accent transition-opacity hover:opacity-95"
+          >
+            {t('hero.browse')}
+            <Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+          </a>
+          <a
+            href={path('/palette')}
+            class="flex items-center gap-2 rounded border border-outline px-5 py-2.5 font-mono text-sm text-fg transition-colors hover:border-accent"
+          >
+            <Icon name="lucide:palette" class="size-4 text-muted" aria-hidden="true" />
+            {t('hero.viewPalette')}
+          </a>
+        </div>
+        <p class="flex flex-wrap items-center gap-3 font-mono text-xs text-faint">
+          <span>{t('hero.statMit')}</span><span class="text-outline" aria-hidden="true">·</span>
+          <span>{t('hero.statPorts', { count })}</span><span class="text-outline" aria-hidden="true">·</span>
+          <span class="text-success">{t('hero.statTested')}</span>
+        </p>
+      </div>
+      <div class="lg:col-span-6">
+        <TerminalMock />
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <SectionHeader
+      eyebrow={t('ports.eyebrow')}
+      title={t('ports.title')}
+      description={t('ports.descriptionHome')}
+      id="featured-ports"
+    >
+      <a
+        href={path('/ports')}
+        class="inline-flex items-center gap-1.5 self-start rounded border border-hairline bg-elevated px-2.5 py-1.5 font-mono text-xs whitespace-nowrap text-muted transition-colors hover:text-fg md:self-auto"
+      >
+        {t('ports.all', { count })}
+        <Icon name="lucide:arrow-right" class="size-3" aria-hidden="true" />
+      </a>
+    </SectionHeader>
+    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-labelledby="featured-ports">
+      {featured.map(port => <PortCard port={port} />)}
+    </ul>
+  </Section>
+
+  <Section id="quickstart">
+    <SectionHeader
+      eyebrow={t('quickstart.eyebrow')}
+      title={t('quickstart.title')}
+      description={t('quickstart.descriptionHome')}
+    />
+    <InstallTabs />
+  </Section>
+
+  <Section last>
+    <CtaBox />
+  </Section>
+
+  <CopyStatus />
+</Layout>

@@ -1,0 +1,35 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getI18n } from '../i18n/context';
+import { REPO_URL } from '../lib/site';
+
+const { t } = getI18n(Astro.currentLocale);
+---
+
+<li>
+  <a
+    href={`${REPO_URL}/issues/new`}
+    class="group flex h-full flex-col justify-between rounded border border-dashed border-outline p-5 transition-colors duration-150 hover:border-accent"
+  >
+    <span class="block">
+      <span class="mb-4 flex items-center justify-between">
+        <Icon
+          name="lucide:plus"
+          class="size-6 text-muted transition-colors group-hover:text-accent"
+          aria-hidden="true"
+        />
+        <span class="rounded border border-hairline px-2 py-0.5 font-mono text-[10px] text-faint">{t('ports.requestBadge')}</span>
+      </span>
+      <span class="block font-mono text-sm font-semibold text-fg transition-colors group-hover:text-accent">
+        {t('ports.requestTitle')}
+      </span>
+      <span class="mt-1.5 block text-xs leading-relaxed text-muted">
+        {t('ports.requestBody')}
+      </span>
+    </span>
+    <span class="mt-4 flex items-center justify-between border-t border-hairline pt-3 font-mono text-[11px] text-accent">
+      <span>{t('ports.requestCta')}</span>
+      <Icon name="lucide:arrow-right" class="size-3.5" aria-hidden="true" />
+    </span>
+  </a>
+</li>

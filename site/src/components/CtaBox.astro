@@ -1,0 +1,31 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getI18n } from '../i18n/context';
+import { REPO_URL } from '../lib/site';
+
+const { t, path } = getI18n(Astro.currentLocale);
+---
+
+<div
+  class="flex flex-col items-start justify-between gap-8 rounded border border-hairline bg-raised p-8 sm:p-10 md:flex-row md:items-center"
+>
+  <div class="max-w-xl space-y-3">
+    <p class="eyebrow">{t('cta.eyebrow')}</p>
+    <h2 class="font-serif text-2xl text-fg sm:text-3xl">{t('cta.title')}</h2>
+    <p class="text-sm leading-relaxed text-muted" set:html={t('cta.bodyHtml')} />
+  </div>
+  <div class="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
+    <a
+      href={REPO_URL}
+      class="flex items-center justify-center gap-2 rounded bg-accent px-5 py-2.5 font-mono text-xs font-semibold whitespace-nowrap text-on-accent transition-opacity hover:opacity-95"
+    >
+      <Icon name="simple-icons:github" class="size-3.5" aria-hidden="true" />
+      {t('cta.github')}
+    </a>
+    <a
+      href={path('/docs#contributing')}
+      class="flex items-center justify-center rounded border border-outline px-5 py-2.5 font-mono text-xs whitespace-nowrap text-fg transition-colors hover:border-accent"
+      >{t('cta.guide')}</a
+    >
+  </div>
+</div>

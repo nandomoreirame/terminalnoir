@@ -1,0 +1,16 @@
+---
+import { getPorts, type Port } from '../../lib/ports';
+import PortDetail from '../../views/PortDetail.astro';
+
+export function getStaticPaths() {
+  return getPorts('en').map(port => ({ params: { slug: port.slug }, props: { port } }));
+}
+
+interface Props {
+  port: Port;
+}
+
+const { port } = Astro.props;
+---
+
+<PortDetail port={port} />

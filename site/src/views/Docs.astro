@@ -1,0 +1,47 @@
+---
+import contributingEn from '../../../CONTRIBUTING.md?raw';
+import contributingPtBr from '../../../CONTRIBUTING.pt-br.md?raw';
+import BuildLog from '../components/BuildLog.astro';
+import CopyStatus from '../components/CopyStatus.astro';
+import InstallTabs from '../components/InstallTabs.astro';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import StepCard from '../components/StepCard.astro';
+import { getI18n } from '../i18n/context';
+import type { Locale } from '../i18n/locales';
+import Layout from '../layouts/Layout.astro';
+import { renderMarkdown } from '../lib/markdown';
+
+const { locale, t } = getI18n(Astro.currentLocale);
+const CONTRIBUTING: Record<Locale, string> = { en: contributingEn, 'pt-br': contributingPtBr };
+const guide = await renderMarkdown(CONTRIBUTING[locale], { dropTitle: true });
+const steps = [1, 2, 3] as const;
+---
+
+<Layout title={t('nav.docs')} description={t('docs.metaDescription')}>
+  <Section>
+    <SectionHeader eyebrow={t('docs.eyebrow')} title={t('docs.title')} level={1} description={t('docs.description')} />
+    <ol class="mb-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+      {
+        steps.map(n => (
+          <StepCard step={t(`docs.step${n}Label`)} title={t(`docs.step${n}Title`)}>
+            <Fragment set:html={t(`docs.step${n}Html`)} />
+          </StepCard>
+        ))
+      }
+    </ol>
+    <BuildLog />
+  </Section>
+
+  <Section id="quickstart">
+    <SectionHeader eyebrow={t('quickstart.eyebrow')} title={t('quickstart.title')} description={t('quickstart.description')} />
+    <InstallTabs />
+  </Section>
+
+  <Section id="contributing" last>
+    <SectionHeader eyebrow={t('docs.contributingEyebrow')} title={t('docs.contributingTitle')} />
+    <div class="prose prose-nested max-w-2xl" set:html={guide} />
+  </Section>
+
+  <CopyStatus />
+</Layout>

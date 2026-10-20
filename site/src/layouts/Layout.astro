@@ -1,0 +1,236 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/newsreader';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import { Icon } from 'astro-icon/components';
+import { getI18n } from '../i18n/context';
+import { LOCALE_LABELS, LOCALES, htmlLang, switchLocalePath } from '../i18n/locales';
+import { cssVariables, meta } from '../lib/palette';
+import { NAV, REPO_URL, isActive } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { locale, t, path } = getI18n(Astro.currentLocale);
+const { title, description = t('meta.description') } = Astro.props;
+const pageTitle = title ? `${title} · Terminal Noir` : t('meta.title');
+const pathname = Astro.url.pathname;
+const home = path('/');
+
+const block = (vars: Record<string, string>) =>
+  Object.entries(vars)
+    .map(([k, v]) => `${k}:${v}`)
+    .join(';');
+// Noir is the default; Paper is an explicit choice, remembered per visitor.
+const themeCss =
+  `:root{${block(cssVariables('dark'))};color-scheme:dark}` +
+  `:root[data-theme="light"]{${block(cssVariables('light'))};color-scheme:light}`;
+
+const navLink = (active: boolean) => [
+  'border-b pb-1 font-mono text-xs tracking-wider uppercase transition-colors',
+  active ? 'border-accent text-accent' : 'border-transparent text-muted hover:text-fg',
+];
+const nav = NAV.map(item => {
+  const href = path(item.href);
+  return { href, label: t(item.key), active: isActive(href, pathname, home) };
+});
+const site = Astro.site ?? new URL('https://terminalnoir.web.app');
+---
+
+<!doctype html>
+<html lang={htmlLang(locale)}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {
+      LOCALES.map(l => (
+        <link rel="alternate" hreflang={htmlLang(l)} href={new URL(switchLocalePath(pathname, l), site).href} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={new URL(switchLocalePath(pathname, 'en'), site).href} />
+    <style is:inline set:html={themeCss} />
+    <script is:inline>
+      try {
+        if (localStorage.getItem('tn-theme') === 'light') document.documentElement.dataset.theme = 'light';
+      } catch {}
+    </script>
+  </head>
+  <body class="flex min-h-screen flex-col bg-base text-fg">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded focus:bg-accent focus:px-3 focus:py-2 focus:text-on-accent"
+      >{t('a11y.skip')}</a
+    >
+
+    <header class="sticky top-0 z-50 border-b border-hairline bg-base">
+      <div class="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 px-6">
+        <a href={home} class="flex items-center gap-1 font-mono text-sm tracking-tight text-fg" aria-label={t('a11y.home')}>
+          <span>terminal_noir_</span><span class="cursor" aria-hidden="true"></span>
+        </a>
+
+        <nav aria-label={t('nav.main')} class="hidden md:block">
+          <ul class="flex items-center gap-7">
+            {
+              nav.map(item => (
+                <li>
+                  <a href={item.href} aria-current={item.active ? 'page' : undefined} class:list={navLink(item.active)}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <nav aria-label={t('nav.language')} class="flex items-center rounded border border-hairline bg-raised p-0.5">
+            {
+              LOCALES.map(l => (
+                <a
+                  href={switchLocalePath(pathname, l)}
+                  hreflang={htmlLang(l)}
+                  lang={htmlLang(l)}
+                  aria-current={l === locale ? 'true' : undefined}
+                  aria-label={LOCALE_LABELS[l].name}
+                  class:list={[
+                    'rounded border px-2 py-0.5 font-mono text-[11px] transition-colors',
+                    l === locale ? 'border-outline bg-elevated text-accent' : 'border-transparent text-muted hover:text-fg',
+                  ]}
+                >
+                  {LOCALE_LABELS[l].short}
+                </a>
+              ))
+            }
+          </nav>
+          <div
+            role="group"
+            aria-label={t('theme.group')}
+            class="hidden items-center rounded border border-hairline bg-raised p-0.5 sm:inline-flex"
+          >
+            <button
+              type="button"
+              data-theme-choice="dark"
+              class="theme-choice flex items-center gap-1 rounded border border-transparent px-2 py-0.5 font-mono text-[11px] text-muted"
+            >
+              <Icon name="lucide:moon" class="size-3" aria-hidden="true" />{t('theme.noir')}
+            </button>
+            <button
+              type="button"
+              data-theme-choice="light"
+              class="theme-choice flex items-center gap-1 rounded border border-transparent px-2 py-0.5 font-mono text-[11px] text-muted"
+            >
+              <Icon name="lucide:sun" class="size-3" aria-hidden="true" />{t('theme.paper')}
+            </button>
+          </div>
+          <a
+            href={REPO_URL}
+            class="hidden items-center gap-1.5 rounded border border-outline px-3 py-1.5 font-mono text-xs text-fg transition-colors hover:border-accent lg:flex"
+          >
+            <Icon name="simple-icons:github" class="size-3.5" aria-hidden="true" />
+            <span>{t('nav.github')}</span>
+          </a>
+          <a
+            href={path('/docs#quickstart')}
+            class="hidden rounded bg-accent px-3.5 py-1.5 font-mono text-xs font-semibold whitespace-nowrap text-on-accent transition-opacity hover:opacity-95 sm:block"
+            >{t('nav.getStarted')}</a
+          >
+        </div>
+      </div>
+
+      <div class="border-t border-hairline md:hidden">
+        <nav aria-label={t('nav.main')} class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-2.5">
+          <ul class="flex gap-5 overflow-x-auto">
+            {
+              nav.map(item => (
+                <li class="shrink-0">
+                  <a href={item.href} aria-current={item.active ? 'page' : undefined} class:list={navLink(item.active)}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <div class="mx-auto flex max-w-5xl px-6 pb-2.5 sm:hidden">
+          <div role="group" aria-label={t('theme.group')} class="inline-flex items-center rounded border border-hairline bg-raised p-0.5">
+            <button
+              type="button"
+              data-theme-choice="dark"
+              class="theme-choice flex items-center gap-1 rounded border border-transparent px-2 py-0.5 font-mono text-[11px] text-muted"
+            >
+              <Icon name="lucide:moon" class="size-3" aria-hidden="true" />{t('theme.noir')}
+            </button>
+            <button
+              type="button"
+              data-theme-choice="light"
+              class="theme-choice flex items-center gap-1 rounded border border-transparent px-2 py-0.5 font-mono text-[11px] text-muted"
+            >
+              <Icon name="lucide:sun" class="size-3" aria-hidden="true" />{t('theme.paper')}
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="flex-grow">
+      <slot />
+    </main>
+
+    <footer class="border-t border-hairline bg-base">
+      <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 px-6 py-8 md:flex-row">
+        <div class="flex flex-col items-center gap-3 text-center sm:flex-row sm:text-left">
+          <span class="font-mono text-sm text-fg">terminal_noir_</span>
+          <span class="text-xs text-muted">
+            {meta.name} v{meta.version}. <Fragment set:html={t('footer.textHtml')} />
+          </span>
+        </div>
+        <nav aria-label={t('nav.footer')}>
+          <ul class="flex flex-wrap items-center justify-center gap-6 font-mono text-xs tracking-wider text-muted uppercase">
+            <li><a class="hover:text-fg" href={path('/ports')}>{t('nav.ports')}</a></li>
+            <li><a class="hover:text-fg" href={path('/palette')}>{t('nav.palette')}</a></li>
+            <li><a class="hover:text-fg" href={path('/docs')}>{t('nav.docs')}</a></li>
+            <li><a class="hover:text-fg" href={REPO_URL}>{t('nav.github')}</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+
+    <style>
+      .theme-choice[aria-pressed='true'] {
+        border-color: var(--color-outline);
+        background: var(--color-elevated);
+        color: var(--color-accent);
+      }
+      .theme-choice[aria-pressed='false']:hover {
+        color: var(--color-fg);
+      }
+    </style>
+
+    <script>
+      const root = document.documentElement;
+      const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-theme-choice]')];
+      const render = () => {
+        const current = root.dataset.theme === 'light' ? 'light' : 'dark';
+        for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.themeChoice === current));
+      };
+      for (const b of buttons) {
+        b.addEventListener('click', () => {
+          const next = b.dataset.themeChoice === 'light' ? 'light' : 'dark';
+          if (next === 'light') root.dataset.theme = 'light';
+          else delete root.dataset.theme;
+          try {
+            localStorage.setItem('tn-theme', next);
+          } catch {}
+          render();
+        });
+      }
+      render();
+    </script>
+  </body>
+</html>

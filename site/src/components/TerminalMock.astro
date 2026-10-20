@@ -1,0 +1,97 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getI18n } from '../i18n/context';
+
+const { t } = getI18n(Astro.currentLocale);
+
+// The Stitch hero terminal: a p10k-style prompt, bat printing Rust, a live
+// prompt and a status bar. Colors are palette roles, so it follows noir/paper.
+type Tok = [cls: string, text: string];
+const kw = (s: string): Tok => ['text-accent', s];
+const ty = (s: string): Tok => ['text-info', s];
+const st = (s: string): Tok => ['text-success', s];
+const nu = (s: string): Tok => ['text-warning', s];
+const tx = (s: string): Tok => ['text-fg', s];
+const cm = (s: string): Tok => ['text-faint italic', s];
+
+const lines: Tok[][] = [
+  [cm(t('terminal.comment'))],
+  [kw('pub struct'), tx(' '), ty('TerminalNoir'), tx(' {')],
+  [tx('    base: '), nu("&'static str"), tx(',')],
+  [tx('    accent: '), nu("&'static str"), tx(',')],
+  [tx('}')],
+  [],
+  [kw('fn'), tx(' '), ty('palette'), tx('() -> '), ty('TerminalNoir'), tx(' {')],
+  [tx('    '), ty('TerminalNoir'), tx(' { base: '), st('"#0B0B0C"'), tx(', accent: '), st('"#F5A623"'), tx(' }')],
+  [tx('}')],
+];
+---
+
+<figure
+  class="overflow-hidden rounded border border-hairline bg-raised font-mono text-xs shadow-2xl"
+  aria-label={t('terminal.label')}
+>
+  <div class="flex h-9 items-center justify-between border-b border-hairline bg-elevated px-4 select-none" aria-hidden="true">
+    <div class="flex items-center gap-2">
+      <span class="size-2.5 rounded-full bg-outline"></span>
+      <span class="size-2.5 rounded-full bg-selection"></span>
+      <span class="size-2.5 rounded-full bg-faint"></span>
+    </div>
+    <div class="flex items-center gap-1.5 text-muted">
+      <Icon name="lucide:terminal" class="size-3 text-faint" />
+      ghostty — ~/dev/terminal-noir
+    </div>
+    <div class="w-10 text-right text-[10px] text-faint">utf-8</div>
+  </div>
+
+  <div class="space-y-3 overflow-x-auto bg-base p-5 leading-relaxed text-fg" aria-hidden="true">
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="text-accent">╭─</span>
+      <span class="font-semibold text-accent">● arch</span>
+      <span class="text-outline">in</span>
+      <span class="text-info">~/dev/terminal-noir</span>
+      <span class="text-outline">on</span>
+      <span class="text-success">main*</span>
+      <span class="ml-auto text-[10px] text-warning">12ms</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="text-accent">╰─❯</span>
+      <span class="font-medium">bat src/theme.rs</span>
+    </div>
+
+    <div class="mt-2 space-y-1 border-t border-hairline pt-2">
+      <div class="flex justify-between border-b border-hairline pb-1 text-[11px] text-faint">
+        <span>File: src/theme.rs</span><span>Rust</span>
+      </div>
+      <div class="pt-1 text-[12px] leading-5">
+        {
+          lines.map((line, i) => (
+            <div class="whitespace-pre">
+              <span class="mr-3 inline-block w-3 text-right text-faint select-none">{i + 1}</span>
+              {line.map(([cls, text]) => (
+                <span class={cls}>{text}</span>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 pt-3">
+      <span class="text-accent">╰─❯</span>
+      <span>make build</span>
+      <span class="cursor"></span>
+    </div>
+  </div>
+
+  <div
+    class="flex items-center justify-between border-t border-hairline bg-raised px-4 py-1.5 text-[11px] text-faint"
+    aria-hidden="true"
+  >
+    <span class="flex items-center gap-1 text-success">
+      <span class="size-1.5 rounded-full bg-success"></span>
+      {t('terminal.synced')}
+    </span>
+    <span>ANSI 16</span>
+  </div>
+</figure>

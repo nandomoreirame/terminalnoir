@@ -1,0 +1,100 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getI18n } from '../i18n/context';
+import { getPort, type Port } from '../lib/ports';
+
+const { locale, t, path } = getI18n(Astro.currentLocale);
+
+// Real install commands: the first shell block of each port's README.
+const QUICKSTART = ['ghostty', 'vscode', 'bat', 'fzf'];
+const tabs = QUICKSTART.map(slug => getPort(slug, locale)).filter((p): p is Port => Boolean(p?.install));
+const from = (port: Port) =>
+  t('install.fromHtml', {
+    link: `<a class="text-accent underline underline-offset-2" href="${path(`/ports/${port.slug}`)}">ports/${port.slug}</a>`,
+  });
+---
+
+<div class="overflow-hidden rounded border border-hairline bg-raised" data-tabs>
+  <div
+    role="tablist"
+    aria-label={t('install.tablist')}
+    class="flex gap-1 overflow-x-auto border-b border-hairline bg-elevated px-2 pt-2"
+  >
+    {
+      tabs.map((port, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={`tab-${port.slug}`}
+          aria-controls={`panel-${port.slug}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+          class="tab rounded-t border border-b-0 border-transparent px-4 py-2 font-mono text-xs whitespace-nowrap text-muted"
+        >
+          {port.name}
+        </button>
+      ))
+    }
+  </div>
+  {
+    tabs.map((port, i) => (
+      <div
+        role="tabpanel"
+        id={`panel-${port.slug}`}
+        aria-labelledby={`tab-${port.slug}`}
+        hidden={i !== 0}
+        class="space-y-4 p-6"
+      >
+        <div class="flex items-center justify-between gap-4">
+          <span class="font-mono text-xs text-muted" set:html={from(port)} />
+          <button
+            type="button"
+            data-copy={port.install}
+            class="flex shrink-0 items-center gap-1.5 rounded border border-outline px-2.5 py-1 font-mono text-[11px] text-fg transition-colors hover:border-accent"
+          >
+            <Icon name="lucide:copy" class="size-3" aria-hidden="true" />
+            {t('install.copy')}
+          </button>
+        </div>
+        <pre class="overflow-x-auto rounded border border-hairline bg-base p-4 font-mono text-xs leading-relaxed text-fg"><code>{port.install}</code></pre>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .tab[aria-selected='true'] {
+    border-color: var(--color-outline);
+    background: var(--color-raised);
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+  .tab[aria-selected='false']:hover {
+    color: var(--color-fg);
+  }
+</style>
+
+<script>
+  for (const root of document.querySelectorAll<HTMLElement>('[data-tabs]')) {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const select = (tab: HTMLButtonElement) => {
+      for (const t of tabs) {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = root.querySelector<HTMLElement>(`#${t.getAttribute('aria-controls')}`);
+        if (panel) panel.hidden = !on;
+      }
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', e => {
+        const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!step) return;
+        const next = tabs[(i + step + tabs.length) % tabs.length];
+        select(next);
+        next.focus();
+      });
+    });
+  }
+</script>

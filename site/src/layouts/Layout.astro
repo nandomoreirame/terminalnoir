@@ -71,7 +71,7 @@ const site = Astro.site ?? new URL('https://terminalnoir.web.app');
     <header class="sticky top-0 z-50 border-b border-hairline bg-base">
       <div class="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 px-6">
         <a href={home} class="flex items-center gap-1 font-mono text-sm tracking-tight text-fg" aria-label={t('a11y.home')}>
-          <span>terminal_noir_</span><span class="cursor" aria-hidden="true"></span>
+          <span>~/terminal-noir</span><span class="cursor" aria-hidden="true"></span>
         </a>
 
         <nav aria-label={t('nav.main')} class="hidden md:block">
@@ -185,7 +185,7 @@ const site = Astro.site ?? new URL('https://terminalnoir.web.app');
     <footer class="border-t border-hairline bg-base">
       <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 px-6 py-8 md:flex-row">
         <div class="flex flex-col items-center gap-3 text-center sm:flex-row sm:text-left">
-          <span class="font-mono text-sm text-fg">terminal_noir_</span>
+          <span class="font-mono text-sm text-fg">~/terminal-noir</span>
           <span class="text-xs text-muted">
             {meta.name} v{meta.version}. <Fragment set:html={t('footer.textHtml')} />
           </span>

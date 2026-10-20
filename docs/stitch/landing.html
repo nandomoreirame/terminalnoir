@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Terminal Noir — A noir theme for everything you type in</title>
+<!-- Fonts: Newsreader, Inter, JetBrains Mono, Public Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#45dfa4",
+            "on-surface": "#e5e2e3",
+            "tertiary-fixed-dim": "#e9bf8f",
+            "on-background": "#e5e2e3",
+            "surface-bright": "#3a393a",
+            "surface-variant": "#353436",
+            "secondary-fixed-dim": "#45dfa4",
+            "on-error": "#690005",
+            "on-secondary-container": "#00452e",
+            "on-secondary": "#003825",
+            "surface-container-high": "#2a2a2b",
+            "secondary-container": "#00bd85",
+            "primary-fixed": "#ffddb4",
+            "inverse-surface": "#e5e2e3",
+            "tertiary-container": "#d7af80",
+            "surface-container-lowest": "#0e0e0f",
+            "background": "#131314",
+            "on-tertiary-fixed-variant": "#5e411c",
+            "error": "#ffb4ab",
+            "on-surface-variant": "#d7c3ae",
+            "primary": "#ffc880",
+            "outline-variant": "#524534",
+            "on-primary": "#452b00",
+            "error-container": "#93000a",
+            "on-primary-container": "#644000",
+            "inverse-primary": "#835500",
+            "on-primary-fixed": "#291800",
+            "surface-container-highest": "#353436",
+            "on-tertiary-container": "#5e421c",
+            "surface-dim": "#131314",
+            "surface": "#131314",
+            "secondary-fixed": "#68fcbf",
+            "inverse-on-surface": "#313031",
+            "tertiary": "#f5ca9a",
+            "on-primary-fixed-variant": "#633f00",
+            "surface-tint": "#ffb955",
+            "surface-container": "#201f20",
+            "on-error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#005137",
+            "on-tertiary": "#442b07",
+            "tertiary-fixed": "#ffddb8",
+            "primary-container": "#f5a623",
+            "on-tertiary-fixed": "#2a1700",
+            "on-secondary-fixed": "#002114",
+            "surface-container-low": "#1c1b1c",
+            "primary-fixed-dim": "#ffb955",
+            "outline": "#9f8e7a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Newsreader", "serif"],
+            "display": ["Newsreader", "serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Public Sans", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Raw Noir Theme Surface & Accent System tokens per specification */
+    :root {
+      --noir-bg: #0B0B0C;
+      --noir-raised: #121214;
+      --noir-elevated: #18181B;
+      --noir-hairline: #222226;
+      --noir-outline: #3F3F46;
+      --noir-selection: #52525B;
+      --noir-text: #F4F4F5;
+      --noir-muted: #A1A1AA;
+      --noir-faint: #6B6B74;
+      --noir-amber: #F5A623;
+      --noir-emerald: #34D399;
+      --noir-warning: #FACF9E;
+      --noir-error: #FFB7B0;
+      --noir-info: #79C0FF;
+    }
+
+    body {
+      background-color: var(--noir-bg);
+      color: var(--noir-text);
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::selection {
+      background-color: var(--noir-selection);
+      color: #FFFFFF;
+    }
+
+    .border-noir-hairline {
+      border-color: var(--noir-hairline);
+    }
+    .border-noir-outline {
+      border-color: var(--noir-outline);
+    }
+    .bg-noir-bg {
+      background-color: var(--noir-bg);
+    }
+    .bg-noir-raised {
+      background-color: var(--noir-raised);
+    }
+    .bg-noir-elevated {
+      background-color: var(--noir-elevated);
+    }
+    .text-noir-muted {
+      color: var(--noir-muted);
+    }
+    .text-noir-faint {
+      color: var(--noir-faint);
+    }
+
+    /* Blinking Block Cursor Animation */
+    @keyframes amberCursorBlink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .noir-cursor {
+      animation: amberCursorBlink 1.05s infinite;
+    }
+  </style>
+</head>
+<body class="bg-[#0B0B0C] text-[#F4F4F5] font-body selection:bg-[#52525B] min-h-screen flex flex-col antialiased">
+<!-- ========================================================================= -->
+<!-- 1. TOP APP BAR (from Shared Components JSON: TopNavBar)                  -->
+<!-- ========================================================================= -->
+<header class="docked full-width top-0 sticky z-50 bg-background dark:bg-background border-b border-outline-variant/30 dark:border-outline-variant/30 flat no shadows">
+<div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+<!-- Brand Logo / Wordmark -->
+<a class="font-label font-bold text-base tracking-tight text-on-background dark:text-on-background flex items-center gap-1 group" href="#">
+<span class="font-mono text-sm tracking-tight text-[#F4F4F5]">terminal_noir_</span>
+<span class="w-2 h-4 bg-[#F5A623] inline-block noir-cursor"></span>
+</a>
+<!-- Desktop Navigation Links from JSON: ["Ports", "Palette", "Docs", "Contribute"] -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label tracking-wider text-xs uppercase text-primary dark:text-primary font-medium border-b border-primary dark:border-primary pb-1 transition-all duration-150" href="#ports">
+          Ports
+        </a>
+<a class="font-label tracking-wider text-xs uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-on-background dark:hover:text-on-background transition-colors pb-1" href="#palette">
+          Palette
+        </a>
+<a class="font-label tracking-wider text-xs uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-on-background dark:hover:text-on-background transition-colors pb-1" href="#architecture">
+          Docs
+        </a>
+<a class="font-label tracking-wider text-xs uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-on-background dark:hover:text-on-background transition-colors pb-1" href="#contribute">
+          Contribute
+        </a>
+</nav>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-4">
+<!-- Segmented Theme Toggle -->
+<div class="hidden sm:inline-flex items-center p-0.5 border border-[#222226] bg-[#121214] rounded">
+<button class="px-2 py-0.5 text-[11px] font-mono rounded bg-[#18181B] text-[#F5A623] border border-[#3F3F46] flex items-center gap-1" id="toggle-dark">
+<span class="material-symbols-outlined text-[13px]" data-icon="dark_mode">dark_mode</span>
+            noir
+          </button>
+<button class="px-2 py-0.5 text-[11px] font-mono text-[#A1A1AA] hover:text-[#F4F4F5] flex items-center gap-1" id="toggle-light">
+<span class="material-symbols-outlined text-[13px]" data-icon="light_mode">light_mode</span>
+            paper
+          </button>
+</div>
+<!-- GitHub secondary link with stars -->
+<a class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 border border-[#3F3F46] hover:border-[#F5A623] text-xs font-mono rounded text-[#F4F4F5] transition-colors duration-150" href="https://github.com" rel="noopener noreferrer" target="_blank">
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+<span>GitHub</span>
+<span class="text-[#6B6B74] ml-1 pl-1 border-l border-[#3F3F46]">1.4k</span>
+</a>
+<!-- Trailing Primary Action: "Get Started" from JSON -->
+<a class="bg-[#F5A623] text-[#0B0B0C] font-mono text-xs font-semibold px-3.5 py-1.5 rounded transition-all duration-150 hover:opacity-95 active:opacity-80" href="#install">
+          Get Started
+        </a>
+</div>
+</div>
+</header>
+<!-- ========================================================================= -->
+<!-- 2. HERO SECTION                                                           -->
+<!-- ========================================================================= -->
+<main class="flex-grow">
+<section class="max-w-7xl mx-auto px-6 pt-16 pb-20 md:py-24 border-b border-[#222226]">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+<!-- Left Column: Copy & Calls to Action -->
+<div class="lg:col-span-6 space-y-8">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded border border-[#222226] bg-[#121214] font-mono text-xs text-[#A1A1AA]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></span>
+<span>v1.4.0 — Now shipping 11 official ports</span>
+</div>
+<div class="space-y-4">
+<h1 class="font-headline text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#F4F4F5] leading-[1.08]">
+              A noir theme for everything you type in.
+            </h1>
+<p class="font-body text-base sm:text-lg text-[#A1A1AA] max-w-xl leading-relaxed">
+              Cold near-black surfaces, one amber accent. One palette, compiled with Dracula confidence and Catppuccin palette craft directly into every tool on your desktop.
+            </p>
+</div>
+<!-- CTAs -->
+<div class="flex flex-wrap items-center gap-3 pt-1">
+<a class="bg-[#F5A623] text-[#0B0B0C] font-mono font-medium text-sm px-5 py-2.5 rounded transition-all duration-150 hover:opacity-95 flex items-center gap-2" href="#ports">
+<span>Browse ports</span>
+<span class="material-symbols-outlined text-base leading-none" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="border border-[#3F3F46] hover:border-[#F5A623] text-[#F4F4F5] font-mono text-sm px-5 py-2.5 rounded transition-colors duration-150 flex items-center gap-2" href="#palette">
+<span class="material-symbols-outlined text-base text-[#A1A1AA]" data-icon="palette">palette</span>
+<span>View palette</span>
+</a>
+</div>
+<!-- Micro-stats / Trust signals -->
+<div class="pt-2 flex items-center gap-3 font-mono text-xs text-[#6B6B74]">
+<span>MIT Licensed</span>
+<span class="text-[#3F3F46]">·</span>
+<span>11 official ports</span>
+<span class="text-[#3F3F46]">·</span>
+<span>Zero telemetry</span>
+<span class="text-[#3F3F46]">·</span>
+<span class="text-[#34D399]">100% contrast pass</span>
+</div>
+</div>
+<!-- Right Column: Realistic Terminal Window Mockup -->
+<div class="lg:col-span-6">
+<div class="rounded border border-[#222226] bg-[#121214] shadow-2xl overflow-hidden font-mono text-xs">
+<!-- Window Title Bar -->
+<div class="h-9 px-4 bg-[#18181B] border-b border-[#222226] flex items-center justify-between select-none">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#3F3F46]"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#52525B]"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#6B6B74]"></span>
+</div>
+<div class="text-[#A1A1AA] text-xs font-mono tracking-tight flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74]" data-icon="terminal">terminal</span>
+                ghostty — ~/dev/terminal-noir
+              </div>
+<div class="w-10 text-right text-[10px] text-[#6B6B74]">utf-8</div>
+</div>
+<!-- Terminal Buffer Body -->
+<div class="p-5 space-y-3 leading-relaxed overflow-x-auto text-[#F4F4F5] bg-[#0B0B0C]">
+<!-- P10k / Starship Prompt Line -->
+<div class="flex items-center gap-2 flex-wrap text-xs">
+<span class="text-[#F5A623]">╭─</span>
+<span class="text-[#F5A623] font-semibold">󰣇 arch</span>
+<span class="text-[#3F3F46]">in</span>
+<span class="text-[#79C0FF]">~/dev/terminal-noir</span>
+<span class="text-[#3F3F46]">on</span>
+<span class="text-[#34D399] flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="commit">commit</span>
+                  main*
+                </span>
+<span class="text-[#FACF9E] text-[10px] ml-auto">12ms</span>
+</div>
+<!-- Executed Command -->
+<div class="flex items-center gap-2">
+<span class="text-[#F5A623]">╰─❯</span>
+<span class="text-[#F4F4F5] font-medium">bat --theme=terminal-noir src/theme.rs</span>
+</div>
+<!-- Bat Output Window Structure -->
+<div class="pt-2 border-t border-[#222226] mt-2 space-y-1">
+<div class="text-[#6B6B74] text-[11px] pb-1 border-b border-[#222226] flex justify-between">
+<span>File: src/theme.rs</span>
+<span>Rust 2024</span>
+</div>
+<div class="font-mono text-[12px] leading-5 pt-1">
+<div><span class="text-[#6B6B74] select-none mr-3">1</span><span class="text-[#6B6B74] italic">// luminance stepped by cold surfaces</span></div>
+<div><span class="text-[#6B6B74] select-none mr-3">2</span><span class="text-[#F5A623]">pub struct</span> <span class="text-[#79C0FF]">TerminalNoir</span> {</div>
+<div><span class="text-[#6B6B74] select-none mr-3">3</span><span class="text-[#6B6B74] select-none mr-3"> </span> <span class="text-[#F4F4F5]">pub background</span>: <span class="text-[#FACF9E]">&amp;'static str</span>,</div>
+<div><span class="text-[#6B6B74] select-none mr-3">4</span><span class="text-[#6B6B74] select-none mr-3"> </span> <span class="text-[#F4F4F5]">pub accent_amber</span>: <span class="text-[#FACF9E]">&amp;'static str</span>,</div>
+<div><span class="text-[#6B6B74] select-none mr-3">5</span><span class="text-[#6B6B74] select-none mr-3"> </span> <span class="text-[#F4F4F5]">pub ports_count</span>: <span class="text-[#FACF9E]">u16</span>,</div>
+<div><span class="text-[#6B6B74] select-none mr-3">6</span><span class="text-[#6B6B74] select-none mr-3"> </span> <span class="text-[#F4F4F5]">pub verified_contrast</span>: <span class="text-[#FACF9E]">bool</span>,</div>
+<div><span class="text-[#6B6B74] select-none mr-3">7</span>}</div>
+<div><span class="text-[#6B6B74] select-none mr-3">8</span></div>
+<div><span class="text-[#6B6B74] select-none mr-3">9</span><span class="text-[#F5A623]">impl</span> <span class="text-[#79C0FF]">Default</span> <span class="text-[#F5A623]">for</span> <span class="text-[#79C0FF]">TerminalNoir</span> {</div>
+<div><span class="text-[#6B6B74] select-none mr-3">10</span><span class="text-[#6B6B74] select-none mr-3"> </span> <span class="text-[#F5A623]">fn</span> <span class="text-[#79C0FF]">default</span>() -&gt; <span class="text-[#79C0FF]">Self</span> {</div>
+<div><span class="text-[#6B6B74] select-none mr-3">11</span><span class="text-[#6B6B74] select-none mr-3"> </span> <span class="text-[#79C0FF]">Self</span> {</div>
+<div><span class="text-[#6B6B74] select-none mr-3">12</span><span class="text-[#6B6B74] select-none mr-3"> </span> <span class="text-[#F4F4F5]">background</span>: <span class="text-[#34D399]">"#0B0B0C"</span>,</div>
+<div><span class="text-[#6B6B74] select-none mr-3">13</span><span class="text-[#6B6B74] select-none mr-3"> </span> <span class="text-[#F4F4F5]">accent_amber</span>: <span class="text-[#34D399]">"#F5A623"</span>,</div>
+<div><span class="text-[#6B6B74] select-none mr-3">14</span><span class="text-[#6B6B74] select-none mr-3"> </span> <span class="text-[#F4F4F5]">ports_count</span>: <span class="text-[#FACF9E]">11</span>,</div>
+<div><span class="text-[#6B6B74] select-none mr-3">15</span><span class="text-[#6B6B74] select-none mr-3"> </span> <span class="text-[#F4F4F5]">verified_contrast</span>: <span class="text-[#34D399]">true</span>,</div>
+<div><span class="text-[#6B6B74] select-none mr-3">16</span><span class="text-[#6B6B74] select-none mr-3"> </span>   }</div>
+<div><span class="text-[#6B6B74] select-none mr-3">17</span><span class="text-[#6B6B74] select-none mr-3"> </span> }</div>
+<div><span class="text-[#6B6B74] select-none mr-3">18</span>}</div>
+</div>
+</div>
+<!-- Live prompt line with active cursor -->
+<div class="flex items-center gap-2 pt-3 text-xs">
+<span class="text-[#F5A623]">╰─❯</span>
+<span class="text-[#F4F4F5]">cargo test --workspace</span>
+<span class="w-2 h-4 bg-[#F5A623] inline-block noir-cursor"></span>
+</div>
+</div>
+<!-- Terminal Status Footer -->
+<div class="px-4 py-1.5 bg-[#121214] border-t border-[#222226] flex justify-between items-center text-[11px] text-[#6B6B74]">
+<span class="text-[#34D399] flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#34D399]"></span>
+                synced with palette.json
+              </span>
+<span>100% compliant ANSI-16</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 3. THE PALETTE SECTION                                                    -->
+<!-- ========================================================================= -->
+<section class="max-w-7xl mx-auto px-6 py-20 border-b border-[#222226]" id="palette">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="space-y-2">
+<div class="font-mono text-xs uppercase tracking-widest text-[#F5A623]">Color Architecture</div>
+<h2 class="font-headline text-3xl sm:text-4xl text-[#F4F4F5]">The palette</h2>
+<p class="font-body text-sm text-[#A1A1AA] max-w-xl">
+            Luminance-stepped dark and light foundational surfaces with balanced syntax contrast. Built specifically for high-density coders who spend 10+ hours a day in terminal multiplexers.
+          </p>
+</div>
+<!-- Flavor Switcher -->
+<div class="inline-flex p-1 border border-[#222226] bg-[#121214] rounded">
+<button class="px-3 py-1 font-mono text-xs rounded bg-[#18181B] text-[#F5A623] border border-[#3F3F46]">
+            Noir (Dark)
+          </button>
+<button class="px-3 py-1 font-mono text-xs text-[#A1A1AA] hover:text-[#F4F4F5] transition-colors">
+            Paper (Light)
+          </button>
+</div>
+</div>
+<!-- Foundation Surfaces Row -->
+<div class="space-y-3 mb-10">
+<div class="flex items-center justify-between">
+<h3 class="font-mono text-xs uppercase tracking-wider text-[#A1A1AA]">01 / Foundational Surfaces</h3>
+<span class="font-mono text-[11px] text-[#6B6B74]">Click swatch to copy hex code</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+<!-- Base -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#0B0B0C')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #0B0B0C;"></div>
+<div class="font-mono text-xs text-[#F4F4F5] flex items-center justify-between">
+<span>Base</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#0B0B0C</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Luminance 4%</div>
+</button>
+<!-- Raised -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#121214')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #121214;"></div>
+<div class="font-mono text-xs text-[#F4F4F5] flex items-center justify-between">
+<span>Raised</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#121214</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Cards &amp; sidebars</div>
+</button>
+<!-- Elevated -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#18181B')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #18181B;"></div>
+<div class="font-mono text-xs text-[#F4F4F5] flex items-center justify-between">
+<span>Elevated</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#18181B</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Modals &amp; menus</div>
+</button>
+<!-- Hairline -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#222226')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #222226;"></div>
+<div class="font-mono text-xs text-[#F4F4F5] flex items-center justify-between">
+<span>Hairline</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#222226</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Subtle borders</div>
+</button>
+<!-- Outline -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#3F3F46')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #3F3F46;"></div>
+<div class="font-mono text-xs text-[#F4F4F5] flex items-center justify-between">
+<span>Outline</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#3F3F46</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Active frames</div>
+</button>
+<!-- Selection -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#52525B')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #52525B;"></div>
+<div class="font-mono text-xs text-[#F4F4F5] flex items-center justify-between">
+<span>Selection</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#52525B</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Text highlights</div>
+</button>
+</div>
+</div>
+<!-- Accent & Syntax Swatches Row -->
+<div class="space-y-3 mb-10">
+<h3 class="font-mono text-xs uppercase tracking-wider text-[#A1A1AA]">02 / Accents &amp; Functional Roles</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+<!-- Amber Accent -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#F5A623')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #F5A623;"></div>
+<div class="font-mono text-xs text-[#F5A623] flex items-center justify-between">
+<span>Amber</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#F5A623</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Accent &amp; cursor</div>
+</button>
+<!-- Emerald Success -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#34D399')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #34D399;"></div>
+<div class="font-mono text-xs text-[#34D399] flex items-center justify-between">
+<span>Emerald</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#34D399</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Strings &amp; pass</div>
+</button>
+<!-- Warning Peach -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#FACF9E')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #FACF9E;"></div>
+<div class="font-mono text-xs text-[#FACF9E] flex items-center justify-between">
+<span>Peach</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#FACF9E</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Numbers &amp; warn</div>
+</button>
+<!-- Error Coral -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#FFB7B0')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #FFB7B0;"></div>
+<div class="font-mono text-xs text-[#FFB7B0] flex items-center justify-between">
+<span>Coral</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#FFB7B0</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Errors &amp; diffs -</div>
+</button>
+<!-- Sky Info -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#79C0FF')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #79C0FF;"></div>
+<div class="font-mono text-xs text-[#79C0FF] flex items-center justify-between">
+<span>Sky</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#79C0FF</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Functions &amp; types</div>
+</button>
+<!-- Muted Slate -->
+<button class="group text-left p-3 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-all" onclick="navigator.clipboard.writeText('#A1A1AA')">
+<div class="w-full h-14 rounded mb-2.5 border border-[#222226]" style="background-color: #A1A1AA;"></div>
+<div class="font-mono text-xs text-[#A1A1AA] flex items-center justify-between">
+<span>Muted</span>
+<span class="material-symbols-outlined text-[13px] text-[#6B6B74] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="content_copy">content_copy</span>
+</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">#A1A1AA</div>
+<div class="text-[10px] text-[#A1A1AA] mt-1">Comments &amp; meta</div>
+</button>
+</div>
+</div>
+<!-- ANSI 16 Colors Strip -->
+<div class="p-4 rounded border border-[#222226] bg-[#121214]">
+<div class="flex items-center justify-between mb-3">
+<div class="font-mono text-xs text-[#A1A1AA]">03 / Full 16-Color ANSI Terminal Map</div>
+<div class="font-mono text-[11px] text-[#6B6B74]">ANSI 00 – ANSI 15</div>
+</div>
+<div class="grid grid-cols-8 sm:grid-cols-16 gap-1.5">
+<!-- Normal ANSI 0-7 -->
+<div class="text-center group" title="ANSI 0: Black (#0B0B0C)">
+<div class="h-8 rounded-sm border border-[#222226]" style="background-color: #0B0B0C;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">00</span>
+</div>
+<div class="text-center group" title="ANSI 1: Red (#FFB7B0)">
+<div class="h-8 rounded-sm" style="background-color: #FFB7B0;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">01</span>
+</div>
+<div class="text-center group" title="ANSI 2: Green (#34D399)">
+<div class="h-8 rounded-sm" style="background-color: #34D399;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">02</span>
+</div>
+<div class="text-center group" title="ANSI 3: Yellow (#F5A623)">
+<div class="h-8 rounded-sm" style="background-color: #F5A623;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">03</span>
+</div>
+<div class="text-center group" title="ANSI 4: Blue (#79C0FF)">
+<div class="h-8 rounded-sm" style="background-color: #79C0FF;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">04</span>
+</div>
+<div class="text-center group" title="ANSI 5: Magenta (#D7AF80)">
+<div class="h-8 rounded-sm" style="background-color: #D7AF80;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">05</span>
+</div>
+<div class="text-center group" title="ANSI 6: Cyan (#45DFA4)">
+<div class="h-8 rounded-sm" style="background-color: #45DFA4;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">06</span>
+</div>
+<div class="text-center group" title="ANSI 7: White (#F4F4F5)">
+<div class="h-8 rounded-sm" style="background-color: #F4F4F5;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">07</span>
+</div>
+<!-- Bright ANSI 8-15 -->
+<div class="text-center group" title="ANSI 8: Bright Black (#52525B)">
+<div class="h-8 rounded-sm" style="background-color: #52525B;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">08</span>
+</div>
+<div class="text-center group" title="ANSI 9: Bright Red (#FFC8C2)">
+<div class="h-8 rounded-sm" style="background-color: #FFC8C2;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">09</span>
+</div>
+<div class="text-center group" title="ANSI 10: Bright Green (#68FCBF)">
+<div class="h-8 rounded-sm" style="background-color: #68FCBF;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">10</span>
+</div>
+<div class="text-center group" title="ANSI 11: Bright Yellow (#FACF9E)">
+<div class="h-8 rounded-sm" style="background-color: #FACF9E;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">11</span>
+</div>
+<div class="text-center group" title="ANSI 12: Bright Blue (#9ECBFF)">
+<div class="h-8 rounded-sm" style="background-color: #9ECBFF;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">12</span>
+</div>
+<div class="text-center group" title="ANSI 13: Bright Magenta (#E9BF8F)">
+<div class="h-8 rounded-sm" style="background-color: #E9BF8F;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">13</span>
+</div>
+<div class="text-center group" title="ANSI 14: Bright Cyan (#7EE787)">
+<div class="h-8 rounded-sm" style="background-color: #7EE787;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">14</span>
+</div>
+<div class="text-center group" title="ANSI 15: Bright White (#FFFFFF)">
+<div class="h-8 rounded-sm" style="background-color: #FFFFFF;"></div>
+<span class="font-mono text-[10px] text-[#6B6B74]">15</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 4. PORTS GRID SECTION                                                     -->
+<!-- ========================================================================= -->
+<section class="max-w-7xl mx-auto px-6 py-20 border-b border-[#222226]" id="ports">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<div class="font-mono text-xs uppercase tracking-widest text-[#F5A623] mb-1">Ecosystem</div>
+<h2 class="font-headline text-3xl sm:text-4xl text-[#F4F4F5]">Ports</h2>
+<p class="font-body text-sm text-[#A1A1AA] mt-1">
+            Carefully tuned for terminals, code editors, window managers, and command-line utilities.
+          </p>
+</div>
+<!-- Filter & Search toolbar -->
+<div class="flex items-center gap-3">
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined text-[16px] text-[#6B6B74] absolute left-3 top-1/2 -translate-y-1/2" data-icon="search">search</span>
+<input class="w-full bg-[#121214] border border-[#222226] focus:border-[#F5A623] focus:ring-0 rounded pl-9 pr-3 py-1.5 text-xs font-mono text-[#F4F4F5] placeholder-[#6B6B74] transition-colors" id="port-search-input" placeholder="Search 11 ports..." type="text"/>
+</div>
+<div class="font-mono text-xs px-2.5 py-1.5 rounded bg-[#18181B] border border-[#222226] text-[#A1A1AA] whitespace-nowrap">
+            11 apps and growing
+          </div>
+</div>
+</div>
+<!-- Ports Grid: Dracula/Catppuccin style cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="ports-container">
+<!-- Port 1: Noctalia -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors" data-icon="night_sight">maps_auto</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark · light</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">Noctalia</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">Modern system desktop shell &amp; widget framework.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span>Official</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Port 2: niri -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors" data-icon="view_compact_alt">view_compact_alt</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">niri</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">Scrollable-tiling Wayland compositor window decor.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span>Official</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Port 3: Ghostty -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F5A623]" data-icon="terminal">terminal</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark · light</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">Ghostty</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">Fast, native, GPU-accelerated terminal emulator.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span class="text-[#34D399]">1-line install</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Port 4: VS Code -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors" data-icon="code">code</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark · light</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">VS Code</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">Full syntax scope coverage, token semantics, and clean chrome.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span>Marketplace</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Port 5: Cursor -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors" data-icon="smart_toy">smart_toy</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark · light</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">Cursor</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">AI code editor with custom inline diff highlights.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span>Compatible</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Port 6: GTK -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors" data-icon="desktop_windows">desktop_windows</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark · light</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">GTK</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">GTK3 &amp; GTK4 / Libadwaita high-contrast theme css.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span>Libadwaita</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Port 7: Google Chrome -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors" data-icon="language">language</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">Google Chrome</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">Noir frame, active tabs, and DevTools syntax theme.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span>Web Store</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Port 8: bat -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors" data-icon="data_object">data_object</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark · light</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">bat</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">A cat clone with syntax highlighting and Git integration.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span>.tmTheme</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Port 9: btop -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors" data-icon="monitoring">monitoring</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">btop</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">Resource monitor with amber usage bars &amp; graphs.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span>CLI</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Port 10: fzf -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors" data-icon="manage_search">manage_search</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">fzf</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">Interactive fuzzy finder environment variables config.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span>FZF_DEFAULT_OPTS</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Port 11: Powerlevel10k -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors" data-icon="prompt_suggestion">prompt_suggestion</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">Powerlevel10k</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">Zsh theme segment colors, Git status, and glyphs.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span>.p10k.zsh</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Port 12: Obsidian -->
+<a class="group p-5 rounded border border-[#222226] bg-[#121214] hover:border-[#F5A623] transition-colors duration-150 flex flex-col justify-between" href="#install">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors" data-icon="edit_note">edit_note</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] bg-[#18181B] text-[#A1A1AA]">dark · light</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">Obsidian</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">Markdown knowledge base with refined serif titles &amp; code blocks.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#6B6B74]">
+<span>Community Theme</span>
+<span class="material-symbols-outlined text-sm text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</a>
+<!-- Last Card: Request a port (Dashed) -->
+<a class="p-5 rounded border border-dashed border-[#3F3F46] hover:border-[#F5A623] bg-transparent transition-colors duration-150 flex flex-col justify-between group" href="https://github.com" rel="noopener noreferrer" target="_blank">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-2xl text-[#6B6B74] group-hover:text-[#F5A623] transition-colors" data-icon="add_circle">add_circle</span>
+<span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[#222226] text-[#6B6B74]">request</span>
+</div>
+<h4 class="font-mono text-sm font-semibold text-[#F4F4F5] group-hover:text-[#F5A623] transition-colors">Request a port</h4>
+<p class="font-body text-xs text-[#A1A1AA] mt-1.5">Missing your terminal, editor or tool? Submit an issue on GitHub.</p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#222226] flex items-center justify-between text-[11px] font-mono text-[#F5A623]">
+<span>Open issue</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</a>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 5. HOW IT WORKS / ARCHITECTURE SECTION                                    -->
+<!-- ========================================================================= -->
+<section class="max-w-7xl mx-auto px-6 py-20 border-b border-[#222226]" id="architecture">
+<div class="mb-12">
+<div class="font-mono text-xs uppercase tracking-widest text-[#F5A623] mb-1">Engine &amp; Pipeline</div>
+<h2 class="font-headline text-3xl sm:text-4xl text-[#F4F4F5]">How it works</h2>
+<p class="font-body text-sm text-[#A1A1AA] mt-1 max-w-xl">
+          Single source of truth color tokens compiled deterministically across distinct formatting targets.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<!-- Step 1 -->
+<div class="p-6 rounded border border-[#222226] bg-[#121214] space-y-3">
+<div class="font-mono text-xs text-[#F5A623]">01 / SOURCE</div>
+<h3 class="font-headline text-xl text-[#F4F4F5]">One palette.json</h3>
+<p class="font-body text-xs text-[#A1A1AA] leading-relaxed">
+            All colors, surfaces, contrast bounds, and semantic ANSI mappings reside in a central schema-validated <code class="font-mono text-[#F4F4F5] bg-[#18181B] px-1 py-0.5 rounded">palette.json</code> file.
+          </p>
+</div>
+<!-- Step 2 -->
+<div class="p-6 rounded border border-[#222226] bg-[#121214] space-y-3">
+<div class="font-mono text-xs text-[#F5A623]">02 / COMPILATION</div>
+<h3 class="font-headline text-xl text-[#F4F4F5]">Generated ports</h3>
+<p class="font-body text-xs text-[#A1A1AA] leading-relaxed">
+            Running <code class="font-mono text-[#F4F4F5] bg-[#18181B] px-1 py-0.5 rounded">make build</code> invokes the Mustache template engine to emit pure native configurations for Ghostty, VS Code, bat, GTK and more.
+          </p>
+</div>
+<!-- Step 3 -->
+<div class="p-6 rounded border border-[#222226] bg-[#121214] space-y-3">
+<div class="font-mono text-xs text-[#F5A623]">03 / VALIDATION</div>
+<h3 class="font-headline text-xl text-[#F4F4F5]">Tested &amp; verified</h3>
+<p class="font-body text-xs text-[#A1A1AA] leading-relaxed">
+            Automated CI runs WCAG 2.1 AA/AAA contrast checks and visual regression tests to verify absolute zero color drift between ports.
+          </p>
+</div>
+</div>
+<!-- Build Pipeline Code Block Terminal -->
+<div class="rounded border border-[#222226] bg-[#121214] overflow-hidden">
+<div class="h-8 px-4 bg-[#18181B] border-b border-[#222226] flex items-center justify-between text-xs font-mono text-[#6B6B74]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#3F3F46]"></span>
+<span>build.sh — compilation output</span>
+</div>
+<span>GNU Make 4.4</span>
+</div>
+<div class="p-4 font-mono text-xs text-[#F4F4F5] space-y-1.5 bg-[#0B0B0C] overflow-x-auto">
+<div class="text-[#6B6B74]">$ git clone https://github.com/terminal-noir/theme &amp;&amp; cd theme</div>
+<div class="text-[#6B6B74]">$ make build</div>
+<div class="text-[#A1A1AA]"><span class="text-[#34D399]">✓</span> [1/11] Validating palette.json against JSON schema v7</div>
+<div class="text-[#A1A1AA]"><span class="text-[#34D399]">✓</span> [2/11] Generating ports/ghostty/terminal-noir.conf</div>
+<div class="text-[#A1A1AA]"><span class="text-[#34D399]">✓</span> [3/11] Compiling VS Code package (package.json + themes/noir.json)</div>
+<div class="text-[#A1A1AA]"><span class="text-[#34D399]">✓</span> [4/11] Emitting bat themes/terminal-noir.tmTheme</div>
+<div class="text-[#A1A1AA]"><span class="text-[#34D399]">✓</span> [5/11] Rendering GTK4 libadwaita css overrides</div>
+<div class="text-[#FACF9E]"><span class="text-[#34D399]">✓</span> Build finished in 184ms: 11 artifacts compiled without drift.</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 6. INSTALL EXAMPLE SECTION                                                -->
+<!-- ========================================================================= -->
+<section class="max-w-7xl mx-auto px-6 py-20 border-b border-[#222226]" id="install">
+<div class="mb-10">
+<div class="font-mono text-xs uppercase tracking-widest text-[#F5A623] mb-1">Quickstart</div>
+<h2 class="font-headline text-3xl sm:text-4xl text-[#F4F4F5]">Installation</h2>
+<p class="font-body text-sm text-[#A1A1AA] mt-1">
+          Simple one-line configurations for your active shell and workspace tools.
+        </p>
+</div>
+<!-- Tabbed Installation Container -->
+<div class="rounded border border-[#222226] bg-[#121214] overflow-hidden">
+<!-- Tab selector headers -->
+<div class="flex items-center border-b border-[#222226] bg-[#18181B] px-2 pt-2 gap-1 overflow-x-auto" id="install-tabs">
+<button class="px-4 py-2 font-mono text-xs border-t border-l border-r border-[#3F3F46] bg-[#121214] text-[#F5A623] rounded-t font-medium" id="tab-ghostty" onclick="switchInstallTab('ghostty')">
+            Ghostty
+          </button>
+<button class="px-4 py-2 font-mono text-xs text-[#A1A1AA] hover:text-[#F4F4F5] rounded-t transition-colors" id="tab-vscode" onclick="switchInstallTab('vscode')">
+            VS Code
+          </button>
+<button class="px-4 py-2 font-mono text-xs text-[#A1A1AA] hover:text-[#F4F4F5] rounded-t transition-colors" id="tab-bat" onclick="switchInstallTab('bat')">
+            bat
+          </button>
+<button class="px-4 py-2 font-mono text-xs text-[#A1A1AA] hover:text-[#F4F4F5] rounded-t transition-colors" id="tab-fzf" onclick="switchInstallTab('fzf')">
+            fzf
+          </button>
+</div>
+<!-- Tab 1 Content: Ghostty -->
+<div class="p-6 space-y-4" id="content-ghostty">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs text-[#A1A1AA]">Append Terminal Noir directly into your Ghostty config:</span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 font-mono text-xs border border-[#3F3F46] hover:border-[#F5A623] text-[#F4F4F5] rounded transition-colors" onclick="copySnippet('snippet-ghostty', this)">
+<span class="material-symbols-outlined text-[14px]" data-icon="content_copy">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+<div class="p-4 rounded border border-[#222226] bg-[#0B0B0C] font-mono text-xs text-[#F4F4F5] overflow-x-auto select-all" id="snippet-ghostty">
+            curl -fsSL https://terminalnoir.dev/ports/ghostty/terminal-noir.conf &gt;&gt; ~/.config/ghostty/config
+          </div>
+<div class="text-[11px] font-mono text-[#6B6B74]">
+            Tip: Reload Ghostty with <kbd class="px-1.5 py-0.5 rounded bg-[#18181B] border border-[#222226] text-[#F4F4F5]">Cmd+Shift+,</kbd> to activate instantly.
+          </div>
+</div>
+<!-- Tab 2 Content: VS Code -->
+<div class="p-6 space-y-4 hidden" id="content-vscode">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs text-[#A1A1AA]">Install from the official VS Code CLI extension registry:</span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 font-mono text-xs border border-[#3F3F46] hover:border-[#F5A623] text-[#F4F4F5] rounded transition-colors" onclick="copySnippet('snippet-vscode', this)">
+<span class="material-symbols-outlined text-[14px]" data-icon="content_copy">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+<div class="p-4 rounded border border-[#222226] bg-[#0B0B0C] font-mono text-xs text-[#F4F4F5] overflow-x-auto select-all" id="snippet-vscode">
+            code --install-extension terminal-noir.terminal-noir-theme
+          </div>
+<div class="text-[11px] font-mono text-[#6B6B74]">
+            Set <code class="text-[#FACF9E]">"workbench.colorTheme": "Terminal Noir"</code> in your <code class="text-[#F4F4F5]">settings.json</code>.
+          </div>
+</div>
+<!-- Tab 3 Content: bat -->
+<div class="p-6 space-y-4 hidden" id="content-bat">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs text-[#A1A1AA]">Fetch theme and rebuild bat cache:</span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 font-mono text-xs border border-[#3F3F46] hover:border-[#F5A623] text-[#F4F4F5] rounded transition-colors" onclick="copySnippet('snippet-bat', this)">
+<span class="material-symbols-outlined text-[14px]" data-icon="content_copy">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+<div class="p-4 rounded border border-[#222226] bg-[#0B0B0C] font-mono text-xs text-[#F4F4F5] overflow-x-auto select-all" id="snippet-bat">
+            mkdir -p "$(bat --config-dir)/themes" &amp;&amp; curl -fsSL https://terminalnoir.dev/ports/bat/terminal-noir.tmTheme -o "$(bat --config-dir)/themes/terminal-noir.tmTheme" &amp;&amp; bat cache --build
+          </div>
+<div class="text-[11px] font-mono text-[#6B6B74]">
+            Configure via <code class="text-[#FACF9E]">export BAT_THEME="terminal-noir"</code> in your shell dotfiles.
+          </div>
+</div>
+<!-- Tab 4 Content: fzf -->
+<div class="p-6 space-y-4 hidden" id="content-fzf">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs text-[#A1A1AA]">Export ANSI high-contrast colors in your .zshrc / .bashrc:</span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 font-mono text-xs border border-[#3F3F46] hover:border-[#F5A623] text-[#F4F4F5] rounded transition-colors" onclick="copySnippet('snippet-fzf', this)">
+<span class="material-symbols-outlined text-[14px]" data-icon="content_copy">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+<div class="p-4 rounded border border-[#222226] bg-[#0B0B0C] font-mono text-xs text-[#F4F4F5] overflow-x-auto select-all" id="snippet-fzf">
+            export FZF_DEFAULT_OPTS="--color=bg+:#18181B,bg:#0B0B0C,spinner:#F5A623,hl:#FACF9E --color=fg:#F4F4F5,header:#79C0FF,info:#34D399,pointer:#F5A623 --color=marker:#34D399,fg+:#F4F4F5,prompt:#F5A623,hl+:#F5A623"
+          </div>
+<div class="text-[11px] font-mono text-[#6B6B74]">
+            Tested across fzf v0.48+ with full border rendering.
+          </div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 7. CONTRIBUTE CALLOUT                                                     -->
+<!-- ========================================================================= -->
+<section class="max-w-7xl mx-auto px-6 py-20" id="contribute">
+<div class="p-8 sm:p-12 rounded border border-[#222226] bg-[#121214] flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+<div class="space-y-3 max-w-2xl">
+<div class="font-mono text-xs uppercase tracking-widest text-[#F5A623]">Open Source</div>
+<h3 class="font-headline text-2xl sm:text-3xl text-[#F4F4F5]">
+            Missing your favorite tool? Build a port in minutes.
+          </h3>
+<p class="font-body text-sm text-[#A1A1AA] leading-relaxed">
+            Our declarative Mustache template pipeline makes generating new ports frictionless. Define the template, hook it to <code class="font-mono text-[#F4F4F5]">palette.json</code>, and open a pull request.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
+<a class="bg-[#F5A623] text-[#0B0B0C] font-mono text-xs font-semibold px-5 py-2.5 rounded text-center transition-all duration-150 hover:opacity-95 flex items-center justify-center gap-2" href="https://github.com" rel="noopener noreferrer" target="_blank">
+<span>Open GitHub repository</span>
+<span class="material-symbols-outlined text-[15px]" data-icon="open_in_new">open_in_new</span>
+</a>
+<a class="border border-[#3F3F46] hover:border-[#F5A623] text-[#F4F4F5] font-mono text-xs px-5 py-2.5 rounded text-center transition-colors duration-150 flex items-center justify-center gap-2" href="#architecture">
+<span>Read Porting Guide</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- ========================================================================= -->
+<!-- 8. FOOTER (from Shared Components JSON: Footer)                           -->
+<!-- ========================================================================= -->
+<footer class="docked full-width bottom bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/30 dark:border-outline-variant/30 flat no shadows">
+<div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<!-- Brand & Copyright from JSON -->
+<div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+<span class="font-label font-semibold text-sm text-on-surface dark:text-on-surface tracking-tight">
+          terminal_noir_
+        </span>
+<span class="hidden sm:inline text-[#3F3F46]">·</span>
+<span class="font-body text-xs text-on-surface-variant leading-relaxed">
+          Terminal Noir. Released under MIT License. Crafted with precision for high-contrast workflows.
+        </span>
+</div>
+<!-- Footer Navigation Links from JSON: ["Ports Registry", "Color Specs", "Installation", "Contribute", "GitHub", "Telemetry Policy"] -->
+<nav class="flex flex-wrap items-center justify-center gap-6 font-label text-xs uppercase tracking-wider">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-background dark:hover:text-on-background transition-colors" href="#ports">
+          Ports Registry
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-background dark:hover:text-on-background transition-colors" href="#palette">
+          Color Specs
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-background dark:hover:text-on-background transition-colors" href="#install">
+          Installation
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-background dark:hover:text-on-background transition-colors" href="#contribute">
+          Contribute
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-background dark:hover:text-on-background transition-colors" href="https://github.com" rel="noopener noreferrer" target="_blank">
+          GitHub
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-background dark:hover:text-on-background transition-colors" href="#">
+          Telemetry Policy
+        </a>
+</nav>
+</div>
+</footer>
+<!-- ========================================================================= -->
+<!-- Micro-interactions Script (Tab switcher, Port live filter, Copy feedback) -->
+<!-- ========================================================================= -->
+<script>
+    // Tab Switcher for Installation Section
+    function switchInstallTab(tabName) {
+      const tabs = ['ghostty', 'vscode', 'bat', 'fzf'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        const content = document.getElementById('content-' + t);
+        if (t === tabName) {
+          btn.className = 'px-4 py-2 font-mono text-xs border-t border-l border-r border-[#3F3F46] bg-[#121214] text-[#F5A623] rounded-t font-medium';
+          content.classList.remove('hidden');
+        } else {
+          btn.className = 'px-4 py-2 font-mono text-xs text-[#A1A1AA] hover:text-[#F4F4F5] rounded-t transition-colors';
+          content.classList.add('hidden');
+        }
+      });
+    }
+
+    // Copy to clipboard with micro feedback
+    function copySnippet(elementId, btn) {
+      const codeText = document.getElementById(elementId).innerText.trim();
+      navigator.clipboard.writeText(codeText).then(() => {
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = `<span class="material-symbols-outlined text-[14px] text-[#34D399]" data-icon="check">check</span><span class="text-[#34D399]">Copied</span>`;
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+        }, 1800);
+      });
+    }
+
+    // Live search filter for Ports Grid
+    const portSearchInput = document.getElementById('port-search-input');
+    if (portSearchInput) {
+      portSearchInput.addEventListener('input', function(e) {
+        const query = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('#ports-container > a');
+        cards.forEach(card => {
+          const title = card.querySelector('h4') ? card.querySelector('h4').innerText.toLowerCase() : '';
+          const desc = card.querySelector('p') ? card.querySelector('p').innerText.toLowerCase() : '';
+          if (title.includes(query) || desc.includes(query)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    }
+
+    // Segmented theme preview toggler feedback
+    const btnDark = document.getElementById('toggle-dark');
+    const btnLight = document.getElementById('toggle-light');
+    if (btnDark && btnLight) {
+      btnDark.addEventListener('click', () => {
+        btnDark.className = "px-2 py-0.5 text-[11px] font-mono rounded bg-[#18181B] text-[#F5A623] border border-[#3F3F46] flex items-center gap-1";
+        btnLight.className = "px-2 py-0.5 text-[11px] font-mono text-[#A1A1AA] hover:text-[#F4F4F5] flex items-center gap-1";
+      });
+      btnLight.addEventListener('click', () => {
+        btnLight.className = "px-2 py-0.5 text-[11px] font-mono rounded bg-[#18181B] text-[#F5A623] border border-[#3F3F46] flex items-center gap-1";
+        btnDark.className = "px-2 py-0.5 text-[11px] font-mono text-[#A1A1AA] hover:text-[#F4F4F5] flex items-center gap-1";
+      });
+    }
+  </script>
+</body></html>

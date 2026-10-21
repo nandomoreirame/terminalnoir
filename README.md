@@ -56,6 +56,12 @@ Both variants meet WCAG 2.1 AA on every surface (`base`, `raised`, `elevated`): 
 | iTerm2 | dark, light | [ports/iterm2](ports/iterm2) |
 | zsh (syntax highlighting) | dark, light | [ports/zsh](ports/zsh) |
 | fish | dark, light | [ports/fish](ports/fish) |
+| Alacritty | dark, light | [ports/alacritty](ports/alacritty) |
+| kitty | dark, light | [ports/kitty](ports/kitty) |
+| Hyper | dark, light | [ports/hyper](ports/hyper) |
+| Neovim / Vim | dark, light | [ports/nvim](ports/nvim) |
+| micro | dark, light | [ports/micro](ports/micro) |
+| Telegram Desktop | dark, light | [ports/telegram](ports/telegram) |
 | VS Code / Cursor | dark | [ports/vscode](ports/vscode) |
 | GTK 4 / libadwaita | dark | [ports/gtk](ports/gtk) |
 | Google Chrome | dark | [ports/chrome](ports/chrome) |

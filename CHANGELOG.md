@@ -11,6 +11,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Add an iTerm2 port, `Terminal Noir.itermcolors` and `Terminal Noir Paper.itermcolors`, with both variants as color presets.
 - Add a zsh port, `terminal-noir.zsh` and `terminal-noir-paper.zsh`, with zsh-syntax-highlighting and zsh-autosuggestions styles.
 - Add a fish port, `terminal-noir.theme`, with light and dark sections that fish picks to match the terminal background.
+- Add Alacritty, kitty, Hyper, Neovim and Vim, micro and Telegram Desktop ports, each with dark and light variants. The Telegram themes bring the noir and paper wallpapers.
 
 ## [0.1.0-beta] - 2026-10-20
 

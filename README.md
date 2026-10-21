@@ -53,6 +53,7 @@ Both variants meet WCAG 2.1 AA on every surface (`base`, `raised`, `elevated`): 
 | Noctalia shell | dark, light | [ports/noctalia](ports/noctalia) |
 | niri | dark | [ports/niri](ports/niri) |
 | Ghostty | dark, light | [ports/ghostty](ports/ghostty) |
+| iTerm2 | dark, light | [ports/iterm2](ports/iterm2) |
 | VS Code / Cursor | dark | [ports/vscode](ports/vscode) |
 | GTK 4 / libadwaita | dark | [ports/gtk](ports/gtk) |
 | Google Chrome | dark | [ports/chrome](ports/chrome) |

@@ -6,6 +6,10 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+### Added
+
+- Add an iTerm2 port, `Terminal Noir.itermcolors` and `Terminal Noir Paper.itermcolors`, with both variants as color presets.
+
 ## [0.1.0-beta] - 2026-10-20
 
 ### Added

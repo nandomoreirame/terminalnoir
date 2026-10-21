@@ -9,6 +9,8 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Added
 
 - Add an iTerm2 port, `Terminal Noir.itermcolors` and `Terminal Noir Paper.itermcolors`, with both variants as color presets.
+- Add a zsh port, `terminal-noir.zsh` and `terminal-noir-paper.zsh`, with zsh-syntax-highlighting and zsh-autosuggestions styles.
+- Add a fish port, `terminal-noir.theme`, with light and dark sections that fish picks to match the terminal background.
 
 ## [0.1.0-beta] - 2026-10-20
 

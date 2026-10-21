@@ -6,12 +6,25 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+## [0.2.0-beta] - 2026-10-21
+
 ### Added
 
-- Add an iTerm2 port, `Terminal Noir.itermcolors` and `Terminal Noir Paper.itermcolors`, with both variants as color presets.
+- Add 9 generated ports, for 21 in total, each with dark and light variants, install guides in English and Brazilian Portuguese and a screenshot.
+- Add an iTerm2 port, `Terminal Noir.itermcolors` and `Terminal Noir Paper.itermcolors`, as color presets.
 - Add a zsh port, `terminal-noir.zsh` and `terminal-noir-paper.zsh`, with zsh-syntax-highlighting and zsh-autosuggestions styles.
 - Add a fish port, `terminal-noir.theme`, with light and dark sections that fish picks to match the terminal background.
-- Add Alacritty, kitty, Hyper, Neovim and Vim, micro and Telegram Desktop ports, each with dark and light variants. The Telegram themes bring the noir and paper wallpapers.
+- Add Alacritty and kitty color files with cursor, selection, search, hint and tab colors; the kitty files also work as its `dark-theme.auto.conf` and `light-theme.auto.conf`.
+- Add a Hyper plugin that paints the terminal, tabs and cursor, with `terminalNoir.variant` to pick Noir or Paper.
+- Add Neovim and Vim colorschemes that follow `background`; the Neovim one covers Tree-sitter, LSP, diagnostics, GitSigns and Telescope groups.
+- Add micro colorschemes built from the shared syntax roles.
+- Add Telegram Desktop palettes and `.tdesktop-theme` files that bring the noir and paper wallpapers, with the key mapping adapted from catppuccin/telegram and three of its key typos fixed.
+- Show each port's logo in the port list instead of its screenshot, from simple-icons or from the project itself (Noctalia, btop, Shiki, kitty).
+
+### Changed
+
+- Show the screenshot border only on hover and keyboard focus, and drop it in the lightbox.
+- Retake the niri screenshot with VS Code, Ghostty and Obsidian in three columns, show six Noctalia panels in its port, and use the original iTerm2 window capture.
 
 ## [0.1.0-beta] - 2026-10-20
 

@@ -53,6 +53,45 @@ PORTS="$PROJECT_ROOT/ports"
     done
 }
 
+@test "zsh: syntax-highlighting and autosuggestion styles per variant" {
+    local v f
+    for v in dark light; do
+        f="$PORTS/zsh/terminal-noir$([ "$v" = light ] && echo -paper || true).zsh"
+        grep -Fqx "ZSH_HIGHLIGHT_STYLES[command]='fg=$(pal $v accent.info)'" "$f"
+        grep -Fqx "ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=$(pal $v accent.primary)'" "$f"
+        grep -Fqx "ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=$(pal $v accent.success)'" "$f"
+        grep -Fqx "ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=$(pal $v accent.error)'" "$f"
+        grep -Fqx "ZSH_HIGHLIGHT_STYLES[comment]='fg=$(pal $v text.muted)'" "$f"
+        grep -Fqx "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=$(pal $v text.faint)'" "$f"
+        if command -v zsh >/dev/null 2>&1; then
+            run zsh -fc "source '$f'; print -r -- \$ZSH_HIGHLIGHT_STYLES[command]"
+            assert_success
+            [ "$output" = "fg=$(pal $v accent.info)" ]
+        fi
+    done
+}
+
+@test "fish: one theme with light and dark sections from the palette" {
+    local f="$PORTS/fish/terminal-noir.theme" v
+    for v in dark light; do
+        [ "$(fishcolor "$f" "$v" '# preferred_background:')" = "$(pal $v surface.base | hex6)" ]
+        [ "$(fishcolor "$f" "$v" fish_color_command)" = "$(pal $v accent.info | hex6)" ]
+        [ "$(fishcolor "$f" "$v" fish_color_keyword)" = "$(pal $v accent.primary | hex6)" ]
+        [ "$(fishcolor "$f" "$v" fish_color_quote)" = "$(pal $v accent.success | hex6)" ]
+        [ "$(fishcolor "$f" "$v" fish_color_error)" = "$(pal $v accent.error | hex6)" ]
+        [ "$(fishcolor "$f" "$v" fish_color_selection)" = "--background=$(pal $v surface.selection | hex6)" ]
+    done
+    if command -v fish >/dev/null 2>&1; then
+        local cfg
+        cfg="$(temp_make)"
+        mkdir -p "$cfg/fish/themes"
+        cp "$f" "$cfg/fish/themes/"
+        run env XDG_CONFIG_HOME="$cfg" fish --no-config -c 'fish_config theme list | string match -q terminal-noir'
+        temp_del "$cfg"
+        assert_success
+    fi
+}
+
 @test "vscode: dark editor, amber cursor, keyword and string scopes" {
     local f="$PORTS/vscode/themes/terminal-noir-color-theme.json"
     jq -e '.type == "dark"' "$f"

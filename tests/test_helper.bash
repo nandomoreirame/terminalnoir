@@ -55,3 +55,15 @@ itermcolor() {
         found && /<key>(Red|Green|Blue) Component<\/key>/ { comp = $0; sub(/.*<key>/, "", comp); sub(/ Component.*/, "", comp); getline; gsub(/.*<real>|<\/real>.*/, ""); c[comp] = $0 }
         found && /<\/dict>/ { print c["Red"], c["Green"], c["Blue"]; exit }' "$1"
 }
+
+# "#RRGGBB" on stdin -> "rrggbb", the way fish themes write colors.
+hex6() {
+    tr -d '#' | tr 'A-F' 'a-f'
+}
+
+# Value of a key inside the [light] or [dark] section of a fish theme.
+fishcolor() {
+    awk -v sec="[$2]" -v key="$3" '
+        /^\[/ { in_sec = ($0 == sec); next }
+        in_sec && index($0, key " ") == 1 { print substr($0, length(key) + 2); exit }' "$1"
+}

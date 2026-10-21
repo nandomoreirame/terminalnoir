@@ -4,7 +4,7 @@ A dark theme of cold near-black surfaces, stepped by luminance, with one warm am
 
 Terminal Noir is the theme of [nandomoreira.dev](https://nandomoreira.dev), extracted from the site so the whole system and every app on it share the same visual identity. The design tokens left the site's CSS for a single palette and grew into a theme for the whole desktop: shell, compositor, terminal, editor, browser and CLI tools.
 
-![Terminal Noir on a niri desktop with the Noctalia shell, Ghostty and bat](assets/screenshots/noctalia.png)
+![Terminal Noir on a niri desktop with the Noctalia shell, VS Code, Ghostty and Obsidian](assets/screenshots/niri.png)
 
 ## Palette
 

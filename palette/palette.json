@@ -1,6 +1,6 @@
 {
   "name": "Terminal Noir",
-  "version": "0.1.0-beta",
+  "version": "0.2.0-beta",
   "homepage": "https://terminalnoir.web.app",
   "origin": "nandomoreira.dev design tokens (src/styles/global.css): cold near-black surfaces stepped by luminance, an amber accent and an emerald status color. The light variant follows the site's light reader theme.",
   "variants": {

@@ -1,6 +1,6 @@
 {
   "name": "hyper-terminal-noir",
-  "version": "0.1.0-beta",
+  "version": "0.2.0-beta",
   "description": "Terminal Noir for Hyper: cold near-black surfaces with one amber accent, and a Paper light variant.",
   "main": "index.js",
   "keywords": [

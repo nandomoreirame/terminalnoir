@@ -8,6 +8,8 @@ GENERATED=(
     "ports/noctalia/Terminal Noir.json"
     "ports/ghostty/terminal-noir-dark"
     "ports/ghostty/terminal-noir-light"
+    "ports/iterm2/Terminal Noir.itermcolors"
+    "ports/iterm2/Terminal Noir Paper.itermcolors"
     "ports/vscode/package.json"
     "ports/vscode/themes/terminal-noir-color-theme.json"
     "ports/bat/Terminal Noir.tmTheme"

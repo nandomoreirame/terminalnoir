@@ -12,6 +12,7 @@
     { "slug": "niri", "name": "niri", "category": "desktop", "variants": ["dark"], "homepage": "https://github.com/niri-wm/niri", "featured": false },
     { "slug": "gtk", "name": "GTK / libadwaita", "category": "desktop", "variants": ["dark"], "homepage": "https://gnome.pages.gitlab.gnome.org/libadwaita/", "featured": false },
     { "slug": "ghostty", "name": "Ghostty", "category": "terminal", "variants": ["dark", "light"], "homepage": "https://ghostty.org", "featured": true },
+    { "slug": "iterm2", "name": "iTerm2", "category": "terminal", "variants": ["dark", "light"], "homepage": "https://iterm2.com", "featured": false },
     { "slug": "p10k", "name": "Powerlevel10k", "category": "terminal", "variants": ["dark"], "homepage": "https://github.com/romkatv/powerlevel10k", "featured": true },
     { "slug": "vscode", "name": "VS Code / Cursor", "category": "editor", "variants": ["dark"], "homepage": "https://code.visualstudio.com", "featured": true },
     { "slug": "obsidian", "name": "Obsidian", "category": "editor", "variants": ["dark"], "homepage": "https://obsidian.md", "featured": false },

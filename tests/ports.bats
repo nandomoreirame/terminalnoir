@@ -33,6 +33,26 @@ PORTS="$PROJECT_ROOT/ports"
     done
 }
 
+@test "iterm2: one itermcolors plist per variant with sRGB palette components" {
+    local v f
+    for v in dark light; do
+        f="$PORTS/iterm2/Terminal Noir$([ "$v" = light ] && echo ' Paper' || true).itermcolors"
+        grep -Fq '<!DOCTYPE plist' "$f"
+        [ "$(itermcolor "$f" 'Background Color')" = "$(srgb "$(pal $v surface.base)")" ]
+        [ "$(itermcolor "$f" 'Foreground Color')" = "$(srgb "$(pal $v text.primary)")" ]
+        [ "$(itermcolor "$f" 'Cursor Color')" = "$(srgb "$(pal $v accent.primary)")" ]
+        [ "$(itermcolor "$f" 'Cursor Text Color')" = "$(srgb "$(pal $v accent.onPrimary)")" ]
+        [ "$(itermcolor "$f" 'Selection Color')" = "$(srgb "$(pal $v surface.selection)")" ]
+        [ "$(itermcolor "$f" 'Link Color')" = "$(srgb "$(pal $v accent.info)")" ]
+        [ "$(itermcolor "$f" 'Ansi 3 Color')" = "$(srgb "$(pal $v ansi.normal.yellow)")" ]
+        [ "$(itermcolor "$f" 'Ansi 15 Color')" = "$(srgb "$(pal $v ansi.bright.white)")" ]
+        [ "$(grep -c '<string>sRGB</string>' "$f")" -eq 24 ]
+        if command -v xmllint >/dev/null 2>&1; then
+            xmllint --noout "$f"
+        fi
+    done
+}
+
 @test "vscode: dark editor, amber cursor, keyword and string scopes" {
     local f="$PORTS/vscode/themes/terminal-noir-color-theme.json"
     jq -e '.type == "dark"' "$f"

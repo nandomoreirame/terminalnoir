@@ -40,3 +40,18 @@ rgb() {
     local hex="${1#\#}"
     printf '[%d,%d,%d]' "0x${hex:0:2}" "0x${hex:2:2}" "0x${hex:4:2}"
 }
+
+# "#RRGGBB" -> "r g b" as 0..1 reals, the way itermcolors stores components.
+srgb() {
+    local hex="${1#\#}"
+    jq -rn --argjson r "$((16#${hex:0:2}))" --argjson g "$((16#${hex:2:2}))" --argjson b "$((16#${hex:4:2}))" \
+        '"\($r / 255) \($g / 255) \($b / 255)"'
+}
+
+# Red, green and blue components of one color entry in an itermcolors plist.
+itermcolor() {
+    awk -v key="<key>$2</key>" '
+        $0 ~ key { found = 1; next }
+        found && /<key>(Red|Green|Blue) Component<\/key>/ { comp = $0; sub(/.*<key>/, "", comp); sub(/ Component.*/, "", comp); getline; gsub(/.*<real>|<\/real>.*/, ""); c[comp] = $0 }
+        found && /<\/dict>/ { print c["Red"], c["Green"], c["Blue"]; exit }' "$1"
+}

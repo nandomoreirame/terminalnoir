@@ -19,7 +19,7 @@ const { id, image, alt, openLabel, closeLabel } = Astro.props;
   type="button"
   popovertarget={id}
   aria-label={openLabel}
-  class="group relative mt-10 block w-full cursor-zoom-in rounded border border-hairline transition-colors hover:border-accent"
+  class="group relative mt-10 block w-full cursor-zoom-in rounded border border-transparent transition-colors hover:border-accent focus-visible:border-accent"
 >
   <Image src={image} alt={alt} width={1200} loading="eager" class="w-full rounded" />
   <span

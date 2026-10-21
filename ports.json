@@ -15,13 +15,19 @@
     { "slug": "iterm2", "name": "iTerm2", "category": "terminal", "variants": ["dark", "light"], "homepage": "https://iterm2.com", "featured": false },
     { "slug": "zsh", "name": "zsh", "category": "terminal", "variants": ["dark", "light"], "homepage": "https://www.zsh.org", "featured": false },
     { "slug": "fish", "name": "fish", "category": "terminal", "variants": ["dark", "light"], "homepage": "https://fishshell.com", "featured": false },
+    { "slug": "alacritty", "name": "Alacritty", "category": "terminal", "variants": ["dark", "light"], "homepage": "https://alacritty.org", "featured": false },
+    { "slug": "kitty", "name": "kitty", "category": "terminal", "variants": ["dark", "light"], "homepage": "https://sw.kovidgoyal.net/kitty/", "featured": false },
+    { "slug": "hyper", "name": "Hyper", "category": "terminal", "variants": ["dark", "light"], "homepage": "https://hyper.is", "featured": false },
     { "slug": "p10k", "name": "Powerlevel10k", "category": "terminal", "variants": ["dark"], "homepage": "https://github.com/romkatv/powerlevel10k", "featured": true },
     { "slug": "vscode", "name": "VS Code / Cursor", "category": "editor", "variants": ["dark"], "homepage": "https://code.visualstudio.com", "featured": true },
+    { "slug": "nvim", "name": "Neovim / Vim", "category": "editor", "variants": ["dark", "light"], "homepage": "https://neovim.io", "featured": false },
+    { "slug": "micro", "name": "micro", "category": "editor", "variants": ["dark", "light"], "homepage": "https://micro-editor.github.io", "featured": false },
     { "slug": "obsidian", "name": "Obsidian", "category": "editor", "variants": ["dark"], "homepage": "https://obsidian.md", "featured": false },
     { "slug": "bat", "name": "bat", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/sharkdp/bat", "featured": true },
     { "slug": "btop", "name": "btop", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/aristocratos/btop", "featured": false },
     { "slug": "fzf", "name": "fzf", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/junegunn/fzf", "featured": false },
     { "slug": "chrome", "name": "Google Chrome", "category": "apps", "variants": ["dark"], "homepage": "https://www.google.com/chrome/", "featured": true },
+    { "slug": "telegram", "name": "Telegram", "category": "apps", "variants": ["dark", "light"], "homepage": "https://desktop.telegram.org", "featured": false },
     { "slug": "shiki", "name": "Shiki", "category": "editor", "variants": ["dark", "light"], "homepage": "https://shiki.style", "featured": false }
   ]
 }

@@ -92,6 +92,108 @@ PORTS="$PROJECT_ROOT/ports"
     fi
 }
 
+@test "alacritty: primary, cursor and ANSI colors per variant, valid TOML" {
+    local v f
+    for v in dark light; do
+        f="$PORTS/alacritty/terminal-noir$([ "$v" = light ] && echo -paper || true).toml"
+        grep -Fqx "background = \"$(pal $v surface.base)\"" "$f"
+        grep -Fqx "foreground = \"$(pal $v text.primary)\"" "$f"
+        grep -Fqx "cursor = \"$(pal $v accent.primary)\"" "$f"
+        grep -Fqx "yellow = \"$(pal $v ansi.normal.yellow)\"" "$f"
+        grep -Fqx "white = \"$(pal $v ansi.bright.white)\"" "$f"
+        run /usr/bin/python3 -I -c 'import sys, tomllib; c = tomllib.load(open(sys.argv[1], "rb"))["colors"]; print(c["primary"]["background"], c["bright"]["cyan"])' "$f"
+        assert_success
+        [ "$output" = "$(pal $v surface.base) $(pal $v ansi.bright.cyan)" ]
+    done
+}
+
+@test "kitty: color0-15, cursor, borders and tabs per variant" {
+    local v f
+    for v in dark light; do
+        f="$PORTS/kitty/terminal-noir$([ "$v" = light ] && echo -paper || true).conf"
+        grep -Fqx "background $(pal $v surface.base)" "$f"
+        grep -Fqx "foreground $(pal $v text.primary)" "$f"
+        grep -Fqx "cursor $(pal $v accent.primary)" "$f"
+        grep -Fqx "color3 $(pal $v ansi.normal.yellow)" "$f"
+        grep -Fqx "color15 $(pal $v ansi.bright.white)" "$f"
+        grep -Fqx "active_border_color $(pal $v accent.primary)" "$f"
+        grep -Fqx "active_tab_background $(pal $v accent.primary)" "$f"
+    done
+}
+
+@test "micro: colorscheme with syntax roles per variant" {
+    local v f
+    for v in dark light; do
+        f="$PORTS/micro/terminal-noir$([ "$v" = light ] && echo -paper || true).micro"
+        grep -Fqx "color-link default \"$(pal $v text.primary),$(pal $v surface.base)\"" "$f"
+        grep -Fqx "color-link comment \"$(pal $v text.muted)\"" "$f"
+        grep -Fqx "color-link statement \"$(pal $v accent.primary)\"" "$f"
+        grep -Fqx "color-link constant.string \"$(pal $v accent.success)\"" "$f"
+        grep -Fqx "color-link identifier \"$(pal $v accent.info)\"" "$f"
+    done
+}
+
+@test "hyper: plugin decorates the config with the chosen variant" {
+    local dir="$PORTS/hyper"
+    jq -e '.name == "hyper-terminal-noir" and .main == "index.js"' "$dir/package.json"
+    if command -v node >/dev/null 2>&1; then
+        run node -e '
+            const p = require(process.argv[1]);
+            const d = p.decorateConfig({});
+            const l = p.decorateConfig({ terminalNoir: { variant: "paper" } });
+            console.log(d.backgroundColor, d.cursorColor, d.colors.yellow, l.backgroundColor, l.colors.lightWhite);' "$dir/index.js"
+        assert_success
+        [ "$output" = "$(pal dark surface.base) $(pal dark accent.primary) $(pal dark ansi.normal.yellow) $(pal light surface.base) $(pal light ansi.bright.white)" ]
+    fi
+}
+
+@test "nvim: Lua and Vim colorschemes follow background and the syntax roles" {
+    local lua="$PORTS/nvim/colors/terminal-noir.lua" vimf="$PORTS/nvim/vim/colors/terminal-noir.vim" v bg out
+    grep -Fq "vim.g.colors_name = \"terminal-noir\"" "$lua"
+    grep -Fq "let g:colors_name = \"terminal-noir\"" "$vimf"
+    for v in dark light; do
+        bg="$(pal $v surface.base)"
+        out="$(env -i HOME="$BATS_TMPDIR" PATH=/usr/bin:/bin vim -Nu NONE -i NONE -es \
+            -c "set background=$v termguicolors rtp^=$PORTS/nvim/vim" -c 'colorscheme terminal-noir' \
+            -c 'call writefile([synIDattr(hlID("Normal"), "bg#"), synIDattr(hlID("Comment"), "fg#"), synIDattr(hlID("Statement"), "fg#")], "/dev/stdout")' \
+            -c 'qa!' 2>&1 | tr 'a-f' 'A-F' | tr '\n' ' ')"
+        [ "$out" = "$bg $(pal $v text.muted) $(pal $v accent.primary) " ] || { echo "vim $v: $out"; return 1; }
+        if command -v nvim >/dev/null 2>&1; then
+            out="$(nvim --clean --headless -c "set background=$v rtp^=$PORTS/nvim" -c 'colorscheme terminal-noir' \
+                -c 'lua io.stdout:write(string.format("#%06X #%06X", vim.api.nvim_get_hl(0, {name = "Normal"}).bg, vim.api.nvim_get_hl(0, {name = "@string"}).fg))' -c 'qa!' 2>&1)"
+            [ "$out" = "$bg $(pal $v accent.success)" ] || { echo "nvim $v: $out"; return 1; }
+        fi
+    done
+}
+
+@test "telegram: a palette per variant with every key resolved" {
+    local v f
+    for v in dark light; do
+        f="$PORTS/telegram/terminal-noir$([ "$v" = light ] && echo -paper || true).tdesktop-palette"
+        grep -Fqx "tnBase: $(pal $v surface.base | tr 'A-F' 'a-f');" "$f"
+        grep -Fqx "tnAccent: $(pal $v accent.primary | tr 'A-F' 'a-f');" "$f"
+        grep -Eq '^windowBg: tnBase;' "$f"
+        ! grep -q 'ctp' "$f"
+        # Every name a key points at is defined above it.
+        run awk -F': ' '/^[A-Za-z0-9]+: / { v = $2; sub(/;.*/, "", v); if (v !~ /^#/ && !(v in d)) print "undefined: " v; d[$1] = 1 }' "$f"
+        [ -z "$output" ] || { echo "$f: $output"; return 1; }
+    done
+}
+
+@test "telegram: a theme zip per variant with the palette and the matching wallpaper" {
+    local v name wall tmp
+    for v in dark light; do
+        name="terminal-noir$([ "$v" = light ] && echo -paper || true)"
+        wall="$([ "$v" = light ] && echo paper || echo noir)"
+        [ "$(bsdtar -tf "$PORTS/telegram/$name.tdesktop-theme" | sort | tr '\n' ' ')" = "background.png colors.tdesktop-theme " ]
+        tmp="$(temp_make)"
+        bsdtar -xf "$PORTS/telegram/$name.tdesktop-theme" -C "$tmp"
+        cmp -s "$tmp/colors.tdesktop-theme" "$PORTS/telegram/$name.tdesktop-palette" || { temp_del "$tmp"; echo "colors differ: $v"; return 1; }
+        cmp -s "$tmp/background.png" "$PROJECT_ROOT/assets/wallpapers/$wall.png" || { temp_del "$tmp"; echo "wallpaper differs: $v"; return 1; }
+        temp_del "$tmp"
+    done
+}
+
 @test "vscode: dark editor, amber cursor, keyword and string scopes" {
     local f="$PORTS/vscode/themes/terminal-noir-color-theme.json"
     jq -e '.type == "dark"' "$f"

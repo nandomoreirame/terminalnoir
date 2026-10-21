@@ -32,5 +32,5 @@ REGISTRY="$PROJECT_ROOT/ports.json"
     [ -f "$PROJECT_ROOT/ports/ghostty/terminal-noir-light" ]
     [ -f "$PROJECT_ROOT/ports/iterm2/Terminal Noir Paper.itermcolors" ]
     jq -e '.light' "$PROJECT_ROOT/ports/noctalia/Terminal Noir.json" >/dev/null
-    [ "$(jq -r '[.ports[] | select(.variants | index("light")) | .slug] | sort | join(",")' "$REGISTRY")" = "fish,ghostty,iterm2,noctalia,shiki,zsh" ]
+    [ "$(jq -r '[.ports[] | select(.variants | index("light")) | .slug] | sort | join(",")' "$REGISTRY")" = "alacritty,fish,ghostty,hyper,iterm2,kitty,micro,noctalia,nvim,shiki,telegram,zsh" ]
 }

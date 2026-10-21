@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
 import { getI18n } from '../i18n/context';
 import type { UiKey } from '../i18n/ui';
@@ -16,38 +15,19 @@ const { t, path } = getI18n(Astro.currentLocale);
 <li data-port={`${port.name} ${port.slug} ${port.category}`.toLowerCase()}>
   <a
     href={path(`/ports/${port.slug}`)}
-    class="group flex h-full flex-col justify-between rounded border border-hairline bg-raised p-5 transition-colors duration-150 hover:border-accent"
+    class="group flex h-full flex-col justify-between gap-6 rounded border border-hairline bg-raised p-5 transition-colors duration-150 hover:border-accent focus-visible:border-accent"
   >
-    <span class="block">
-      {
-        port.screenshot && (
-          <Image
-            src={port.screenshot}
-            alt=""
-            width={480}
-            loading="lazy"
-            class="mb-4 aspect-[16/10] w-full rounded border border-hairline object-cover object-left-top"
-          />
-        )
-      }
-      <span class="mb-4 flex items-center justify-between">
-        <Icon
-          name={port.icon}
-          class="size-6 text-fg transition-colors group-hover:text-accent"
-          aria-hidden="true"
-        />
-        <span class="rounded border border-hairline bg-elevated px-2 py-0.5 font-mono text-[10px] text-muted">
-          {port.variants.map(v => t(`variant.${v}` as UiKey)).join(' · ')}
-        </span>
-      </span>
-      <span class="block font-mono text-sm font-semibold text-fg transition-colors group-hover:text-accent">
+    <span class="flex items-start justify-between gap-4">
+      <span class="font-mono text-sm font-semibold text-fg transition-colors group-hover:text-accent">
         {port.name}
       </span>
-      <span class="mt-1.5 block text-xs leading-relaxed text-muted">{port.description}</span>
+      <Icon name={port.icon} class="size-7 shrink-0 text-accent" aria-hidden="true" />
     </span>
-    <span class="mt-4 flex items-center justify-between border-t border-hairline pt-3 font-mono text-[11px] text-faint">
+    <span class="flex items-center justify-between gap-2 font-mono text-[11px] text-faint">
       <span>{t(`category.${port.category}`)}</span>
-      <Icon name="lucide:arrow-up-right" class="size-3.5 transition-colors group-hover:text-accent" aria-hidden="true" />
+      <span class="rounded border border-hairline bg-elevated px-2 py-0.5 text-[10px] text-muted">
+        {port.variants.map(v => t(`variant.${v}` as UiKey)).join(' · ')}
+      </span>
     </span>
   </a>
 </li>

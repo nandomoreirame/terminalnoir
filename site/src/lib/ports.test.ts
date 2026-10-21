@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { getPort, getPorts, installSnippet, portDescription, portsByCategory } from './ports';
 
@@ -71,10 +72,25 @@ describe('installSnippet', () => {
 });
 
 describe('port icons', () => {
-  it('maps every port to an icon', () => {
+  it('maps every port to an icon set glyph or a logo file in src/icons', () => {
     for (const port of getPorts()) {
-      expect(port.icon, port.slug).toMatch(/^lucide:/);
+      if (/^(lucide|simple-icons):/.test(port.icon)) continue;
+      expect(existsSync(new URL(`../icons/${port.icon}.svg`, import.meta.url)), port.slug).toBe(true);
     }
+  });
+
+  it('uses the project logo when simple-icons has none', () => {
+    expect(getPort('noctalia')?.icon).toBe('noctalia');
+    expect(getPort('btop')?.icon).toBe('btop');
+    expect(getPort('shiki')?.icon).toBe('shiki');
+    expect(getPort('bat')?.icon).toBe('simple-icons:bat');
+  });
+
+  it('uses the brand logo when simple-icons has one', () => {
+    expect(getPort('ghostty')?.icon).toBe('simple-icons:ghostty');
+    expect(getPort('fish')?.icon).toBe('simple-icons:fishshell');
+    expect(getPort('vscode')?.icon).toBe('simple-icons:visualstudiocode');
+    expect(getPort('fzf')?.icon).toMatch(/^lucide:/);
   });
 
   it('gives every port its own glyph, never the fallback', () => {

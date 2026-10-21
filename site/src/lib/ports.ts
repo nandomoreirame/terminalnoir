@@ -26,21 +26,24 @@ function screenshotFor(slug: string): ImageMetadata | undefined {
   return Object.entries(screenshots).find(([path]) => path.endsWith(`/screenshots/${slug}.png`))?.[1].default;
 }
 
-// Lucide icons per port, in the spirit of the generic glyphs of the Stitch design.
+// Brand logos from simple-icons where the app has one (as catppuccin.com/ports
+// does), then the project's own logo from src/icons, then a generic Lucide glyph.
 const ICONS: Record<string, string> = {
-  noctalia: 'lucide:panels-top-left',
-  niri: 'lucide:columns-3',
-  gtk: 'lucide:app-window',
-  ghostty: 'lucide:terminal',
-  iterm2: 'lucide:square-terminal',
+  noctalia: 'noctalia',
+  niri: 'simple-icons:niri',
+  gtk: 'simple-icons:gtk',
+  ghostty: 'simple-icons:ghostty',
+  iterm2: 'simple-icons:iterm2',
+  zsh: 'simple-icons:zsh',
+  fish: 'simple-icons:fishshell',
   p10k: 'lucide:square-chevron-right',
-  vscode: 'lucide:code',
-  obsidian: 'lucide:notebook-pen',
-  bat: 'lucide:file-code-2',
-  btop: 'lucide:activity',
+  vscode: 'simple-icons:visualstudiocode',
+  obsidian: 'simple-icons:obsidian',
+  bat: 'simple-icons:bat',
+  btop: 'btop',
   fzf: 'lucide:list-filter',
-  chrome: 'lucide:globe',
-  shiki: 'lucide:highlighter',
+  chrome: 'simple-icons:googlechrome',
+  shiki: 'shiki',
 };
 
 // README.md is English; README.<locale>.md holds each translation.

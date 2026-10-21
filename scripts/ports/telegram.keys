@@ -1,0 +1,512 @@
+// Telegram Desktop color keys, each pointing at a Terminal Noir palette name (tn*).
+// Key mapping adapted from catppuccin/telegram templates/desktop.tera (MIT License,
+// Copyright (c) 2021 Catppuccin), with its ctp* names renamed to tn*.
+// Fixes upstream typos (cptText, cptRed, windowSubtextFg).
+// scripts/ports/telegram.sh prepends the tn* definitions for each variant.
+
+// Theme variables
+
+windowActiveTextFg: tnText; // online blue: fallback for active text like online status
+windowBg: tnBase; // white: fallback for background
+windowBgActive: tnOverlay2; // bright blue: fallback for blue filled active areas
+windowBgOver: tnSurface1; // light gray: fallback for background with mouse over
+windowBgRipple: tnSurface1; // darker gray: fallback for ripple effect
+windowBoldFg: tnText; // dark gray: fallback for bold text
+windowBoldFgOver: tnText; // dark gray: fallback for bold text with mouse over
+windowFg: tnText; // black: fallback for text
+windowFgActive: tnText; // white: fallback for text on active areas
+windowFgOver: tnText; // black: fallback for text with mouse over
+windowShadowFg: tnBase; // black: fallback for shadow
+windowShadowFgFallback: tnBase; // gray: fallback for shadow without opacity
+windowSubTextFg: tnSubtext0; // gray: fallback for additional text
+windowSubTextFgOver: tnSubtext1; // darker gray: fallback for additional text with mouse over
+scrollBarBg: tnOverlay1Transparent; // default scroll bar current rectangle, the bar itself (like in chats list)
+scrollBarBgOver: tnSurface2Transparent; // default scroll bar current rectangle with mouse over it
+scrollBg: tnSurface2Transparent; // default scroll bar background
+scrollBgOver: tnSurface2Transparent; // default scroll bar background with mouse over the scroll bar
+shadowFg: tnCrustShadow; // most shadows (including opacity)
+menuBg: tnBase; // default popup menu background
+menuBgOver: tnSurface0; // default popup menu item background with mouse over
+menuBgRipple: tnSurface1; // default popup menu item ripple effect
+menuFgDisabled: tnSubtext0; // default popup menu item disabled text (like unavailable items in message field context menu)
+menuIconFg: tnText; // default popup menu item icon (like main menu)
+menuIconFgOver: tnSubtext0; // default popup menu item icon with mouse over
+menuSeparatorFg: tnSurface0; // default popup menu separator (like in message field context menu)
+menuSubmenuArrowFg: tnText; // default popup menu submenu arrow icon (like in message field context menu in case of RTL system language)
+activeButtonBg: tnAccent; // default active button background
+activeButtonBgOver: tnAccent; // default active button background with mouse over
+activeButtonBgRipple: tnAccent; // default active button ripple effect
+activeButtonFg: tnCrust; // default active button text
+activeButtonFgOver: tnCrust; // default active button text with mouse over
+activeButtonSecondaryFg: tnMantle; // default active button additional text (selected messages counter in forward / delete buttons)
+activeButtonSecondaryFgOver: tnMantle; // default active button additional text with mouse over
+activeLineFg: tnOverlay2; // default active line (like code input field bottom border when you log in and field is focused)
+activeLineFgError: tnRed; // default active line for error state (like code input field bottom border when you log in and you've entered incorrect code)
+attentionButtonBgOver: tnSurface1Transparent; // default attention button background with mouse over
+attentionButtonBgRipple: tnSurface1; // default attention button ripple effect
+attentionButtonFg: tnText; // default attention button text (like confirm button on log out)
+attentionButtonFgOver: tnText; // default attention button text with mouse over
+boxBg: tnBase; // box background
+boxSearchBg: tnBase; // box search field background (like in contacts box)
+boxTextFg: tnText; // box text
+boxTextFgError: tnRed; // rejecting box text (like when choosing username that is occupied)
+boxTextFgGood: tnText; // accepted box text (like when choosing username that is not occupied)
+boxTitleAdditionalFg: tnSubtext0; // box title additional text (like in create group box when you see chosen members count)
+boxTitleCloseFg: tnText; // settings close icon and box search cancel icon (like in contacts box)
+boxTitleCloseFgOver: tnText; // settings close icon and box search cancel icon (like in contacts box) with mouse over
+boxTitleFg: tnText; // box title text
+cancelIconFg: tnText; // default for settings close icon and box search cancel icon
+cancelIconFgOver: tnText; // default for settings close icon and box search cancel icon with mouse over
+checkboxFg: tnSubtext0; // default unchecked checkbox rounded rectangle (and also emoji category icons)
+lightButtonBg: tnSurface0; // default light button background (like buttons in boxes)
+lightButtonBgOver: tnSurface0; // default light button background with mouse over
+lightButtonBgRipple: tnSurface1; // default light button ripple effect
+lightButtonFg: tnAccent; // default light button text
+lightButtonFgOver: lightButtonFg; // default light button text with mouse over
+sliderBgActive: tnSurface1; // default slider active bar (like in Settings when you choose interface scale or custom notifications count)
+sliderBgInactive: tnSurface0; // default slider not active bar (like in Settings when you choose interface scale or custom notifications count)
+toastBg: tnCrustTransparent; // toast notification background (like when you click on your t.me link when editing your username)
+toastFg: windowFgActive; // toast notification text (like when you click on your t.me link when editing your username)
+botKbBg: tnSurface0; // bot keyboard button background
+botKbDownBg: tnSurface1; // bot keyboard button ripple effect
+callAnswerBg: tnGreen; // phone call popup answer button background
+callAnswerBgOuter: tnGreen; // phone call popup answer button outer ripple effect
+callAnswerRipple: tnGreen; // phone call popup answer button ripple effect
+callArrowFg: tnBlue; // received phone call arrow (in calls list box)
+callArrowMissedFg: tnRed; // missed phone call arrow (in calls list box)
+callBarBg: tnGreen; // active phone call bar background
+callBarBgMuted: tnRed; // phone call bar with muted mic background
+callBarFg: tnCrust; // phone call bar text and icons
+callBarMuteRipple: tnGreen; // active phone call bar mute and hangup button ripple effect
+callBarUnmuteRipple: tnRed; // phone call bar with muted mic mute and hangup button ripple effect
+callBg: tnBaseTransparent; // phone call popup background
+callBgButton: tnMantleTransparent; // phone call window control buttons bg
+callBgOpaque: tnMantle; // phone call popup background
+callCancelBg: tnRed; // phone call popup line busy cancel button background
+callCancelFg: tnCrust; // phone call popup line busy cancel button icon
+callCancelRipple: tnPink; // phone call popup line busy cancel button ripple effect
+callFingerprintBg: tnCrustTransparent; // phone call popup emoji fingerprint background
+callHangupBg: tnRed; // phone call popup hangup button background
+callHangupRipple: tnPink; // phone call popup hangup button ripple effect
+callIconActiveRipple: tnBlue; // phone call line busy cancel, muted mic and camera ripple effect
+callIconBg: tnGreen; // phone call mute mic and camera button background
+callIconBgActive: tnBlue; // phone call line busy cancel, muted mic and camera button background
+callIconFg: tnCrust; // phone call popup answer, hangup and mute mic icon
+callIconFgActive: tnCrust; // phone call line busy cancel, muted mic and camera icon
+callMuteRipple: tnRed; // phone call popup mute mic ripple effect
+callNameFg: windowFg; // phone call popup name text
+callStatusFg: windowSubTextFg; // phone call popup status text
+changePhoneSimcardFrom: tnYellow; // change phone number box left simcard icon
+changePhoneSimcardTo: tnYellow; // change phone number box right simcard and plane icons
+contactsBg: tnBase; // contacts (and some other) box row background
+contactsBgOver: tnSurface0; // contacts (and some other) box row background with mouse over
+contactsNameFg: windowFg; // contacts (and some other) box row name text
+contactsStatusFg: windowFg; // contacts (and some other) box row additional text (like last seen stamp)
+contactsStatusFgOnline: windowSubTextFg; // contacts (and some other) box row active additional text (like online status)
+contactsStatusFgOver: tnOverlay0; // contacts (and some other) box row additional text (like last seen stamp) with mouse over
+dialogsBg: windowBg; // chat list background
+dialogsBgActive: tnSurface1; // chat list background for current (active) chat
+dialogsBgOver: tnSurface0; // chat list background with mouse over
+dialogsChatIconFg: windowFg; // chat list group or channel icon
+dialogsChatIconFgActive: windowFgActive; // chat list group or channel icon for current (active) chat
+dialogsChatIconFgOver: windowBoldFgOver; // chat list group or channel icon with mouse over
+dialogsDateFg: windowSubTextFg; // chat list date text
+dialogsDateFgActive: windowSubTextFg; // chat list date text for current (active) chat
+dialogsDateFgOver: windowSubTextFg; // chat list date text with mouse over
+dialogsDraftFg: windowFg; // chat list draft label
+dialogsDraftFgActive: windowFg; // chat list draft label for current (active) chat
+dialogsDraftFgOver: windowFg; // chat list draft label with mouse over
+dialogsForwardBg: tnSurface1; // forwarding panel background (when forwarding messages in the smallest window size)
+dialogsForwardFg: windowFgActive; // forwarding panel text (when forwarding messages in the smallest window size)
+dialogsMenuIconFg: menuIconFg; // main menu and lock telegram icon
+dialogsMenuIconFgOver: menuIconFgOver; // main menu and lock telegram icon with mouse over
+dialogsNameFg: windowFg; // chat list name text
+dialogsNameFgActive: windowFgActive; // chat list name text for current (active) chat
+dialogsNameFgOver: windowBoldFgOver; // chat list name text with mouse over
+dialogsOnlineBadgeFg: windowFg; // chat list online status
+dialogsOnlineBadgeFgActive: windowFg; // chat list online status for current (active) chat
+dialogsRippleBg: tnSurface1; // chat list background ripple effect
+dialogsRippleBgActive: tnSurface2; // chat list background ripple effect for current (active) chat
+dialogsSendingIconFg: windowFg; // chat list sending message icon (clock)
+dialogsSendingIconFgActive: windowFg; // chat list sending message icon (clock) for current (active) chat
+dialogsSendingIconFgOver: windowFg; // chat list sending message icon (clock) with mouse over
+dialogsSentIconFg: tnAccent; // chat list sent message tick / double tick icon
+dialogsSentIconFgActive: tnAccent; // chat list sent message tick / double tick icon for current (active) chat
+dialogsSentIconFgOver: tnAccent; // chat list sent message tick / double tick icon with mouse over
+dialogsTextFg: windowFg; // chat list message text
+dialogsTextFgActive: windowFgActive; // chat list message text for current (active) chat
+dialogsTextFgOver: windowFg; // chat list message text with mouse over
+dialogsTextFgService: windowFg; // chat list group sender name text (or media message type text)
+dialogsTextFgServiceActive: windowFg; // chat list group sender name text for current (active) chat
+dialogsTextFgServiceOver: windowFg; // chat list group sender name text with mouse over
+dialogsUnreadBg: tnAccent; // chat list unread badge background for not muted chat
+dialogsUnreadBgActive: tnAccent; // chat list unread badge background for not muted chat for current (active) chat
+dialogsUnreadBgMuted: tnText; // chat list unread badge background for muted chat
+dialogsUnreadBgMutedActive: tnText; // chat list unread badge background for muted chat for current (active) chat
+dialogsUnreadBgMutedOver: tnText; // chat list unread badge background for muted chat with mouse over
+dialogsUnreadBgOver: tnAccent; // chat list unread badge background for not muted chat with mouse over
+dialogsUnreadFg: tnCrust; // chat list unread badge text
+dialogsUnreadFgActive: tnCrust; // chat list unread badge text for current (active) chat
+dialogsUnreadFgOver: tnCrust; // chat list unread badge text with mouse over
+dialogsVerifiedIconBg: tnAccent; // chat list verified icon background
+dialogsVerifiedIconBgActive: tnAccent; // chat list verified icon background for current (active) chat
+dialogsVerifiedIconBgOver: tnAccent; // chat list verified icon background with mouse over
+dialogsVerifiedIconFg: tnCrust; // chat list verified icon check
+dialogsVerifiedIconFgActive: tnCrust; // chat list verified icon check for current (active) chat
+dialogsVerifiedIconFgOver: tnCrust; // chat list verified icon check with mouse over
+emojiIconFg: windowFg; // emoji category icon
+emojiIconFgActive: windowFg; // active emoji category icon
+emojiPanBg: windowBg; // emoji panel background
+emojiPanCategories: windowBg; // emoji panel categories background
+emojiPanHeaderBg: windowBg; // emoji panel section header background
+emojiPanHeaderFg: windowFg; // emoji panel section header text
+filterInputActiveBg: windowBg; // default rounded input field active background (like in chats list search field when field is focused)
+filterInputBorderFg: windowBg; // default rounded input field border (like in chats list search field when field is focused)
+filterInputInactiveBg: windowBg; // default rounded input field background (like in chats list search field when field is inactive)
+groupCallActiveFg: windowFg; // group call active controls text
+groupCallBg: windowBg; // group call popup background
+groupCallForceMuted1: tnRed; // group call force muted button color 1
+groupCallForceMuted2: tnRed; // group call force muted button color 2
+groupCallForceMuted3: tnRed; // group call force muted button color 3
+groupCallForceMutedBar1: tnRed; // group call force muted top bar color 1
+groupCallForceMutedBar2: tnRed; // group call force muted top bar color 2
+groupCallForceMutedBar3: tnRed; // group call force muted top bar color 3
+groupCallIconFg: tnCrust; // group call mute / settings / leave icon
+groupCallLeaveBg: tnRed; // group call leave button background
+groupCallLeaveBgRipple: tnPink; // group call leave button ripple effect
+groupCallLive1: tnBlue; // group call live button color 1
+groupCallLive2: tnBlue; // group call live button color 2
+groupCallMemberActiveIcon: windowFg; // group call active member icon
+groupCallMemberActiveStatus: windowFg; /// group call active member status text
+groupCallMemberInactiveIcon: windowSubTextFg; // group call inactive member icon
+groupCallMemberInactiveStatus: windowSubTextFg; // group call inactive member status text
+groupCallMemberMutedIcon: tnRed; // group call muted by admin member icon
+groupCallMemberNotJoinedStatus: windowSubTextFg; // group call non joined member status text
+groupCallMembersBg: windowBg; // group call members list background
+groupCallMembersBgOver: tnSurface0; // group call members list row with mouse over
+groupCallMembersBgRipple: tnSurface1; // group call member row ripple effect
+groupCallMembersFg: windowFg; // group call member name text
+groupCallMenuBg: tnSurface0; // group call popup menu background
+groupCallMenuBgOver: tnSurface1; // group call popup menu with mouse over
+groupCallMenuBgRipple: tnSurface2; // group call popup menu ripple effect
+groupCallMuted1: tnPeach; // group call muted button color 1
+groupCallMuted2: tnPeach; // group call muted button color 2
+groupCallVideoSubTextFg: windowSubTextFg; // group call additional text over video
+groupCallVideoTextFg: windowFg; // group call text over video
+historyCallArrowInFg: tnBlue; // received phone call arrow
+historyCallArrowInFgSelected: tnBlue; // received phone call arrow in a selected message
+historyCallArrowMissedInFg: tnRed; // missed phone call arrow
+historyCallArrowMissedInFgSelected: tnRed; // missed phone call arrow in a selected message
+historyCallArrowOutFg: tnBlue; // outgoing phone call arrow
+historyCallArrowOutFgSelected: tnBlue; // outgoing phone call arrow
+historyComposeAreaBg: windowBg; // history compose area background (message write area / reply information / forwarding information)
+historyComposeAreaFg: windowFg; // history compose area text
+historyComposeAreaFgService: windowFg; // history compose area text when replying to a media message
+historyComposeButtonBg: windowBg; // unblock / join channel / mute channel button background
+historyComposeButtonBgOver: tnSurface0; // unblock / join channel / mute channel button background with mouse over
+historyComposeButtonBgRipple: tnSurface1; // unblock / join channel / mute channel button ripple effect
+historyComposeIconFg: menuIconFg; // history compose area icon (like emoji, attach, bot command..)
+historyComposeIconFgOver: menuIconFgOver; // history compose area icon with mouse over
+historyFileInIconFg: tnCrust; // inbox file without thumbnail (like audio file) download arrow icon
+historyFileInIconFgSelected: tnCrust; // inbox selected file without thumbnail (like audio file) download arrow icon
+historyFileInRadialFg: windowFg; // inbox file without thumbnail (like audio file) radial download animation line
+historyFileInRadialFgSelected: windowFg; // inbox selected file without thumbnail (like audio file) radial download animation line
+historyFileNameInFg: windowFg; // inbox media filename text
+historyFileNameInFgSelected: windowFg; // inbox media filename text in a selected message
+historyFileNameOutFg: windowFg; // outbox media filename text
+historyFileNameOutFgSelected: windowFg; // outbox media filename text in a selected message
+historyFileOutIconFg: historyFileInIconFg; // outbox file without thumbnail (like audio file) download arrow icon
+historyFileOutIconFgSelected: historyFileInIconFgSelected; // outbox selected file without thumbnail (like audio file) download arrow icon
+historyFileOutRadialFg: windowFg; // outbox file without thumbnail (like audio file) radial download animation line
+historyFileOutRadialFgSelected: windowFg; // outbox selected file without thumbnail (like audio file) radial download animation line
+historyFileThumbIconFg: windowFg; // file with thumbnail (or photo / video) download arrow icon
+historyFileThumbIconFgSelected: windowFg; // selected file with thumbnail (or photo / video) download arrow icon
+historyFileThumbRadialFg: windowFg; // file with thumbnail (or photo / video) radial download animation line
+historyFileThumbRadialFgSelected: windowFg; // selected file with thumbnail (or photo / video) radial download animation line
+historyForwardChooseBg: tnCrustTransparent; // forwarding messages in a large window size "choose recipient" background
+historyForwardChooseFg: windowFgActive; // forwarding messages in a large window size "choose recipient" text
+historyIconFgInverted: windowFgActive; // media message tick / double tick icon (like in sent photo)
+historyLinkInFg: tnBlue; // inbox message link
+historyLinkInFgSelected: tnSky; // inbox message link in a selected text or message
+historyLinkOutFg: historyLinkInFg; // outbox message link
+historyLinkOutFgSelected: historyLinkInFgSelected; // outbox message link in a selected text or message
+historyOutIconFg: tnAccent; // outbox message tick / double tick icon
+historyOutIconFgSelected: historyOutIconFg; // outbox message tick / double tick icon in a selected message
+historyPeer1NameFg: tnRed; // red group member name
+historyPeer1NameFgSelected: tnRed; // red group member name in a selected message
+historyPeer1UserpicBg2: tnRed; // the second red userpic background
+historyPeer1UserpicBg: tnRed; // red userpic background
+historyPeer2NameFg: tnGreen; // green group member name
+historyPeer2NameFgSelected: tnGreen; // green group member name in a selected message
+historyPeer2UserpicBg2: tnGreen; // the second green userpic background
+historyPeer2UserpicBg: tnGreen; // green userpic background
+historyPeer3NameFg: tnYellow; // yellow group member name
+historyPeer3NameFgSelected: tnYellow; // yellow group member name in a selected message
+historyPeer3UserpicBg2: tnYellow; // the second yellow userpic background (actually unused)
+historyPeer3UserpicBg: tnYellow; // yellow userpic background (actually unused)
+historyPeer4NameFg: tnBlue; // blue group member name
+historyPeer4NameFgSelected: tnBlue; // blue group member name in a selected message
+historyPeer4UserpicBg2: tnBlue; // the second blue userpic background
+historyPeer4UserpicBg: tnBlue; // blue userpic background
+historyPeer5NameFg: tnMauve; // purple group member name
+historyPeer5NameFgSelected: tnMauve; // purple group member name in a selected message
+historyPeer5UserpicBg2: tnMauve; // the second purple userpic background
+historyPeer5UserpicBg: tnMauve; // purple userpic background
+historyPeer6NameFg: tnPink; // pink group member name
+historyPeer6NameFgSelected: tnPink; // pink group member name in a selected message
+historyPeer6UserpicBg2: tnPink; // the second pink userpic background
+historyPeer6UserpicBg: tnPink; // pink userpic background
+historyPeer7NameFg: tnSky; // sea group member name
+historyPeer7NameFgSelected: tnSky; // sea group member name in a selected message
+historyPeer7UserpicBg2: tnSky; // the second sea userpic background
+historyPeer7UserpicBg: tnSky; // sea userpic background
+historyPeer8NameFg: tnPeach; // orange group member name
+historyPeer8NameFgSelected: tnPeach; // orange group member name in a selected message
+historyPeer8UserpicBg2: tnPeach; // the second orange userpic background
+historyPeer8UserpicBg: tnPeach; // orange userpic background
+historyPeerSavedMessagesBg2: tnAccent; // the second saved messages userpic background
+historyPeerSavedMessagesBg: tnAccent; // saved messages userpic background
+historyPeerUserpicFg: tnCrust; // default userpic initials
+historyPinnedBg: tnMantle; // pinned message area background
+historyReplyBg: windowBg; // reply / forward / edit message area background
+historyReplyCancelFg: windowFg; // reply / forward / edit message cancel button
+historyReplyCancelFgOver: windowFg; // reply / forward / edit message cancel button with mouse over
+historyReplyIconFg: windowSubTextFg; // reply / forward / edit message left icon
+historyScrollBarBg: scrollBarBg; // scroll bar current rectangle, the bar itself in the chat view (adjusted)
+historyScrollBarBgOver: scrollBarBgOver; // scroll bar current rectangle with mouse over it in the chat view (adjusted)
+historyScrollBg: scrollBg; // scroll bar background (adjusted)
+historyScrollBgOver: scrollBgOver; // scroll bar background with mouse over the scroll bar (adjusted)
+historySendIconFg: windowFg; // send message icon
+historySendIconFgOver: windowFg; // send message icon with mouse over
+historySendingInIconFg: windowSubTextFg; // inbox sending message icon (clock) (like in sent messages to yourself or in sent messages to a channel)
+historySendingInvertedIconFg: windowSubTextFg; // media sending message icon (clock) (like in sent photo)
+historySendingOutIconFg: windowSubTextFg; // outbox sending message icon (clock)
+historyTextInFg: windowFg; // inbox message text
+historyTextInFgSelected: windowFg; // inbox message selected text or text in a selected message
+historyTextOutFg: windowFg; // outbox message text
+historyTextOutFgSelected: windowFg; // outbox message selected text or text in a selected message
+historyToDownBg: tnSurface1; // arrow button background (to scroll to the end of the viewed chat)
+historyToDownBgOver: tnSurface2; // arrow button background with mouse over
+historyToDownBgRipple: tnOverlay0; // arrow button ripple effect
+historyToDownFg: windowSubTextFg; // arrow button icon
+historyToDownFgOver: menuIconFgOver; // arrow button icon with mouse over
+historyToDownShadow: tnCrustTransparent; // arrow button shadow
+historyUnreadBarBg: tnSurface0; // new unread messages bar background
+historyUnreadBarBorder: shadowFg; // new unread messages bar shadow
+historyUnreadBarFg: tnOverlay2; // new unread messages bar text
+historyVideoMessageProgressFg: windowFg; // radial playback progress in round video messages
+imageBg: tnCrust; // image background fallback (when photo size is less than minimum allowed)
+imageBgTransparent: windowBg; // image background when displaying an image with opacity where no opacity is needed
+importantTooltipBg: toastBg; // group call important tooltip background color
+importantTooltipFg: toastFg; // group call important tooltip text color
+importantTooltipFgLink: tnAccent; // group call important tooltip text link color
+inputBorderFg: tnOverlay0; // default input field bottom border (like in code input field when you log in and field is not focused)
+introBg: windowBg; // login background
+introCoverBottomBg: tnSurface2; // intro gradient bottom (to)
+introCoverIconsFg: tnOverlay0; // intro cloud graphics
+introCoverPlaneInner: tnAccent; // intro plane part
+introCoverPlaneOuter: tnOverlay2; // intro plane part
+introCoverPlaneTop: tnRosewater; // intro plane part
+introCoverPlaneTrace: tnOverlay0; // intro plane traces
+introCoverTopBg: tnSurface2; // intro gradient top (from)
+introDescriptionFg: windowFg; // login description text
+introErrorFg: tnRed; // login error text (like when providing a wrong log in code)
+introTitleFg: windowFg; // login title text
+layerBg: tnCrustTransparent; // box and main menu background layer fade
+mainMenuBg: windowBg; // main menu background
+mainMenuCloudBg: tnSurface2; // main menu top cover saved messages /archive button background
+mainMenuCloudFg: activeButtonFg; // main menu top cover saved messages /archive button icon
+mainMenuCoverBg: tnSurface2; // main menu top cover background
+mainMenuCoverFg: windowFgActive; // main menu top cover text
+mediaInFg: windowFg; // inbox media message status text (like in file that is being downloaded)
+mediaInFgSelected: windowFg; // inbox selected media message status text (like in file that is being downloaded)
+mediaOutFg: windowFg; // outbox media message status text (like in file that is being downloaded)
+mediaOutFgSelected: windowFg; // outbox selected media message status text (like in file that is being downloaded)
+mediaPlayerActiveFg: tnAccent; // audio file player playback progress already played part
+mediaPlayerBg: windowBg; // audio file player background
+mediaPlayerDisabledFg: windowSubTextFg; // audio file player loading progress (when you're playing an audio file and switch to the previous one which is not loaded yet)
+mediaPlayerInactiveFg: sliderBgInactive; // audio file player playback progress upcoming (not played yet) part with mouse over
+mediaviewBg: tnBaseTransparent; // Media Viewer background
+mediaviewCaptionBg: tnCrustTransparent; // caption text background (when viewing photo with caption)
+mediaviewCaptionFg: windowFgActive; // caption text
+mediaviewControlBg: tnCrustTransparent; // controls background (like next photo / previous photo)
+mediaviewControlFg: windowFgActive; // controls icon (like next photo / previous photo)
+mediaviewFileBg: windowBg; // file rectangle background (when you view a png file in Media Viewer and go to a previous, not loaded yet, file)
+mediaviewFileBlueCornerFg: tnBlue; // blue file thumbnail placeholder corner in file rectangle (for a file without thumbnail, like .dmg)
+mediaviewFileExtFg: activeButtonFg; // file extension text in file thumbnail placeholder in file rectangle
+mediaviewFileGreenCornerFg: tnGreen; // green file thumbnail placeholder corner in file rectangle (for a file without thumbnail, like .exe)
+mediaviewFileNameFg: windowFg; // file name in file rectangle
+mediaviewFileRedCornerFg: tnRed; // red file thumbnail placeholder corner in file rectangle (for a file without thumbnail, like .pdf)
+mediaviewFileSizeFg: windowSubTextFg; // file size text in file rectangle
+mediaviewFileYellowCornerFg: tnYellow; // yellow file thumbnail placeholder corner in file rectangle (for a file without thumbnail, like .zip)
+mediaviewMenuBg: tnSurface0; // context menu in Media Viewer background
+mediaviewMenuBgOver: tnSurface1; // context menu item background with mouse over
+mediaviewMenuBgRipple: tnSurface2; // context menu item ripple effect
+mediaviewMenuFg: windowFgActive; // context menu item text
+mediaviewPlaybackActive: tnOverlay1; // video playback progress already played part
+mediaviewPlaybackActiveOver: tnOverlay2; // video playback progress already played part with mouse over
+mediaviewPlaybackIconFg: mediaviewPlaybackActive; // video playback controls icon
+mediaviewPlaybackIconFgOver: mediaviewPlaybackActiveOver; // video playback controls icon with mouse over
+mediaviewPlaybackInactive: tnSurface1; // video playback progress upcoming (not played yet) part
+mediaviewPlaybackInactiveOver: tnSurface2; // video playback progress upcoming (not played yet) part with mouse over
+mediaviewPlaybackProgressFg: windowFg; // video playback progress text
+mediaviewSaveMsgBg: toastBg; // save to file toast message background in Media Viewer
+mediaviewSaveMsgFg: toastFg; // save to file toast message text
+mediaviewTextLinkFg: tnBlue; // caption text link
+mediaviewTransparentBg: tnRosewater; // transparent filling part (when viewing a transparent .png file in Media Viewer)
+mediaviewTransparentFg: tnMauve; // another transparent filling part
+mediaviewVideoBg: imageBg; // Media Viewer background when viewing a video in full screen
+membersAboutLimitFg: windowFg; // text in channel members box about the limit (max 200 last members are shown)
+msgBotKbIconFg: windowFgActive; // bot inline keyboard button icon in the top-right corner (like in @vote bot when a poll is ready to be shared)
+msgBotKbOverBgAdd: tnSurface1; // this is painted over a bot inline keyboard button (which has msgServiceBg background) when mouse is over that button
+msgBotKbRippleBg: tnSurface2; // bot inline keyboard button ripple effect
+msgDateImgBg: tnCrustTransparent; // media message time bubble background (like time bubble in a sent photo) or file with thumbnail download icon circle background
+msgDateImgBgOver: tnCrustTransparent; // media message download icon circle background with mouse over (like file with thumbnail download icon)
+msgDateImgBgSelected: tnSurface1Transparent; // selected media message time bubble background
+msgDateImgFg: windowFgActive; // media message time text (like time text in a sent photo)
+msgFile1Bg: tnBlue; // blue shared links / files without image square thumbnail
+msgFile1BgDark: tnBlue; // blue shared files without image download circle background
+msgFile1BgOver: tnBlue; // blue shared files without image download circle background with mouse over
+msgFile1BgSelected: tnBlue; // blue shared files without image download circle background if file is selected
+msgFile2Bg: tnGreen; // green shared links / shared files without image square thumbnail
+msgFile2BgDark: tnGreen; // green shared files without image download circle background
+msgFile2BgOver: tnGreen; // green shared files without image download circle background with mouse over
+msgFile2BgSelected: tnGreen; // green shared files without image download circle background if file is selected
+msgFile3Bg: tnRed; // red shared links / shared files without image square thumbnail
+msgFile3BgDark: tnRed; // red shared files without image download circle background
+msgFile3BgOver: tnRed; // red shared files without image download circle background with mouse over
+msgFile3BgSelected: tnRed; // red shared files without image download circle background if file is selected
+msgFile4Bg: tnYellow; // yellow shared links / shared files without image square thumbnail
+msgFile4BgDark: tnYellow; // yellow shared files without image download circle background
+msgFile4BgOver: tnYellow; // yellow shared files without image download circle background with mouse over
+msgFile4BgSelected: tnYellow; // yellow shared files without image download circle background if file is selected
+msgFileInBg: tnSky; // inbox audio file download circle background
+msgFileInBgOver: tnSky; // inbox audio file download circle background with mouse over
+msgFileInBgSelected: tnSky; // inbox selected audio file download circle background
+msgFileOutBg: tnTeal; // outbox audio file download circle background
+msgFileOutBgOver: tnTeal; // outbox audio file download circle background with mouse over
+msgFileOutBgSelected: tnTeal; // outbox selected audio file download circle background
+msgFileThumbLinkInFg: lightButtonFg; // inbox media file message with thumbnail download / open with button text
+msgFileThumbLinkInFgSelected: lightButtonFgOver; // inbox selected media file message with thumbnail download / open with button text
+msgFileThumbLinkOutFg: windowFg; // outbox media file message with thumbnail download / open with button text
+msgFileThumbLinkOutFgSelected: windowFg; // outbox selected media file message with thumbnail download / open with button text
+msgImgReplyBarColor: windowFgActive; // sticker message reply outline
+msgInBg: tnSurface0; // inbox message background
+msgInBgSelected: tnSurface1; // inbox selected message background (and background of selected text in those messages)
+msgInDateFg: windowSubTextFg; // inbox message time text
+msgInDateFgSelected: windowSubTextFg; // inbox selected message time text
+msgInMonoFg: windowFg; // inbox message monospace text (like a message sent with `test` text)
+msgInMonoFgSelected: windowFg; // inbox message monospace text in a selected text or message
+msgInReplyBarColor: tnAccent; // inbox message reply outline
+msgInReplyBarSelColor: tnRosewater; // inbox selected message reply outline
+msgInServiceFg: windowActiveTextFg; // inbox message information text (like information about a forwarded message original sender)
+msgInServiceFgSelected: windowActiveTextFg; // inbox selected message information text (like information about a forwarded message original sender)
+msgInShadow: tnCrustShadow; // inbox message shadow (below the bubble)
+msgInShadowSelected: tnCrustShadow; // inbox selected message shadow (below the bubble)
+msgOutBg: msgInBg; // outbox message background
+msgOutBgSelected: msgInBgSelected; // outbox selected message background (and background of selected text in those messages)
+msgOutDateFg: msgInDateFg; // outbox message time text
+msgOutDateFgSelected: msgInDateFgSelected; // outbox selected message time text
+msgOutMonoFg: msgInMonoFg; // outbox message monospace text
+msgOutMonoFgSelected: msgInMonoFgSelected; // outbox message monospace text in a selected text or message
+msgOutReplyBarColor: msgInReplyBarColor; // outbox message reply outline
+msgOutReplyBarSelColor: msgInReplyBarSelColor; // outbox selected message reply outline
+msgOutServiceFg: msgInServiceFg; // outbox message information text (like information about a forwarded message original sender)
+msgOutServiceFgSelected: msgInServiceFgSelected; // outbox message information text (like information about a forwarded message original sender)
+msgOutShadow: msgInShadow; // outbox message shadow (below the bubble)
+msgOutShadowSelected: msgInShadowSelected; // outbox selected message shadow (below the bubble)
+msgSelectOverlay: tnOverlay2Transparent; // overlay which is filling the media parts of selected messages (like in selected photo message)
+msgServiceBg: tnSurface0Transparent; // service message background (like in a service message about group title being changed) (adjusted)
+msgServiceBgSelected: tnSurface1; // service message selected text background (like in a service message about group title being changed) (adjusted)
+msgServiceFg: windowFgActive; // service message text (like date dividers or service message about the group title being changed)
+msgStickerOverlay: tnOverlay2Transparent; // overlay which is filling the selected sticker message
+msgWaveformInActive: tnAccent; // inbox voice message active waveform lines (like played part of currently playing voice message)
+msgWaveformInActiveSelected: tnAccent; // inbox selected voice message active waveform lines (like played part of currently playing voice message)
+msgWaveformInInactive: tnOverlay0; // inbox voice message inactive waveform lines (like upcoming part of currently playing voice message)
+msgWaveformInInactiveSelected: tnOverlay0; // inbox selected voice message inactive waveform lines (like upcoming part of currently playing voice message)
+msgWaveformOutActive: msgWaveformInActive; // outbox voice message active waveform lines (like played part of currently playing voice message)
+msgWaveformOutActiveSelected: msgWaveformInActiveSelected; // outbox selected voice message active waveform lines (like played part of currently playing voice message)
+msgWaveformOutInactive: msgWaveformInInactive; // outbox voice message inactive waveform lines (like upcoming part of currently playing voice message)
+msgWaveformOutInactiveSelected: msgWaveformInInactiveSelected; // outbox selected voice message inactive waveform lines (like upcoming part of currently playing voice message)
+notificationBg: windowBg; // custom notification window background
+notificationSampleCloseFg: tnAccent; // custom notifications settings box small sample close button placeholder
+notificationSampleNameFg: windowFg; // custom notifications settings box small sample name placeholder
+notificationSampleTextFg: windowSubTextFg; // custom notifications settings box small sample text placeholder
+notificationSampleUserpicFg: tnAccent; // custom notifications settings box small sample userpic placeholder
+notificationsBoxMonitorFg: windowFg; // custom notifications settings box monitor color
+notificationsBoxScreenBg: dialogsBgActive; // custom notifications settings box monitor screen background
+outlineButtonBg: windowBg; // default left outlined button background (like shared media links in profiles)
+outlineButtonBgOver: tnSurface0; // default left outlined button background with mouse over
+outlineButtonBgRipple: tnSurface1; // default left outlined button ripple effect
+outlineButtonOutlineFg: tnOverlay1; // default left outlined button left outline border
+overviewCheckBg: tnCrustTransparent; // shared files / links checkbox background for not selected rows when some rows are selected
+overviewCheckBorder: windowFg; // shared media round checkbox border
+overviewCheckFg: tnCrust; // shared files / links checkbox icon for not selected rows when some rows are selected
+overviewCheckFgActive: tnCrust; // shared files / links checkbox icon for selected rows
+overviewPhotoSelectOverlay: tnOverlay2Transparent; // shared photos / videos / links fill for selected rows
+photoCropFadeBg: layerBg; // avatar crop box fade background (when choosing a new photo in Settings or for a group)
+photoCropPointFg: tnRosewaterTransparent; // avatar crop box corner rectangles (when choosing a new photo in Settings or for a group)
+placeholderFg: tnSubtext0; // default input field placeholder when field is not focused (like in phone input field when you log in)
+placeholderFgActive: tnSubtext1; // default input field placeholder when field is focused
+profileAdminStartFg: tnAccent; // group members list admin star icon
+profileStatusFgOver: windowSubTextFg; // group members list in group profile user last seen text with mouse over
+profileVerifiedCheckBg: tnAccent; // profile verified check icon background
+profileVerifiedCheckFg: tnCrust; // profile verified check icon tick
+radialBg: tnCrustTransparent; // default radial loader background (like in Media Viewer when loading a photo)
+radialFg: windowFgActive; // default radial loader line (like in Media Viewer when loading a photo)
+reportSpamBg: windowBg; // report spam panel background (like a non contact user writes your for the first time)
+reportSpamFg: windowFg; // report spam panel text (when you send a report from that panel)
+searchedBarBg: tnSurface0; // search results bar background (in chats list, contacts box..)
+searchedBarFg: windowFg; // search results bar text (in chats list, contacts box..)
+sideBarBadgeBg: tnOverlay2; // filters side bar badge background
+sideBarBadgeBgMuted: tnOverlay1; // filters side bar unimportant badge background
+sideBarBg: tnMantle; // filters side bar background
+sideBarBgActive: tnSurface0; // filters side bar active background
+sideBarBgRipple: tnBase; // filters side bar ripple effect
+sideBarIconFg: windowFg; // filters side bar icon
+sideBarIconFgActive: windowFg; // filters side bar active item icon
+sideBarTextFg: windowFg; // filters side bar text
+sideBarTextFgActive: windowFg; // filters side bar active item text
+slideFadeOutBg: tnCrustTransparent; // slide animation (chat to profile) fade out filling
+slideFadeOutShadowFg: windowShadowFg; // slide animation (chat to profile) fade out right section shadow
+smallCloseIconFg: tnSubtext0; // small X icon (like in Show all sessions box to the right for sessions termination)
+smallCloseIconFgOver: tnSubtext1; // small X icon with mouse over
+statisticsChartActive: tnSurface2Transparent; // sides in footer of statistic charts
+statisticsChartInactive: tnSurface0Transparent; // inactive area in footer of statistic charts
+stickerPanDeleteBg: tnCrustTransparent; // delete X button background for custom sent stickers in stickers panel (legacy)
+stickerPanDeleteFg: windowFgActive; // delete X button icon for custom sent stickers in stickers panel (legacy)
+stickerPreviewBg: tnCrustTransparent; // sticker and GIF preview background (when you press and hold on a sticker)
+titleBg: tnSurface0; // custom window title background when window is inactive
+titleBgActive: titleBg; // custom window title background when window is active
+titleButtonBg: titleBg; // custom window title minimize/maximize/restore button background when window is inactive (Windows only)
+titleButtonBgActive: titleButtonBg; // custom window title minimize/maximize/restore button background when window is active (Windows only)
+titleButtonBgActiveOver: tnSurface1; // custom window title minimize/maximize/restore button background with mouse over when window is active (Windows only)
+titleButtonBgOver: tnSurface1; // custom window title minimize/maximize/restore button background with mouse over when window is inactive (Windows only)
+titleButtonCloseBg: titleButtonBg; // custom window title close button background when window is inactive (Windows only)
+titleButtonCloseBgActive: titleButtonCloseBg; // custom window title close button background when window is active (Windows only)
+titleButtonCloseBgActiveOver: tnSurface2; // custom window title close button background with mouse over when window is active (Windows only)
+titleButtonCloseBgOver: tnSurface2; // custom window title close button background with mouse over when window is inactive (Windows only)
+titleButtonCloseFg: tnOverlay1; // custom window title close button icon when window is inactive (Windows only)
+titleButtonCloseFgActive: tnText; // custom window title close button icon when window is active (Windows only)
+titleButtonCloseFgActiveOver: tnText; // custom window title close button icon with mouse over when window is active (Windows only)
+titleButtonCloseFgOver: tnText; // custom window title close button icon with mouse over when window is inactive (Windows only)
+titleButtonFg: tnText; // custom window title minimize/maximize/restore button icon when window is inactive (Windows only)
+titleButtonFgActive: tnText; // custom window title minimize/maximize/restore button icon when window is active (Windows only)
+titleButtonFgActiveOver: tnText; // custom window title minimize/maximize/restore button icon with mouse over when window is active (Windows only)
+titleButtonFgOver: tnText; // custom window title minimize/maximize/restore button icon with mouse over when window is inactive (Windows only)
+titleFg: windowFg; // custom window title text when window is inactive (macOS only)
+titleFgActive: windowFg; // custom window title text when window is active (macOS only)
+titleShadow: tnCrustTransparent; // one pixel line shadow at the bottom of custom window title
+tooltipBg: tnSurface0; // tooltip background (like when you put mouse over the message timestamp and wait)
+tooltipBorderFg: tnSurface1; // tooltip border
+tooltipFg: tnSubtext1; // tooltip text
+topBarBg: tnBase; // top bar background (in chat view, media overview..)
+trayCounterBg: tnGreen; // tray icon counter background
+trayCounterBgMacInvert: tnGreen; // tray icon counter background when tray icon is pressed or when dark theme of macOS is used (macOS only)
+trayCounterBgMute: tnBlue; // tray icon counter background if all unread messages are muted
+trayCounterFg: tnCrust; // tray icon counter text
+trayCounterFgMacInvert: tnCrust; // tray icon counter text when tray icon is pressed or when dark theme of macOS is used (macOS only)
+videoPlayIconBg: tnCrustTransparent; // other video play icon background (like when a link to a vimeo video with a webpage preview is sent)
+videoPlayIconFg: tnRosewater; // other video play icon arrow (like when a link to a vimeo video with a webpage preview is sent)
+youtubePlayIconBg: tnAccent; // youtube play icon background (when a link to a youtube video with a webpage preview is sent)
+youtubePlayIconFg: tnCrust; // youtube play icon arrow (when a link to a youtube video with a webpage preview is sent)

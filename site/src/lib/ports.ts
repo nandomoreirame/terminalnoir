@@ -32,6 +32,7 @@ const ICONS: Record<string, string> = {
   niri: 'lucide:columns-3',
   gtk: 'lucide:app-window',
   ghostty: 'lucide:terminal',
+  iterm2: 'lucide:square-terminal',
   p10k: 'lucide:square-chevron-right',
   vscode: 'lucide:code',
   obsidian: 'lucide:notebook-pen',

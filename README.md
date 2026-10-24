@@ -65,6 +65,7 @@ Both variants meet WCAG 2.1 AA on every surface (`base`, `raised`, `elevated`): 
 | VS Code / Cursor | dark | [ports/vscode](ports/vscode) |
 | GTK 4 / libadwaita | dark | [ports/gtk](ports/gtk) |
 | Google Chrome | dark | [ports/chrome](ports/chrome) |
+| Zen Browser | dark, light | [ports/zen](ports/zen) |
 | bat (and delta) | dark | [ports/bat](ports/bat) |
 | btop | dark | [ports/btop](ports/btop) |
 | fzf | dark | [ports/fzf](ports/fzf) |

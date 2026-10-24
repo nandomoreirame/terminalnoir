@@ -6,6 +6,10 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+### Added
+
+- Add a Zen Browser port with `userChrome.css` and `userContent.css`, dark and light variants following Zen's appearance setting, and overrides for the workspace gradient.
+
 ## [0.2.0-beta] - 2026-10-21
 
 ### Added

@@ -48,6 +48,7 @@ const ICONS: Record<string, string> = {
   btop: 'btop',
   fzf: 'lucide:list-filter',
   chrome: 'simple-icons:googlechrome',
+  zen: 'simple-icons:zenbrowser',
   telegram: 'simple-icons:telegram',
   shiki: 'shiki',
 };

@@ -323,3 +323,57 @@ PORTS="$PROJECT_ROOT/ports"
         [ "$expected" = "$actual" ] || { echo "$v: tokens drifted from syntax.json"; return 1; }
     done
 }
+
+# Extract one scheme without allowing the other variant to satisfy assertions.
+zen_media() {
+    awk -v variant="$2" '
+        /^[[:space:]]*@media / {
+            if (active) exit
+            active = index($0, "prefers-color-scheme: " variant ")") > 0
+        }
+        active { print }
+    ' "$1"
+}
+
+@test "zen: browser colors and workspace overrides follow each variant" {
+    local v block
+    [ -f "$PORTS/zen/userChrome.css" ]
+    for v in dark light; do
+        block="$(zen_media "$PORTS/zen/userChrome.css" "$v")"
+        [[ "$block" == *"--zen-primary-color: $(pal "$v" accent.primary) !important;"* ]]
+        [[ "$block" == *"--zen-main-browser-background: $(pal "$v" surface.base) !important;"* ]]
+        [[ "$block" == *"#zen-browser-background"* ]]
+    done
+}
+
+@test "zen: internal pages use each variant inside a top-level document rule" {
+    local v block f="$PORTS/zen/userContent.css"
+    [ -f "$f" ]
+    grep -Fxq '@-moz-document url-prefix("about:") {' "$f"
+    for v in dark light; do
+        block="$(zen_media "$f" "$v")"
+        [[ "$block" == *"--newtab-background-color: $(pal "$v" surface.base) !important;"* ]]
+    done
+}
+
+@test "zen: both stylesheets have balanced nonempty braces" {
+    local f
+    for f in "$PORTS/zen/userChrome.css" "$PORTS/zen/userContent.css"; do
+        [ -f "$f" ]
+        awk '{ opens += gsub(/{/, "{"); closes += gsub(/}/, "}") }
+             END { exit !(opens > 0 && opens == closes) }' "$f"
+    done
+}
+
+@test "zen: every declaration overrides author styles" {
+    local f
+    for f in "$PORTS/zen/userChrome.css" "$PORTS/zen/userContent.css"; do
+        [ -f "$f" ]
+        awk '/^[[:space:]]*--?[a-z-]+:/ {
+                 count++
+                 if ($0 !~ /!important;$/) invalid++
+             }
+             END { exit !(count > 0 && invalid == 0) }' "$f"
+        awk '/^[[:space:]]*[a-z-]+:/ && $0 !~ /!important;$/ { exit 1 }' "$f"
+    done
+}

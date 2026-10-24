@@ -31,6 +31,8 @@ GENERATED=(
     "ports/vscode/themes/terminal-noir-color-theme.json"
     "ports/bat/Terminal Noir.tmTheme"
     "ports/chrome/manifest.json"
+    "ports/zen/userChrome.css"
+    "ports/zen/userContent.css"
     "ports/btop/terminal-noir.theme"
     "ports/fzf/terminal-noir.sh"
     "ports/gtk/gtk.css"

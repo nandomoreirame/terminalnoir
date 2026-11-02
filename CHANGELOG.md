@@ -9,6 +9,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Added
 
 - Add a Zen Browser port with `userChrome.css` and `userContent.css`, dark and light variants following Zen's appearance setting, and overrides for the workspace gradient.
+- Add a presenterm port with `terminal-noir.yaml` and `terminal-noir-paper.yaml` slide themes and matching code highlighting themes that set code blocks on the raised surface.
 
 ## [0.2.0-beta] - 2026-10-21
 

@@ -6,7 +6,7 @@ Superfícies frias quase pretas e um único acento âmbar. Uma paleta, gerada pa
 
 ![Terminal Noir num desktop niri com o shell Noctalia, VS Code, Ghostty e Obsidian](assets/screenshots/niri.png)
 
-Status: beta (`0.2.0-beta`). As cores ainda podem mudar entre versões.
+Status: `0.3.0`, antes da 1.0. As cores ainda podem mudar entre versões.
 
 ## Por quê
 

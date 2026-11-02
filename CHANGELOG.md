@@ -6,10 +6,18 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-02
+
 ### Added
 
+- Add a presenterm port with `terminal-noir.yaml` and `terminal-noir-paper.yaml` slide themes and matching code highlighting themes that set code blocks on the raised surface, with a logo and screenshot on the website.
 - Add a Zen Browser port with `userChrome.css` and `userContent.css`, dark and light variants following Zen's appearance setting, and overrides for the workspace gradient.
-- Add a presenterm port with `terminal-noir.yaml` and `terminal-noir-paper.yaml` slide themes and matching code highlighting themes that set code blocks on the raised surface.
+- Add a Brazilian Portuguese README, `README.pt-br.md`.
+
+### Changed
+
+- Rewrite the README to open with why the theme exists, split install from usage, and document the repository scope and what each port and script touches.
+- Pin the website's dev server to port 4322.
 
 ## [0.2.0-beta] - 2026-10-21
 

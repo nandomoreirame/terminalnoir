@@ -51,6 +51,7 @@ const ICONS: Record<string, string> = {
   zen: 'simple-icons:zenbrowser',
   telegram: 'simple-icons:telegram',
   shiki: 'shiki',
+  presenterm: 'lucide:presentation',
 };
 
 // README.md is English; README.<locale>.md holds each translation.

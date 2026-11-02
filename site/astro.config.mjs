@@ -18,6 +18,7 @@ export default defineConfig({
     format: 'directory',
     inlineStylesheets: 'always',
   },
+  server: { port: 4322, strictPort: true },
   vite: {
     plugins: [tailwindcss()],
     server: { fs: { allow: ['..'] } },

@@ -26,6 +26,7 @@
     { "slug": "bat", "name": "bat", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/sharkdp/bat", "featured": true },
     { "slug": "btop", "name": "btop", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/aristocratos/btop", "featured": false },
     { "slug": "fzf", "name": "fzf", "category": "cli", "variants": ["dark"], "homepage": "https://github.com/junegunn/fzf", "featured": false },
+    { "slug": "presenterm", "name": "presenterm", "category": "cli", "variants": ["dark", "light"], "homepage": "https://github.com/mfontanini/presenterm", "featured": false },
     { "slug": "chrome", "name": "Google Chrome", "category": "apps", "variants": ["dark"], "homepage": "https://www.google.com/chrome/", "featured": true },
     { "slug": "zen", "name": "Zen Browser", "category": "apps", "variants": ["dark", "light"], "homepage": "https://zen-browser.app", "featured": false },
     { "slug": "telegram", "name": "Telegram", "category": "apps", "variants": ["dark", "light"], "homepage": "https://desktop.telegram.org", "featured": false },

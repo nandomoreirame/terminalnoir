@@ -377,3 +377,25 @@ zen_media() {
         awk '/^[[:space:]]*[a-z-]+:/ && $0 !~ /!important;$/ { exit 1 }' "$f"
     done
 }
+
+@test "presenterm: slide theme and code theme per variant, on the palette" {
+    local v name yaml tm
+    for v in dark light; do
+        name="terminal-noir$([ "$v" = light ] && echo -paper || true)"
+        yaml="$PORTS/presenterm/$name.yaml"
+        tm="$PORTS/presenterm/$name.tmTheme"
+        grep -Fqx "    base: \"$(pal "$v" surface.base | hex6)\"" "$yaml"
+        grep -Fqx "    raised: \"$(pal "$v" surface.raised | hex6)\"" "$yaml"
+        grep -Fqx "    text: \"$(pal "$v" text.primary | hex6)\"" "$yaml"
+        grep -Fqx "    primary: \"$(pal "$v" accent.primary | hex6)\"" "$yaml"
+        grep -Fqx "  theme_name: $name" "$yaml"
+        # Code blocks sit on the raised surface so they stand out from the slide.
+        grep -Fq "<string>$(pal "$v" surface.raised)</string>" "$tm"
+        grep -Fq "<string>$name</string>" "$tm"
+        grep -Fq '<string>keyword, keyword.control, storage, storage.type, storage.modifier, keyword.operator.new, keyword.operator.expression</string>' "$tm"
+        if command -v xmllint >/dev/null 2>&1; then
+            xmllint --noout "$tm"
+        fi
+    done
+    grep -Fqx '    foreground: palette:primary' <(sed -n '/^slide_title:/,/^[a-z]/p' "$PORTS/presenterm/terminal-noir.yaml")
+}

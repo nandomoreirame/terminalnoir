@@ -42,6 +42,10 @@ GENERATED=(
     "ports/p10k/terminal-noir.p10k.zsh"
     "ports/shiki/terminal-noir.json"
     "ports/shiki/terminal-noir-paper.json"
+    "ports/presenterm/terminal-noir.yaml"
+    "ports/presenterm/terminal-noir-paper.yaml"
+    "ports/presenterm/terminal-noir.tmTheme"
+    "ports/presenterm/terminal-noir-paper.tmTheme"
 )
 
 setup() {

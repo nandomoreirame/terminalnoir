@@ -6,6 +6,10 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+### Changed
+
+- Obsidian: use the amber accent on the active file, current tab, active icons, focus borders, caret and empty-tab actions.
+
 ## [0.3.0] - 2026-11-02
 
 ### Added

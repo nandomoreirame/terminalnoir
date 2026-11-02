@@ -1,6 +1,6 @@
 # Terminal Noir for Obsidian
 
-An Obsidian theme for dark mode: near-black panes, amber links and accent, and code blocks in the same colors as the editor ports.
+An Obsidian theme for dark mode: near-black panes, amber links and active items, and code blocks in the same colors as the editor ports.
 
 ![Terminal Noir for Obsidian](../../assets/screenshots/obsidian.png)
 

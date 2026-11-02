@@ -280,6 +280,18 @@ PORTS="$PROJECT_ROOT/ports"
     [ ! -e "$PORTS/obsidian/terminal-noir.css" ]
 }
 
+@test "obsidian: the amber accent marks active items in the app shell" {
+    local css="$PORTS/obsidian/Terminal Noir/theme.css" accent
+    accent="$(pal dark accent.primary)"
+    local var
+    for var in nav-item-color-active tab-text-color-focused-active tab-text-color-focused-active-current icon-color-active icon-color-focused background-modifier-border-focus caret-color; do
+        grep -Fq -- "--$var: $accent;" "$css"
+    done
+    grep -Fq -- "--nav-item-background-active: rgba(245, 166, 35, 0.12);" "$css"
+    grep -Fq ".theme-dark .empty-state-action-list > .text-icon-button svg" "$css"
+    grep -Fq ".theme-dark .empty-state-action-list > .text-icon-button:hover" "$css"
+}
+
 @test "p10k: overrides use palette hex colors and parse" {
     local f="$PORTS/p10k/terminal-noir.p10k.zsh"
     grep -Fqx "typeset -g POWERLEVEL9K_BACKGROUND='$(pal dark surface.elevated)'" "$f"

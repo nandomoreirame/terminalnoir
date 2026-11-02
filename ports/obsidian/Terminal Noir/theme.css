@@ -12,7 +12,7 @@
   --background-secondary-alt: #18181B;
   --background-modifier-border: #222226;
   --background-modifier-border-hover: #64646B;
-  --background-modifier-border-focus: #64646B;
+  --background-modifier-border-focus: #F5A623;
   --background-modifier-hover: #18181B;
   --background-modifier-active-hover: #18181B;
   --background-modifier-form-field: #121214;
@@ -32,6 +32,14 @@
   --link-color-hover: #FACF9E;
   --link-external-color: #F5A623;
   --link-external-color-hover: #FACF9E;
+  --caret-color: #F5A623;
+
+  --nav-item-color-active: #F5A623;
+  --nav-item-background-active: rgba(245, 166, 35, 0.12);
+  --tab-text-color-focused-active: #F5A623;
+  --tab-text-color-focused-active-current: #F5A623;
+  --icon-color-active: #F5A623;
+  --icon-color-focused: #F5A623;
 
   --text-success: #34D399;
   --text-warning: #FACF9E;
@@ -49,4 +57,12 @@
   --code-punctuation: #F4F4F5;
   --code-operator: #F4F4F5;
   --code-important: #FFB7B0;
+}
+
+.theme-dark .empty-state-action-list > .text-icon-button svg {
+  color: #F5A623;
+}
+
+.theme-dark .empty-state-action-list > .text-icon-button:hover {
+  border-color: #F5A623;
 }

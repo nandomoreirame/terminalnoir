@@ -59,6 +59,7 @@ Janelas novas já abrem com o tema; recarregue as abertas com `Ctrl+Shift+,`. O 
 | btop | escura | [ports/btop](ports/btop) |
 | fzf | escura | [ports/fzf](ports/fzf) |
 | presenterm | escura, clara | [ports/presenterm](ports/presenterm) |
+| /dev/null | escura, clara | [ports/devnull](ports/devnull) |
 | Google Chrome | escura | [ports/chrome](ports/chrome) |
 | Zen Browser | escura, clara | [ports/zen](ports/zen) |
 | Telegram Desktop | escura, clara | [ports/telegram](ports/telegram) |

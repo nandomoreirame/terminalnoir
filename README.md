@@ -135,6 +135,8 @@ npm run verify   # astro check, unit tests, build
 
 The ports are color files. A few are code that your app runs when it loads the theme: the Hyper plugin (`index.js`), the Neovim Lua and Vim colorschemes, the zsh, fzf and Powerlevel10k shell files you `source`, and the Zen Browser CSS. None of them makes network requests, reads secrets or runs other programs; read them before installing, as with any dotfile.
 
+The /dev/null port is plain JSON, but its install step rewrites your `~/.config/dev-null-cli/tui.json` with `jq`, merging the themes into `custom_themes` and keeping every other key. Back the file up first if you want a way back.
+
 The scripts run locally and never touch the network:
 
 - `scripts/build` reads `palette/` with `jq` and writes only under `ports/` (or the directory you pass).

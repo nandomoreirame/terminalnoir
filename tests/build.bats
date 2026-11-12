@@ -46,6 +46,8 @@ GENERATED=(
     "ports/presenterm/terminal-noir-paper.yaml"
     "ports/presenterm/terminal-noir.tmTheme"
     "ports/presenterm/terminal-noir-paper.tmTheme"
+    "ports/devnull/terminal-noir.json"
+    "ports/devnull/terminal-noir-paper.json"
 )
 
 setup() {

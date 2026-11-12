@@ -1,0 +1,29 @@
+{
+  "custom_themes": [
+    {
+      "base": "light",
+      "colors": {
+        "blue": "#865700",
+        "code": "#8a5300",
+        "danger": "#cb1b2a",
+        "graph": "",
+        "hairline": "#dcd8cf",
+        "ink": "#1c1a17",
+        "lane1": "#865700",
+        "lane2": "#116329",
+        "lane3": "#7b47d6",
+        "lane4": "#08737a",
+        "lane5": "#cb1b2a",
+        "lane6": "#0663d0",
+        "muted": "#5e5a53",
+        "peak": "",
+        "shell": "#fbfaf7",
+        "soft": "#e9e1d1",
+        "success": "#0b7656",
+        "warning": "#8a5300",
+        "wash": "#e9e6df"
+      },
+      "name": "Terminal Noir Paper"
+    }
+  ]
+}

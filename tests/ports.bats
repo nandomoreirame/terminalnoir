@@ -411,3 +411,23 @@ zen_media() {
     done
     grep -Fqx '    foreground: palette:primary' <(sed -n '/^slide_title:/,/^[a-z]/p' "$PORTS/presenterm/terminal-noir.yaml")
 }
+
+@test "devnull: one custom theme per variant, mapped from the palette" {
+    local v name f
+    for v in dark light; do
+        name="terminal-noir$([ "$v" = light ] && echo -paper || true)"
+        f="$PORTS/devnull/$name.json"
+        [ "$(jq -r '.custom_themes | length' "$f")" -eq 1 ]
+        [ "$(jq -r '.custom_themes[0].base' "$f")" = "$v" ]
+        [ "$(jq -r '.custom_themes[0].colors.shell' "$f")" = "$(pal $v surface.base | tr 'A-F' 'a-f')" ]
+        [ "$(jq -r '.custom_themes[0].colors.wash' "$f")" = "$(pal $v surface.elevated | tr 'A-F' 'a-f')" ]
+        [ "$(jq -r '.custom_themes[0].colors.ink' "$f")" = "$(pal $v text.primary | tr 'A-F' 'a-f')" ]
+        [ "$(jq -r '.custom_themes[0].colors.blue' "$f")" = "$(pal $v accent.primary | tr 'A-F' 'a-f')" ]
+        [ "$(jq -r '.custom_themes[0].colors.success' "$f")" = "$(pal $v accent.success | tr 'A-F' 'a-f')" ]
+        [ "$(jq -r '.custom_themes[0].colors.lane3' "$f")" = "$(pal $v ansi.normal.magenta | tr 'A-F' 'a-f')" ]
+    done
+}
+
+@test "devnull: soft is the amber accent mixed 15% over the base surface" {
+    [ "$(jq -r '.custom_themes[0].colors.soft' "$PORTS/devnull/terminal-noir.json")" = "#2e220f" ]
+}

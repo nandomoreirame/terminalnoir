@@ -6,6 +6,8 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-11-12
+
 ### Added
 
 - Add a /dev/null terminal client port with `terminal-noir.json` and `terminal-noir-paper.json` custom themes and a merge command for `tui.json`.

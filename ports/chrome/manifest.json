@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Terminal Noir",
-  "version": "0.3.1",
-  "version_name": "0.3.1",
+  "version": "0.3.2",
+  "version_name": "0.3.2",
   "description": "Terminal Noir: cold near-black surfaces with an amber accent. https://terminalnoir.web.app",
   "theme": {
     "colors": {

@@ -6,7 +6,7 @@ Cold near-black surfaces, one amber accent. One palette, generated into every ap
 
 ![Terminal Noir on a niri desktop with the Noctalia shell, VS Code, Ghostty and Obsidian](assets/screenshots/niri.png)
 
-Status: `0.3.1`, before 1.0. Colors can still change between releases.
+Status: `0.3.2`, before 1.0. Colors can still change between releases.
 
 ## Why
 

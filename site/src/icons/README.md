@@ -8,3 +8,4 @@ Logos for ports that simple-icons does not cover, copied from each project. They
 | `btop.svg` | [aristocratos/btop](https://github.com/aristocratos/btop) `Img/icon.svg` | Apache-2.0 |
 | `shiki.svg` | [shikijs/shiki](https://github.com/shikijs/shiki) `docs/public/logo.svg` | MIT |
 | `kitty.svg` | [kovidgoyal/kitty](https://github.com/kovidgoyal/kitty) `logo/kitty.svg` | GPL-3.0 |
+| `devnull.svg` | [nandomoreirame/nandomoreira.dev](https://github.com/nandomoreirame/nandomoreira.dev) `src/icons/devnull.svg` | MIT |

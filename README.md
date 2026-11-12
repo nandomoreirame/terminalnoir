@@ -59,6 +59,7 @@ New windows pick it up; reload open ones with `Ctrl+Shift+,`. Each port's README
 | btop | dark | [ports/btop](ports/btop) |
 | fzf | dark | [ports/fzf](ports/fzf) |
 | presenterm | dark, light | [ports/presenterm](ports/presenterm) |
+| /dev/null | dark, light | [ports/devnull](ports/devnull) |
 | Google Chrome | dark | [ports/chrome](ports/chrome) |
 | Zen Browser | dark, light | [ports/zen](ports/zen) |
 | Telegram Desktop | dark, light | [ports/telegram](ports/telegram) |
